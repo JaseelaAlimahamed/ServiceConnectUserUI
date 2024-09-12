@@ -5,9 +5,9 @@ function App() {
 
 
   return (
-    <Routes>
-      <Route path="/*" element={<UserRoutes/>} />
-    </Routes>
+    // <Routes>
+    //   <Route path="/*" element={<UserRoutes/>} />
+    // </Routes>
   );
 }
 
