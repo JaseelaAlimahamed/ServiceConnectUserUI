@@ -1,5 +1,5 @@
 import React from 'react'
-import FillYourProfile from '../components/user/FillYourProfile'
+import FillYourProfile from '../../components/user/sigInSignUpComponents/FillYourProfile'
 
 function AddProfilePage() {
   return (
