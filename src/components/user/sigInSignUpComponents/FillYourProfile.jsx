@@ -1,13 +1,13 @@
 import React from 'react';
 
-import FormComponent from '../reUsableComponents/FormComponent';
+import FormComponent from '../../reUsableComponents/FormComponent';
 
 const getApiEndpoint = async (formData) => {
 
 
     try {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-
+// edit
         console.log('Form Data:', formData);
         return { success: true, data: formData };
 
@@ -17,6 +17,24 @@ const getApiEndpoint = async (formData) => {
     }
 
 };
+
+
+const getApiEndpoints = async (formData) => {
+
+
+    try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+// delete
+        console.log('Form Data:', formData);
+        return { success: true, data: formData };
+
+    } catch (error) {
+        console.error('Error handling form data:', error);
+        return { success: false, error: error.message };
+    }
+
+};
+const profile =true
 const headingtext = "Fill Your Profile"
 const buttonConfig = {
     label: "Continue",
@@ -46,14 +64,16 @@ const fieldConfigs = [
 
 const FillYourProfile = () => {
     return (
-        <div>
-
+        
+<div className="min-h-screen bg-dark-gray  flex items-center justify-center">
             <FormComponent
                 fieldConfigs={fieldConfigs}
                 buttonConfig={buttonConfig}
                 inputConfig={inputConfig}
                 apiEndpoint={getApiEndpoint}
+                getApiEndpoints ={getApiEndpoints}
                 heading={headingtext}
+                profile
             />
 
         </div>
