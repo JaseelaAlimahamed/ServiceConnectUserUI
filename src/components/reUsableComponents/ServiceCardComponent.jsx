@@ -1,10 +1,22 @@
-import React from 'react';
-
-const ServiceCard = ({ category, serviceTitle, price, rating, reviews }) => {
+const ServiceCard = ({
+    category,
+    serviceTitle,
+    price,
+    rating,
+    reviews,
+    imgUrl = 'https://via.placeholder.com/200',
+    className = ''
+}) => {
     return (
-        <div className="w-64 h-56 overflow-hidden bg-white shadow-md rounded-xl">
+        <div className={`overflow-hidden bg-white shadow-md rounded-xl ${className}`}>
             {/* Image Placeholder */}
-            <div className="bg-black h-1/2"></div>
+            <div className="bg-black h-1/2">
+                <img
+                    src={imgUrl}
+                    alt="Placeholder"
+                    className="object-cover w-full h-full"
+                />
+            </div>
 
             {/* Card Content */}
             <div className="px-4 py-3">
