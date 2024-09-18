@@ -1,6 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
+ import { Routes, Route } from 'react-router-dom'
 import UserRoutes from './routes/UserRoutes';
-// import'./App.css';
+ import'./App.css';
+
 function App() {
 
 
@@ -8,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/*" element={<UserRoutes/>} />
     </Routes>
+  
   );
 }
 
