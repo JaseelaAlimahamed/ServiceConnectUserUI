@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaSignOutAlt, FaSignInAlt, FaBars, FaTimes, FaCrown } from 'react-icons/fa';
-import SideBar from './SideBar';
+import Sidebar from './Sidebar';
 
-const NavBar = () => {
+const Navbar = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const profileName = "Nikhil Babu";
@@ -18,7 +18,7 @@ const NavBar = () => {
     };
 
     return (
-        <>
+        <div className='mb-20'>
             <nav className="bg-dark-gray z-50 fixed top-0 left-0 w-full">
                 <div className="mx-auto px-2 lg:px-20">
                     <div className="relative flex h-20 items-center justify-between">
@@ -100,14 +100,14 @@ const NavBar = () => {
             </nav>
 
             {/* Sidebar Component */}
-            <SideBar
+            <Sidebar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={toggleSidebar}
                 isAuthenticated={isAuthenticated}
                 onLogout={handleLogout}
             />
-        </>
+        </div>
     );
 };
 
-export default NavBar;
+export default Navbar;

@@ -19,18 +19,21 @@ const links = [
     { path: '/invite-friend', label: 'Invite a Friend' },
 ];
 
-const SideBar = ({ isSidebarOpen, toggleSidebar, isAuthenticated, onLogout }) => {
+const Sidebar = ({ isSidebarOpen, toggleSidebar, isAuthenticated, onLogout }) => {
     return (
-        <>
+       
+        <div className='flex'>
             <div
-                className={`fixed top-20 h-full left-0 w-60 bg-gray-800 text-white transform transition-transform lg:translate-x-0 lg:w-56 z-40 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+                className={`fixed top-20 h-full left-0 w-60 bg-gray-800 text-white transform transition-transform sm:translate-x-0 sm:w-46 z-40 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
-                <ul className="p-6 mt-16 space-y-2">
+                <ul className="p-6 mt-10 space-y-2">
                     {links.map((link) => (
                         <li key={link.path}>
                             <NavLink
                                 to={link.path}
-                                className="block text-white px-4 rounded hover:bg-gray-700"
+                                className={({ isActive }) =>
+                                    `block px-4 rounded transition-colors ${isActive ? 'bg-gray-700' : 'hover:bg-gray-700'
+                                    }`}
                                 onClick={toggleSidebar}
                             >
                                 {link.label}
@@ -41,7 +44,7 @@ const SideBar = ({ isSidebarOpen, toggleSidebar, isAuthenticated, onLogout }) =>
 
                 {/* Conditional Rendering of Logout Button */}
                 {isAuthenticated && (
-                    <div className="lg:hidden px-6 py-3 border-t border-gray-700">
+                    <div className="sm:hidden px-6 py-3 border-t border-gray-700">
                         <Link
                             className="w-full text-white hover:bg-gray-700 rounded px-4 py-2 flex items-center"
                             onClick={onLogout}
@@ -55,13 +58,13 @@ const SideBar = ({ isSidebarOpen, toggleSidebar, isAuthenticated, onLogout }) =>
             {/* Overlay for mobile when sidebar is open */}
             {isSidebarOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+                    className="fixed inset-0 bg-black bg-opacity-50 z-30 sm:hidden"
                     onClick={toggleSidebar}
                 ></div>
             )}
-        </>
+        </div>
     );
 };
 
-export default SideBar;
+export default Sidebar;
 
