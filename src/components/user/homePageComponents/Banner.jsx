@@ -20,7 +20,7 @@ const Banner = ({banners}) => {
     banners.map((banner,Index)=>(
 
     
-    <div className="relative bg-medium-dark-gray  text-white p-6 md:p-10  rounded-3xl shadow-lg h-96  lg:w-3/5 sm:w-96  mx-auto">
+    <div className="relative bg-medium-black  text-white p-6 md:p-10  rounded-3xl shadow-lg h-96  lg:w-3/5 sm:w-96  mx-auto">
         {/* Background Shapes */}
         <svg
         width="300"
@@ -62,7 +62,7 @@ const Banner = ({banners}) => {
           <p className="text-sm md:text-2xl mt-5">{banner.description}</p>
         </div>
         {/* Button (Optional if needed) */}
-        <button className=" text-white py-3 px-4 bg-medium-dark-gray rounded hover:bg-pink-600 transition duration-300 z-10">
+        <button className=" text-white py-3 px-4 bg-medium-black rounded hover:font-bold transition duration-300 z-10">
         {banner.buttonText}
         </button>
       </div>
