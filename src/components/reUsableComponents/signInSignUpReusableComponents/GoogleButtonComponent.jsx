@@ -1,24 +1,31 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useGoogleLogin } from '@react-oauth/google';
+import { handleGoogleLoginSuccess, handleGoogleLoginFailure } from '../../../services/userSignIn/googleAuth';
 
 const GoogleLoginButton = () => {
-
-    const handleGoogleLogin = async () => {
-        try {
-
-            console.log('Google login is working!');
-
-        } catch (error) {
-            console.log('Google login failed!', error);
-        }
-    };
+    const login = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            try {
+                // Handle the success response (typically involves using the token)
+                handleGoogleLoginSuccess(tokenResponse);
+            } catch (error) {
+                console.log('Error during login success handling:', error);
+            }
+        },
+        onError: (error) => {
+            console.log('Login Error:', error);
+            handleGoogleLoginFailure(error);
+        },
+        scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email', // Optional if you need specific scopes
+    });
 
     return (
         <div className="flex flex-col items-center">
-            <h6 className='flex justify-center mb-2'>or continue with</h6>
+            <h6 className="flex justify-center mb-2">or continue with</h6>
             <button
-                onClick={handleGoogleLogin}
-                className="flex justify-center w-5/6 bg-primary border-r-4 border-light-gray rounded-full shadow-md py-3 px-2  hover:border-light-gray"
+                onClick={() => login()}
+                className="flex justify-center w-5/6 bg-primary border-r-4 border-light-gray rounded-full shadow-md py-3 px-2 hover:border-light-gray"
             >
                 <FcGoogle className="mr-2 text-2xl" />
                 <span className="text-dark-gray font-medium">Continue with Google</span>
