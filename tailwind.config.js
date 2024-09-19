@@ -18,6 +18,7 @@ module.exports = {
           "dark-gray": "#1D1F2A",
           "light-gray": "#D9D9DB",
           "medium-gray": "#736A68",
+          "medium-black": "#303039"
         },
         // You can add custom breakpoints if needed, but the defaults are generally enough:
         // screens: {
