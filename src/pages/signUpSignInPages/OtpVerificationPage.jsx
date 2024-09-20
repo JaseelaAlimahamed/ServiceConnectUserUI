@@ -5,7 +5,7 @@ import OTPComponent from '../../components/reUsableComponents/signInSignUpReusab
 import LocationModalOtp from '../../components/user/sigInSignUpComponents/LocationModalOtp'
 
 function OtpVerificationPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   useEffect(() => {
     // console.log("Modal open state changed:", isModalOpen);
   }, [isModalOpen]);
