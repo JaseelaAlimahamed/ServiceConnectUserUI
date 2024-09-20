@@ -6,7 +6,7 @@ import CongratsModalUser from "../../components/user/sigInSignUpComponents/Congr
 import FillYourProfile from "../../components/user/sigInSignUpComponents/FillYourProfile";
 
 function AddProfilePage() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // console.log("Modal open state changed:", isModalOpen);
