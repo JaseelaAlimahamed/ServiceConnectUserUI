@@ -3,7 +3,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 
 const links = [
-    { path: '/profile', label: 'My Profile' },
+    { path: '/myprofile', label: 'My Profile' },
     { path: '/home', label: 'Home' },
     { path: '/bookings', label: 'Bookings' },
     { path: '/active-services', label: 'Active Services' },
