@@ -71,7 +71,8 @@ const SignUpUser = () => {
               />
 
             </div>
-            <GoogleLoginButton />
+            {/* <GoogleLoginButton /> */}
+      <GoogleLoginButton/>
           </div>
         </div>
       </div>
