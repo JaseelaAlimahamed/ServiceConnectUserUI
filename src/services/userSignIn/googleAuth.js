@@ -1,33 +1,50 @@
-export const handleGoogleLoginSuccess = (response) => {
-    console.log('Google login successful!', response);
-    const { access_token } = response;
+import axios from 'axios';
 
-    if (access_token) {
-        fetchUserProfile(access_token); // Fetch user profile if access token is available
-    } else {
-        console.error('Access token not available.');
-    }
-};
-
-const fetchUserProfile = async (accessToken) => {
+export const onGoogleLoginSuccess = async (response) => {
     try {
-        const response = await fetch('https://openidconnect.googleapis.com/v1/userinfo', {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        });
+      const { code } = response; // Capture authorization code
+      console.log(code, "this is the code");
+      console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID);
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch user profile: ${response.statusText}`);
+      // Exchange authorization code for tokens
+      const tokensResponse = await axios.post('https://oauth2.googleapis.com/token', new URLSearchParams({
+        code: code,
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+        client_secret: import.meta.env.VITE_GOOGLE_CLIENT_SECRET,
+        redirect_uri: 'http://localhost:5173/addprofile',
+        grant_type: 'authorization_code'
+      }), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
+      });
 
-        const userData = await response.json();
-        console.log('User Data:', userData); // Logs the user's Google profile data
+      const { access_token, id_token, refresh_token } = tokensResponse.data;
+      console.log('Tokens response:', tokensResponse.data);
+
+      // Fetch user info using access_token
+      const userInfo = await fetchUserInfo(access_token);
+      const { name, email, picture } = userInfo;
+
+      // Prepare user data including tokens and details
+      const userData = {
+        email: email,
+        token: id_token,
+        username: name
+      };
+      console.log('Sending data:', userData);
+
+      // You need to handle sending this data to the backend (remove the json variable)
+      // await sendGoogleAuthCode(userData, navigate);
+
     } catch (error) {
-        console.error('Error fetching user data:', error);
+      console.error("Error occurred during Google login:", error);
+      if (error.response) {
+        console.error("Error response data:", error.response.data);
+      }
     }
 };
 
-export const handleGoogleLoginFailure = (error) => {
+export const onGoogleLoginError = (error) => {
     console.error('Google login failed!', error);
 };
