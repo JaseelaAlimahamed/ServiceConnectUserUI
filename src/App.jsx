@@ -7,8 +7,10 @@ function App() {
   return (
     <Routes>
       <Route path="/*" element={<UserRoutes/>} />
+
     </Routes>
   );
 }
+
 
 export default App;
