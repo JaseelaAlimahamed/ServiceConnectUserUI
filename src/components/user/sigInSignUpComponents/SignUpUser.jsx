@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import FormComponent from '../../reUsableComponents/FormComponent';
 import GoogleLoginButton from '../../reUsableComponents/signInSignUpReusableComponents/GoogleButtonComponent';
@@ -71,7 +72,8 @@ const SignUpUser = () => {
               />
 
             </div>
-            <GoogleLoginButton />
+            {/* <GoogleLoginButton /> */}
+      <GoogleLoginButton/>
           </div>
         </div>
       </div>

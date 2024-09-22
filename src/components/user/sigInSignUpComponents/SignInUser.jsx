@@ -36,6 +36,7 @@ const forgotPassword = "true"
     // Simulating an API endpoint function for form submission
     const apiEndpoint = async (values) => {
         console.log('Form submitted with values:', values);
+        
         // You can replace this with the actual API call
     };
 
