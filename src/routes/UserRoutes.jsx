@@ -5,8 +5,14 @@ import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+<<<<<<< HEAD
 import AllCategoriesPage from '../pages/AllCategoriesPage/AllCategoriesPage'
 
+=======
+import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
+import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
+import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+>>>>>>> origin/userModal
 
 
 function UserRoutes() {
@@ -23,7 +29,17 @@ function UserRoutes() {
 
         <Route path="/otp" element={<OtpVerificationPage />} />
 
+<<<<<<< HEAD
         <Route path='/allcategories' element={<AllCategoriesPage />} />
+=======
+        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+
+       
+>>>>>>> origin/userModal
 
       </Routes>
     </div>
