@@ -1,28 +1,45 @@
+import React from 'react';
+
+/**
+ * ServiceCard component to display individual service information.
+ * 
+ * @param {Object} props - The properties passed to the component.
+ * @param {string} props.category - The service category (e.g., Plumbing, Electrical).
+ * @param {string} props.serviceTitle - The title of the service.
+ * @param {number} props.price - The price of the service.
+ * @param {number} props.rating - The rating of the service.
+ * @param {number} props.reviews - The number of reviews the service has received.
+ * @param {string} props.imgUrl - The URL for the service image (default: placeholder).
+ * @param {string} props.className - Additional custom class names (optional).
+ * 
+ * @returns {JSX.Element} The rendered ServiceCard component.
+ */
 const ServiceCard = ({
     category,
     serviceTitle,
     price,
     rating,
     reviews,
-    imgUrl = 'https://via.placeholder.com/200',
-    className = ''
+    imgUrl = 'https://via.placeholder.com/200', // Default image placeholder
+    className = '' // Optional custom class
 }) => {
     return (
         <div className={`overflow-hidden bg-white shadow-md rounded-xl ${className}`}>
-            {/* Image Placeholder */}
+            {/* Service Image */}
             <div className="bg-black h-1/2">
                 <img
                     src={imgUrl}
-                    alt="Placeholder"
+                    alt={serviceTitle}
                     className="object-cover w-full h-full"
                 />
             </div>
 
-            {/* Card Content */}
+            {/* Service Information */}
             <div className="px-4 py-3">
                 <div className="flex items-center justify-between mb-2">
-                    {/* Category */}
+                    {/* Service Category */}
                     <p className="text-sm font-semibold text-gray-500">{category}</p>
+
                     {/* Bookmark Icon */}
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
