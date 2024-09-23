@@ -1,4 +1,5 @@
 const pageConfig = {
+  '/': {},
   '/myprofile': {
     title: 'PROFILE',
   },
@@ -7,7 +8,7 @@ const pageConfig = {
   },
   '/bookings': {
     title: 'BOOKINGS',
-  }
+  },
 };
 
 export default pageConfig;
