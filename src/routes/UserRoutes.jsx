@@ -10,6 +10,8 @@ import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
 import Home from '../pages/HomePage'
+import ProviderProfile from '../pages/ProfilePage'
+import Layout from '../components/Layout'
 
 
 
@@ -17,6 +19,7 @@ function UserRoutes() {
   return (
     <div>
       <Routes>
+
         <Route path="/" element={<Navigate to="/signin" />} />
 
         <Route path="/addprofile" element={<AddProfilePage />} />
@@ -28,13 +31,17 @@ function UserRoutes() {
         <Route path="/otp" element={<OtpVerificationPage />} />
 
         <Route path='/home' element={<Home />} />
-          
-        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
 
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
 
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
-          
+        <Route path='/profile' element={<Layout><ProviderProfile /></Layout>} />
+
+
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
+
       </Routes>
     </div>
   )
