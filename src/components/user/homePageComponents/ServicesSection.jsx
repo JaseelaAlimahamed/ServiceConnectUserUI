@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ServiceCard from '../../reUsableComponents/ServiceCardComponent';
 
+// Sample services data
 const servicesData = [
     { id: 1, category: 'Plumbing', serviceTitle: 'Complete Residential Plumbing', price: 2, rating: 4, reviews: 7830, imgUrl: 'https://via.placeholder.com/240' },
     { id: 2, category: 'Plumbing', serviceTitle: 'Advertisement Designing', price: 4, rating: 4, reviews: 12580, imgUrl: 'https://via.placeholder.com/240' },
@@ -16,9 +17,13 @@ const servicesData = [
     { id: 12, category: 'Electrical', serviceTitle: 'Computer Repair and Maintenance', price: 4, rating: 4.3, reviews: 510, imgUrl: 'https://via.placeholder.com/240' }
 ];
 
-// Dynamically get unique categories from servicesData
+// Get unique categories from servicesData
 const uniqueCategories = ['All', ...new Set(servicesData.map(service => service.category))];
 
+/**
+ * ServicesSection component that displays a list of services and allows filtering by category.
+ * The component supports horizontal scrolling for mobile view and flex-wrap for larger screens.
+ */
 const ServicesSection = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -28,19 +33,19 @@ const ServicesSection = () => {
         : servicesData.filter(service => service.category === selectedCategory);
 
     return (
-        <div className="p-6">
+        <div className="py-6">
+            {/* Header Section */}
             <div className="flex items-center justify-between">
                 <h2 className="mb-4 text-2xl font-bold">Popular Services</h2>
-                <h3 className="mb-4 text-xl font-bold">SEE ALL</h3>
+                <h3 className="mb-4 text-xl font-bold cursor-pointer">SEE ALL</h3>
             </div>
 
             {/* Category Filters */}
-            <div className="flex gap-4 mb-6 overflow-x-auto md:overflow-x-visible md:flex-wrap no-scrollbar scroll-smooth">
+            <div className="flex gap-4 mb-6 overflow-x-auto no-scrollbar scroll-smooth">
                 {uniqueCategories.map(category => (
                     <button
                         key={category}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold ${selectedCategory === category ? 'bg-gray-800 text-white' : 'bg-[#736a68] text-white'
-                            }`}
+                        className={`px-4 py-2 rounded-full text-sm font-semibold ${selectedCategory === category ? 'bg-gray-800 text-white' : 'bg-[#736a68] text-white'}`}
                         onClick={() => setSelectedCategory(category)}
                     >
                         {category}
@@ -48,7 +53,7 @@ const ServicesSection = () => {
                 ))}
             </div>
 
-            {/* Services Flexbox - Horizontal scroll on mobile */}
+            {/* Services Section - Horizontal scroll on mobile */}
             <div className="flex gap-6 overflow-x-auto md:overflow-x-visible md:flex-wrap scroll-smooth no-scrollbar">
                 {filteredServices.slice(0, 8).map(service => (
                     <ServiceCard
