@@ -10,7 +10,7 @@ import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
 import Home from '../pages/HomePage'
-import ProviderProfile from '../pages/ProfilePage'
+import ProviderProfile from '../pages/ProviderProfilePage'
 import Layout from '../components/Layout'
 
 
