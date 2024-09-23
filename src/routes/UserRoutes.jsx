@@ -8,6 +8,7 @@ import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
 import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
 import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import ProviderProfile from '../pages/ProviderProfilePage'
 
 
 function UserRoutes() {
@@ -24,13 +25,13 @@ function UserRoutes() {
 
         <Route path="/otp" element={<OtpVerificationPage />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
 
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
 
-       
+        <Route path="/profile" element={<ProviderProfile />} />
 
       </Routes>
     </div>
