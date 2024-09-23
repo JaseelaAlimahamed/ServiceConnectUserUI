@@ -5,7 +5,7 @@ import Navbar from '../components/user/Navbar';
 const UserLayout = () => {
     const location = useLocation();
 
-    const pathsWithoutNavbar = ['/signin', '/signup', '/otp', '/addprofile'];
+    const pathsWithoutNavbar = ['/signin', '/signup', '/otp'];
     const showNavbar = !pathsWithoutNavbar.includes(location.pathname);
 
     return (

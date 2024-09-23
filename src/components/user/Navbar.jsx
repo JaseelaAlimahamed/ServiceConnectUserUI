@@ -5,14 +5,13 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import Sidebar from './Sidebar';
 import NotificationButton from './NotificationButton';
 import pageConfig from '../../utils/navbarUtils';
-import Icons from './Icons';
 
 const Navbar = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const profileName = "Nikhil Babu";
+    const profileName = "Stone Stellar";
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -23,18 +22,13 @@ const Navbar = () => {
         setIsSidebarOpen(false);
     };
 
-    const currentPage = pageConfig[location.pathname] || {
-        title: 'SERVICE CONNECT',
-        showProfile: true,
-        showNotification: true,
-        showBackButton: false,
-    };
+    const currentPage = pageConfig[location.pathname]
+
+    const isHomePage = location.pathname === '/home';
 
     const handleBackClick = () => {
         navigate('/home');
     };
-
-    const isHomePage = location.pathname === '/home';
 
     return (
         <div className='mb-20'>
@@ -44,7 +38,7 @@ const Navbar = () => {
 
                         {/* Mobile menu button / Back button */}
                         <div className="flex items-center sm:hidden">
-                            {currentPage.showBackButton ? (
+                            {currentPage && !isHomePage ? (
                                 <button
                                     type="button"
                                     className="inline-flex items-center justify-center rounded-3xl p-2 text-white hover:text-gray-300 focus:outline-none"
@@ -70,19 +64,14 @@ const Navbar = () => {
                             <span className="ml-3 text-white font-semibold text-xl">{currentPage.title}</span>
                         </div>
 
-                        {/* Icons Section for Mobile */}
-                        <div className="sm:hidden flex justify-end flex-1">
-                            <Icons showSearch={currentPage.showSearch} showFilter={currentPage.showFilter} />
-                        </div>
-
                         {/* Profile and Authenticated Views */}
                         <div className="flex items-center pr-2 sm:ml-6">
-                            {isAuthenticated && currentPage.showNotification && (
-                                <NotificationButton isHomePage={isHomePage} />
+                            {isAuthenticated && (
+                                <NotificationButton />
                             )}
 
-                            {isAuthenticated && currentPage.showProfile && (
-                                <div className={`relative flex items-center ${!isHomePage ? 'hidden sm:flex' : 'flex'}`}>
+                            {isAuthenticated && (
+                                <div className={`relative flex items-center `}>
                                     <div className="flex flex-col items-center mr-4 ml-1 hidden sm:block">
                                         <span className="text-rose-500 text-lg text-center">
                                             {profileName}
