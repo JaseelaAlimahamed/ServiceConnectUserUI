@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ManualLocationInput from "./ManualLocationInput"; // Import the ManualLocationInput component
 
 const LocationModal = () => {
   const [isModalOpen, setModalOpen] = useState(true); // Modal open state
@@ -124,16 +125,10 @@ const LocationModal = () => {
                 Allow
               </button>
 
-              {/* Input Field Heading */}
-              <h3 className="text-lg font-semibold mb-2">Manually Enter Location *(optional)</h3>
-
-              {/* Input Field for Manual Location Entry */}
-              <input
-                type="text"
-                value={manualLocation}
-                onChange={(e) => setManualLocation(e.target.value)}
-                placeholder="Enter place name (optional)"
-                className="w-full p-3 border border-gray-300 rounded mb-4"
+              {/* Render the ManualLocationInput component */}
+              <ManualLocationInput
+                manualLocation={manualLocation}
+                setManualLocation={setManualLocation}
               />
 
               {/* Show location or error message */}
