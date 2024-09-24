@@ -7,7 +7,7 @@ import { FaThLarge, FaFileAlt, FaRedo, FaPlus, FaQuestionCircle, FaLayerGroup } 
  */
 const BottomNavBar = () => {
     return (
-        <div className="fixed inset-x-0 z-50 flex items-center justify-around px-5 py-3 mx-10 mb-2 bg-[#736a68] shadow-lg bottom-2 rounded-xl sm:hidden">
+        <div className="fixed inset-x-0  flex items-center justify-around px-5 py-3 mx-10 mb-2 bg-[#736a68] shadow-lg bottom-2 rounded-xl sm:hidden">
             {/* Home/Overview Button */}
             <button className="p-0 m-0 text-white bg-transparent focus:outline-none">
                 <FaThLarge size={24} />
