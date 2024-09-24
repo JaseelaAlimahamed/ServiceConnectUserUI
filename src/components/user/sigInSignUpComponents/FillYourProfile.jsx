@@ -7,7 +7,7 @@ const getApiEndpoint = async (formData) => {
 
     try {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-// edit
+        // edit
         console.log('Form Data:', formData);
         return { success: true, data: formData };
 
@@ -24,7 +24,7 @@ const getApiEndpoints = async (formData) => {
 
     try {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-// delete
+        // delete
         console.log('Form Data:', formData);
         return { success: true, data: formData };
 
@@ -34,7 +34,7 @@ const getApiEndpoints = async (formData) => {
     }
 
 };
-const profile =true
+const profile = true
 const headingtext = "Fill Your Profile"
 const buttonConfig = {
     label: "Continue",
@@ -64,18 +64,17 @@ const fieldConfigs = [
 
 const FillYourProfile = () => {
     return (
-        
-<div className="min-h-screen bg-dark-gray  flex items-center justify-center">
+
+        <div className="min-h-screen bg-dark-gray  flex items-center justify-center">
             <FormComponent
                 fieldConfigs={fieldConfigs}
                 buttonConfig={buttonConfig}
                 inputConfig={inputConfig}
                 apiEndpoint={getApiEndpoint}
-                getApiEndpoints ={getApiEndpoints}
+                getApiEndpoints={getApiEndpoints}
                 heading={headingtext}
                 profile
             />
-
         </div>
     );
 };

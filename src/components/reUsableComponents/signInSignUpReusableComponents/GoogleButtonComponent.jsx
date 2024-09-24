@@ -1,7 +1,6 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useGoogleLogin } from '@react-oauth/google';
-import jwtDecode from 'jwt-decode';
 import { onGoogleLoginSuccess, onGoogleLoginError } from '../../../services/userSignIn/googleAuth';
 
 
@@ -9,12 +8,11 @@ import { onGoogleLoginSuccess, onGoogleLoginError } from '../../../services/user
 const GoogleLoginButton = () => {
 
     const login = useGoogleLogin({
-        onSuccess:onGoogleLoginSuccess ,
-        onError:onGoogleLoginError, 
-        scope: 'openid profile email', 
+        onSuccess: onGoogleLoginSuccess,
+        onError: onGoogleLoginError,
+        scope: 'openid profile email',
         flow: 'auth-code',
     });
-
 
     return (
         <div className="flex flex-col items-center">
