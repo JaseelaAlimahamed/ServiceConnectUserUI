@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ProfileCard from './ProfileCard';
-import AboutSection from './AboutSection';
-import ServicesSection from './ServicesSection';
-import ReviewsSection from './ReviewsSection';
+import { useState, useEffect } from 'react';
+import ProfileCard from '../../components/user/ProviderProfilePageComponents/ProfileCard';
+import AboutSection from '../../components/user/ProviderProfilePageComponents/AboutSection';
+import ServicesSection from '../../components/user/ProviderProfilePageComponents/ServicesSection';
+import ReviewsSection from '../../components/user/ProviderProfilePageComponents/ReviewsSection';
 import ButtonComponent from '../../components/reUsableComponents/ButtonComponent';
-import ProfilePic from './ProfilePic';
+import ProfilePic from '../../components/user/ProviderProfilePageComponents/ProfilePic';
 import {
     FaWrench,
     FaMobileAlt,
@@ -14,7 +14,7 @@ import {
     FaBroom,
     FaLightbulb,
 } from 'react-icons/fa';
-import MediaGrid from './MediaGrid';
+import MediaGrid from '../../components/user/ProviderProfilePageComponents/MediaGrid';
 
 const ProviderProfile = () => {
     const [profileData, setProfileData] = useState(null);
@@ -136,7 +136,7 @@ const ProviderProfile = () => {
     }
 
     return (
-        <div className="mb-3 bg-gray-200">
+        <div className="mt-20 mb-3 bg-gray-200">
             <ProfilePic
                 imageUrl={profileData.imageUrl}
                 altText={`${profileData.name}'s Profile Picture`}
