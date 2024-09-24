@@ -9,9 +9,9 @@ import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswor
 import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
-import Home from '../pages/HomePage'
-import ProviderProfile from '../pages/ProviderProfilePage'
-import Layout from '../components/Layout'
+import Home from '../pages/HomePage/Home'
+import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+import Layout from '../components/Layout/Layout'
 
 
 
@@ -33,6 +33,8 @@ function UserRoutes() {
         <Route path='/home' element={<Layout><Home /></Layout>} />
 
         <Route path='/providerprofile' element={<Layout><ProviderProfile /></Layout>} />
+
+        <Route path='/allcategory' element={<Layout><ProviderProfile /></Layout>} />
 
         <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 

@@ -1,10 +1,4 @@
 import { useState, useEffect } from 'react';
-import ProfileCard from '../../components/user/ProviderProfilePageComponents/ProfileCard';
-import AboutSection from '../../components/user/ProviderProfilePageComponents/AboutSection';
-import ServicesSection from '../../components/user/ProviderProfilePageComponents/ServicesSection';
-import ReviewsSection from '../../components/user/ProviderProfilePageComponents/ReviewsSection';
-import ButtonComponent from '../../components/reUsableComponents/ButtonComponent';
-import ProfilePic from '../../components/user/ProviderProfilePageComponents/ProfilePic';
 import {
     FaWrench,
     FaMobileAlt,
@@ -14,9 +8,8 @@ import {
     FaBroom,
     FaLightbulb,
 } from 'react-icons/fa';
-import MediaGrid from '../../components/user/ProviderProfilePageComponents/MediaGrid';
 
-const ProviderProfile = () => {
+const useProviderProfileData = () => {
     const [profileData, setProfileData] = useState(null);
     const [aboutDescription, setAboutDescription] = useState('');
     const [servicesData, setServicesData] = useState([]);
@@ -24,7 +17,7 @@ const ProviderProfile = () => {
     const [imagesData, setImagesData] = useState([]);
     const [videosData, setVideosData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState();
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,10 +37,10 @@ const ProviderProfile = () => {
                                 imageUrl: 'https://randomuser.me/api/portraits/men/75.jpg',
                             },
                             aboutDescription: `
-                Graphic Design is now a popular profession. It offers various opportunities in the fields of marketing, advertising, web design, and many more.
-                Whether you're working on digital media or print, understanding design principles is key. Beyond the aesthetic appeal, graphic designers must also
-                focus on delivering a message effectively. The profession is challenging but rewarding, as it allows individuals to use both creativity and strategy.
-              `,
+                                Graphic Design is now a popular profession. It offers various opportunities in the fields of marketing, advertising, web design, and many more.
+                                Whether you're working on digital media or print, understanding design principles is key. Beyond the aesthetic appeal, graphic designers must also
+                                focus on delivering a message effectively. The profession is challenging but rewarding, as it allows individuals to use both creativity and strategy.
+                            `,
                             servicesData: [
                                 { name: 'Plumbing', icon: FaWrench },
                                 { name: 'Access Mobile, Desktop & TV', icon: FaMobileAlt },
@@ -109,54 +102,16 @@ const ProviderProfile = () => {
         fetchData();
     }, []);
 
-    const handleBookService = () => {
-        // Implement the booking logic here
-        console.log('Book service clicked');
+    return {
+        profileData,
+        aboutDescription,
+        servicesData,
+        reviewsData,
+        imagesData,
+        videosData,
+        loading,
+        error,
     };
-
-    const handleChatClick = () => {
-        // Implement the chat logic here
-        console.log('Chat button clicked');
-    };
-
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center h-screen bg-gray-200">
-                <p>Loading...</p>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="mb-3 bg-gray-200">
-                <p>{error}</p>
-            </div>
-        );
-    }
-
-    return (
-        <div className="mt-20 mb-3 bg-gray-200">
-            <ProfilePic
-                imageUrl={profileData.imageUrl}
-                altText={`${profileData.name}'s Profile Picture`}
-                onChatClick={handleChatClick}
-            />
-            <div className="mx-4 mt-16 md:mx-10">
-                <ProfileCard {...profileData} />
-                <AboutSection description={aboutDescription} />
-                <ServicesSection services={servicesData} />
-                <ReviewsSection reviews={reviewsData} />
-                <MediaGrid title="Images" mediaItems={imagesData} type="image" />
-                <MediaGrid title="Videos" mediaItems={videosData} type="video" />
-                <ButtonComponent
-                    label="Book service"
-                    btnWidth="100%"
-                    onClick={handleBookService}
-                />
-            </div>
-        </div>
-    );
 };
 
-export default ProviderProfile;
+export default useProviderProfileData;

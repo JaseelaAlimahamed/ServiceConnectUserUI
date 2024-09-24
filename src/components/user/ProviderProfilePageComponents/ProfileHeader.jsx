@@ -3,21 +3,22 @@ import { useNavigate, useLocation, matchPath } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { BiFilterAlt } from 'react-icons/bi';
 import { FiSearch, FiMoreVertical } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ title = 's' }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
     const pathname = location.pathname;
 
     // Define your path arrays with simple paths
-    const firstPaths = ['/providerprofile', '/profile', '/requestservice']; // Paths where we show only left arrow and title
-    const secondPaths = ['/allcategory', '/deliveryservices', '/bookings']; // Paths where we show filter and search icons
+    const firstPaths = ['/providerprofile', '/profile', 'requestservice']; // Paths where we show only left arrow and title
+    const secondPaths = ['/allcategory', '/deliveryservices', 'bookings']; // Paths where we show filter and search icons
     const thirdPaths = ['/receipt']; // Paths where we show FiMoreVertical icon
 
     // Function to check if the current path matches any in the array
     const isPathMatch = (pathsArray) => {
-        return pathsArray.some((path) => matchPath(path, pathname));
+        return pathsArray.some((path) => matchPath({ path, end: true }, pathname));
     };
 
     // Determine which type of path we're on
@@ -29,21 +30,8 @@ const ProfileHeader = () => {
         navigate(-1); // Navigates to the previous page
     };
 
-    // Map paths to titles
-    const pathTitleMap = {
-        '/providerprofile': 'Profile',
-        '/profile': 'Profile',
-        '/requestservice': 'Request Service',
-        '/allcategory': 'All Categories',
-        '/deliveryservices': 'Delivery Services',
-        '/bookings': 'Bookings',
-        '/receipt': 'Receipt',
-    };
-
-    const title = pathTitleMap[pathname] || 'Page';
-
     return (
-        <header className="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-20 p-4 text-white bg-gray-800">
+        <header className="flex items-center justify-between p-4 text-white bg-gray-800">
             <div className="flex items-center">
                 {/* Back Button */}
                 <button
@@ -89,6 +77,10 @@ const ProfileHeader = () => {
             </div>
         </header>
     );
+};
+
+ProfileHeader.propTypes = {
+    title: PropTypes.string,
 };
 
 export default ProfileHeader;
