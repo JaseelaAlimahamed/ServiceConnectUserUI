@@ -30,11 +30,9 @@ function UserRoutes() {
 
         <Route path="/otp" element={<OtpVerificationPage />} />
 
-        <Route path='/home' element={<Home />} />
+        <Route path='/home' element={<Layout><Home /></Layout>} />
 
-
-        <Route path='/profile' element={<Layout><ProviderProfile /></Layout>} />
-
+        <Route path='/providerprofile' element={<Layout><ProviderProfile /></Layout>} />
 
         <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
