@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+import AllCategoryComponent from '../components/user/sigInSignUpComponents/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent'
+import SubCategoryComponent from '../components/user/sigInSignUpComponents/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent'
 
 
 function UserRoutes() {
@@ -19,6 +22,10 @@ function UserRoutes() {
         <Route path="/signup" element={<UserSignUpPage />} />
 
         <Route path="/otp" element={<OtpVerificationPage />} />
+
+        <Route path="/allcategories" element={<AllCategoryComponent />} />
+
+        <Route path='/allcategories/:categoryId' element={<SubCategoryComponent />} />
 
       </Routes>
     </div>
