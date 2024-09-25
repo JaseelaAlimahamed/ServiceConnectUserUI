@@ -8,10 +8,8 @@ import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
 import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
 import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
-
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
-import Layout from '../components/Layout/Layout'
 
 
 
@@ -19,29 +17,27 @@ function UserRoutes() {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<Navigate to="/signin" />} />
 
-          <Route path="/" element={<Navigate to="/signin" />} />
+        <Route path="/addprofile" element={<AddProfilePage />} />
 
-          <Route path="/addprofile" element={<AddProfilePage />} />
+        <Route path="/signin" element={<UserSignInPage />} />
 
-          <Route path="/signin" element={<UserSignInPage />} />
+        <Route path="/signup" element={<UserSignUpPage />} />
 
-          <Route path="/signup" element={<UserSignUpPage />} />
+        <Route path="/otp" element={<OtpVerificationPage />} />
 
-          <Route path="/otp" element={<OtpVerificationPage />} />
+        <Route path='/home' element={<Home />} />
 
-          <Route path='/home' element={<Home />} />
+        <Route path='/providerprofile' element={<ProviderProfile />} />
 
-          <Route path='/providerprofile' element={<ProviderProfile />} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
-          <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
 
-          <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
-
-          <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
-
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
       </Routes>
-    </div>
+    </div >
   )
 }
 
