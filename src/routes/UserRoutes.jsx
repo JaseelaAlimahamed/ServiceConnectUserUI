@@ -10,6 +10,7 @@ import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
 import Home from '../pages/HomePage'
+import FilterPage from '../components/user/FilterComponents/FilterPage'
 
 
 
@@ -34,6 +35,7 @@ function UserRoutes() {
         <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
 
         <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+        <Route path="/filter" element={<FilterPage/>} />
           
       </Routes>
     </div>

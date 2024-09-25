@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import ServiceCard from "../../reUsableComponents/ServiceCategoryCard.jsx";
+import ServiceCard from "../../reUsableComponents/userHomeReUsableComponents/ServiceCategoryCard.jsx";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll.js";
 

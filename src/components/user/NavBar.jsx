@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaSignOutAlt, FaSignInAlt, FaBars, FaCrown, FaBell } from 'react-icons/fa';
+import FilterIcon from './FilterComponents/FilterIcon';
 
 const NavBar = ({ onToggleSidebar }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -8,6 +9,29 @@ const NavBar = ({ onToggleSidebar }) => {
     const [showNotifications, setShowNotifications] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const profileName = "Stone Stellar";
+    const navigate = useNavigate()
+
+
+    const location = useLocation();
+    const filtersApplied = location.state?.filtersApplied;
+
+  console.log("Applied Filters:", filtersApplied);
+
+  useEffect(() => {
+    if (filtersApplied) {
+      console.log("Applied Filters:", filtersApplied);
+      // You can use this data to filter your service listings
+    }
+  }, [filtersApplied]);
+
+
+
+
+
+
+
+
+
 
     // Simulating fetching notification data from an API
     useEffect(() => {
@@ -27,6 +51,42 @@ const NavBar = ({ onToggleSidebar }) => {
     const toggleNotifications = () => {
         setShowNotifications(!showNotifications); // Toggle notification dropdown
     };
+
+
+    // dummy data for filter
+    const filterOptions = [
+        {
+          type: 'checkbox',
+          label: 'SubCategories',
+          options: ['Food Delivery', 'Plumbing', 'Electrician', 'Carpenter'],
+        },
+        {
+          type: 'radio',
+          label: 'Price',
+          options: ['Paid', 'Free'],
+        },
+        {
+          type: 'checkbox',
+          label: 'Rating',
+          options: ['4.5 & Up', '4.0 & Up', '3.5 & Up'],
+        },
+        {
+          type: 'radio',
+          label: 'Duration',
+          options: ['0-2 Hours', '3-6 Hours', '7-16 Hours', '17+ Hours'],
+        },
+        {
+          type: 'dropdown',
+          label: 'Location',
+          options: ['New York', 'Los Angeles', 'San Francisco', 'Chicago'],
+        },
+      ];
+      
+
+
+    const handleOpenFilterPage = () => {
+        navigate('/filter', { state: { filterOptions } });
+      };
 
     return (
         <nav className="fixed top-0 left-0 z-50 w-full h-20 bg-dark-gray">
@@ -50,7 +110,7 @@ const NavBar = ({ onToggleSidebar }) => {
                         <span className="ml-3 text-xl font-semibold text-white">SERVICE CONNECT</span>
                     </div>
 
-
+                        <FilterIcon onClick={handleOpenFilterPage}/>
                     {/* User Authentication */}
                     <div className="flex items-center pr-2">
                         {isAuthenticated ? (

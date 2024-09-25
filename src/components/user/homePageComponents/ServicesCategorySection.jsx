@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
-import ServiceCard from "../../reUsableComponents/ServiceCategoryCard.jsx";
+import ServiceCard from "../../reUsableComponents/userHomeReUsableComponents/ServiceCategoryCard.jsx";
 
 // Sample data for service categories
 const serviceCategories = [

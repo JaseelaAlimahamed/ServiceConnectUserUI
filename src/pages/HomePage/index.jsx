@@ -1,12 +1,12 @@
 import ServicesSection from '../../components/user/homePageComponents/ServicesSection';
 import AdsComponent from '../../components/user/homePageComponents/AdsComponent';
-import NavBar from '../../components/NavBar';
-import SearchBar from '../../components/SearchBar';
+import NavBar from '../../components/user/NavBar';
+import SearchBar from '../../components/user/SearchBar';
 import ServiceCategorySection from '../../components/user/homePageComponents/ServicesCategorySection';
-import SideBar from '../../components/SideBar';
+import SideBar from '../../components/user/SideBar';
 import { useState } from 'react';
 import TopServiceProviders from '../../components/user/homePageComponents/TopServiceProviders';
-import BannerSlider from '../../components/user/homePageComponents/BannerSlider';
+import BannerSlider from '../../components/reUsableComponents/userHomeReUsableComponents/BannerSlider';
 import BottomNavBar from '../../components/reUsableComponents/BottomNavBar';
 
 const Home = () => {

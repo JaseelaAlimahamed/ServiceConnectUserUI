@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceCard from '../../reUsableComponents/ServiceCardComponent';
+import ServiceCard from '../../reUsableComponents/userHomeReUsableComponents/ServiceCardComponent';
 
 // Example data for services
 const servicesData = [
