@@ -7,6 +7,9 @@ import AddProfilePage from "../pages/signUpSignInPages/AddProfilePage";
 import OtpVerificationPage from "../pages/signUpSignInPages/OtpVerificationPage";
 import UserSignInPage from "../pages/signUpSignInPages/UserSignInPage";
 import UserSignUpPage from "../pages/signUpSignInPages/UserSignUpPage";
+import CreateNewPasswordPage from "../pages/forgotPasswordPages/CreateNewPasswordPage";
+import ForgotPasswordPage from "../pages/forgotPasswordPages/ForgotPasswordPage";
+import VerifyForgotPassword from "../pages/forgotPasswordPages/VerifyForgotPassword";
 
 function UserRoutes() {
   return (
@@ -24,10 +27,14 @@ function UserRoutes() {
 
         <Route path="/allcategories" element={<AllCategoryComponent />} />
 
-        <Route
-          path="/allcategories/:categoryId"
-          element={<SubCategoryComponent />}
-        />
+        <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
+
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
+
       </Routes>
     </div>
   );
