@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import SideBar from '../user/homePageComponents/nav-layout/SideBar';
 import AdsComponent from '../user/homePageComponents/nav-layout/AdsComponent';
-import { useState, useEffect } from 'react';
 import ResponsiveNavbar from '../user/homePageComponents/nav-layout/ResponsiveNavbar';
 
-const Layout = ({ children }) => {
+const Layout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -41,10 +42,11 @@ const Layout = ({ children }) => {
 
             {/* Main Content */}
             <div className={`flex-grow overflow-y-auto no-scrollbar transition-all duration-300 ${isSidebarOpen ? 'sm:ml-60' : 'ml-0'} lg:ml-60 lg:mr-[280px]`}>
-                {/* Conditionally hide NavBar on sm and md screens when on /profile */}
+                {/* Conditionally hide NavBar on sm and md screens */}
                 <ResponsiveNavbar onToggleSidebar={toggleSidebar} />
                 <div>
-                    {children} {/* Dynamic content goes here */}
+                    {/* Use Outlet here for dynamic route content */}
+                    <Outlet />
                 </div>
             </div>
 

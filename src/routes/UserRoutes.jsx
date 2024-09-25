@@ -20,27 +20,25 @@ function UserRoutes() {
     <div>
       <Routes>
 
-        <Route path="/" element={<Navigate to="/signin" />} />
+          <Route path="/" element={<Navigate to="/signin" />} />
 
-        <Route path="/addprofile" element={<AddProfilePage />} />
+          <Route path="/addprofile" element={<AddProfilePage />} />
 
-        <Route path="/signin" element={<UserSignInPage />} />
+          <Route path="/signin" element={<UserSignInPage />} />
 
-        <Route path="/signup" element={<UserSignUpPage />} />
+          <Route path="/signup" element={<UserSignUpPage />} />
 
-        <Route path="/otp" element={<OtpVerificationPage />} />
+          <Route path="/otp" element={<OtpVerificationPage />} />
 
-        <Route path='/home' element={<Layout><Home /></Layout>} />
+          <Route path='/home' element={<Home />} />
 
-        <Route path='/providerprofile' element={<Layout><ProviderProfile /></Layout>} />
+          <Route path='/providerprofile' element={<ProviderProfile />} />
 
-        <Route path='/allcategory' element={<Layout><ProviderProfile /></Layout>} />
+          <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+          <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
 
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
-
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
+          <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
 
       </Routes>
     </div>
