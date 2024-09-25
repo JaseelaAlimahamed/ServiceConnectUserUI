@@ -2,13 +2,12 @@ import { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import useHorizontalScroll from "./hooks/useHorizontalScroll.js";
 import ServiceCard from "../../reUsableComponents/homeReusuableComponents/ServiceCategoryCard.jsx";
-import serviceCategories from "./mockData/ServiceCategoriesData.jsx";
 
 /**
  * ServiceCategorySection component that displays a horizontally scrollable list of service categories.
  * Includes navigation arrows for scrolling left and right.
  */
-const ServiceCategorySection = () => {
+const ServiceCategorySection = ({ serviceCategories }) => {
     const scrollRef = useRef(null); // Ref for the scrollable container
     const { canScrollLeft, canScrollRight, scrollLeft, scrollRight } =
         useHorizontalScroll(scrollRef); // Custom hook to handle horizontal scrolling
