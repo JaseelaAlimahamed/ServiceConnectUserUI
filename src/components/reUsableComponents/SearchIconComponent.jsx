@@ -52,7 +52,7 @@ const SearchIconComponent = () => {
     e.preventDefault();
     if (!query) return;
 
-    const id = 12345; 
+    const id = 12345;
 
     try {
       const response = await axios.post("/api/search", { query, id });
@@ -61,7 +61,7 @@ const SearchIconComponent = () => {
       console.error("Error submitting search:", error);
     }
   };
- 
+
   // searchHistory functionality
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
@@ -89,6 +89,7 @@ const SearchIconComponent = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative inline-block">
+        {/* searchicon */}
         {!showInput && (
           <RiSearch2Line
             className="text-white cursor-pointer size-5"
@@ -101,6 +102,7 @@ const SearchIconComponent = () => {
             showInput ? "w-80" : "w-0"
           } overflow-hidden`}
         >
+          {/* inputfield */}
           {showInput && (
             <>
               <RiSearch2Line className="absolute size-5 left-3 text-white pointer-events-none" />
@@ -109,7 +111,7 @@ const SearchIconComponent = () => {
                 className="flex items-center w-full"
               >
                 <input
-                  ref={inputRef} // Attach the ref to the input field
+                  ref={inputRef}
                   type="text"
                   placeholder="Search for.."
                   value={query}
@@ -121,6 +123,7 @@ const SearchIconComponent = () => {
           )}
         </div>
 
+        {/* search suggestions */}
         {showInput && (
           <div className="absolute z-10 w-80">
             {suggestions.length > 0 && (
@@ -137,6 +140,7 @@ const SearchIconComponent = () => {
               </ul>
             )}
 
+            {/* searchHistory */}
             {searchHistory.length > 0 && (
               <ul className="bg-gray-100 text-black rounded-md shadow-md max-h-screen mt-2">
                 <h3 className="p-2 font-bold">Recent Searches</h3>
