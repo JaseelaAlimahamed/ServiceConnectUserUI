@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import CategoryCardComponent from "../../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
+import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
 
 const categories = [
   {

@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { Route, Routes, Navigate } from 'react-router-dom'
-import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
-import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
-import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
-import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
-import AllCategoryComponent from '../components/user/sigInSignUpComponents/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent'
-import SubCategoryComponent from '../components/user/sigInSignUpComponents/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent'
-
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
+import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
+import AddProfilePage from "../pages/signUpSignInPages/AddProfilePage";
+import OtpVerificationPage from "../pages/signUpSignInPages/OtpVerificationPage";
+import UserSignInPage from "../pages/signUpSignInPages/UserSignInPage";
+import UserSignUpPage from "../pages/signUpSignInPages/UserSignUpPage";
 
 function UserRoutes() {
   return (
@@ -25,11 +24,13 @@ function UserRoutes() {
 
         <Route path="/allcategories" element={<AllCategoryComponent />} />
 
-        <Route path='/allcategories/:categoryId' element={<SubCategoryComponent />} />
-
+        <Route
+          path="/allcategories/:categoryId"
+          element={<SubCategoryComponent />}
+        />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default UserRoutes
+export default UserRoutes;
