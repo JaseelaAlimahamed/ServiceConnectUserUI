@@ -1,5 +1,12 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+<<<<<<< Updated upstream
+=======
+import { useGoogleLogin } from '@react-oauth/google';
+import { onGoogleLoginSuccess, onGoogleLoginError } from '../../../services/userSignIn/googleAuth';
+
+
+>>>>>>> Stashed changes
 
 const GoogleLoginButton = () => {
 
