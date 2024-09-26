@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useState, useRef } from "react";
 import ButtonComponent from "../ButtonComponent"; // Adjust the import path as needed
 import ResendOtpComponent from "./ResendOtpComponent";
 
-const OTPComponent = ({ handleOnSubmit }) => {
+const OTPComponent = () => {
     const [otp, setOtp] = useState(["", "", "", ""]);
     const inputRefs = useRef([]);
 
@@ -59,12 +57,6 @@ const OTPComponent = ({ handleOnSubmit }) => {
         }
     };
 
-    const onSubmit = (val) => {
-        console.log("otp Submitted with value:", val);
-        handleOnSubmit(val);
-      };
-      console.log("onSubmit", onSubmit)
-
     return (
         <div className="min-h-screen bg-light-gray flex items-center justify-center">
             <form
@@ -96,7 +88,6 @@ const OTPComponent = ({ handleOnSubmit }) => {
                         type="submit"
                         btnWidth="75%"
                         btnHeight="50px"
-                        onSubmit={onSubmit}
                     />
                 </div>
              

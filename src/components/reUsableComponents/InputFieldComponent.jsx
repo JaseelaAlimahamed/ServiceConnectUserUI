@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import icons for visibility toggle
 

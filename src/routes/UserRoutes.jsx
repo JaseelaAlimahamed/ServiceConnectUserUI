@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
-import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
-import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
-import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
 
 function UserRoutes() {
@@ -23,14 +19,6 @@ function UserRoutes() {
         <Route path="/signup" element={<UserSignUpPage />} />
 
         <Route path="/otp" element={<OtpVerificationPage />} />
-
-        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
-
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
-
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
-
-       
 
       </Routes>
     </div>
