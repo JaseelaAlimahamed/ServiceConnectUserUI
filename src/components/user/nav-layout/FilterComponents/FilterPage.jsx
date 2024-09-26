@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FilterList from "../FilterComponents/FilterList";
+import FilterList from "./FilterList";
 import { BiArrowBack } from "react-icons/bi";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -18,7 +18,51 @@ const FilterPage = () => {
   };
 const handleClearFilters =()=>{
   setSelectedFilters({});
+
 }
+
+
+    // dummy data for filter
+    // const filterOptions = [
+    //   {
+    //     type: 'checkbox',
+    //     label: 'SubCategories',
+    //     options: ['Food Delivery', 'Plumbing', 'Electrician', 'Carpenter'],
+    //   },
+    //   {
+    //     type: 'radio',
+    //     label: 'Price',
+    //     options: ['Paid', 'Free'],
+    //   },
+    //   {
+    //     type: 'checkbox',
+    //     label: 'Rating',
+    //     options: ['4.5 & Up', '4.0 & Up', '3.5 & Up'],
+    //   },
+    //   {
+    //     type: 'radio',
+    //     label: 'Duration',
+    //     options: ['0-2 Hours', '3-6 Hours', '7-16 Hours', '17+ Hours'],
+    //   },
+    //   {
+    //     type: 'dropdown',
+    //     label: 'Location',
+    //     options: ['New York', 'Los Angeles', 'San Francisco', 'Chicago'],
+    //   },
+    // ];
+    
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-light-gray">
       <div className="w-full max-w-lg bg-primary shadow-md rounded-lg p-4">

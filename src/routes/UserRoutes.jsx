@@ -10,7 +10,7 @@ import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 
 import Home from '../pages/HomePage'
-import FilterPage from '../components/user/FilterComponents/FilterPage'
+import FilterPage from '../components/user/nav-layout/FilterComponents/FilterPage'
 
 
 

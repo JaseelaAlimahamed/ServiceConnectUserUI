@@ -1,13 +1,13 @@
 import ServicesSection from '../../components/user/homePageComponents/ServicesSection';
 import AdsComponent from '../../components/user/homePageComponents/AdsComponent';
-import NavBar from '../../components/user/NavBar';
-import SearchBar from '../../components/user/SearchBar';
+import SearchBar from '../../components/user/nav-layout/SearchBar';
 import ServiceCategorySection from '../../components/user/homePageComponents/ServicesCategorySection';
-import SideBar from '../../components/user/SideBar';
 import { useState } from 'react';
 import TopServiceProviders from '../../components/user/homePageComponents/TopServiceProviders';
 import BannerSlider from '../../components/reUsableComponents/userHomeReUsableComponents/BannerSlider';
 import BottomNavBar from '../../components/reUsableComponents/BottomNavBar';
+import Sidebar from '../../components/user/nav-layout/SideBar';
+import NavBar from '../../components/user/nav-layout/NavBar';
 
 const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,7 +24,7 @@ const Home = () => {
                 className={`fixed left-0 top-0 h-full z-40 transform transition-transform duration-300 text-white ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     } lg:translate-x-0 w-60 bg-gray-900 lg:block`}
             >
-                <SideBar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             </div>
 
             {/* Background Overlay (when sidebar is open on mobile) */}
