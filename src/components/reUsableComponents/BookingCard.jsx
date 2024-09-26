@@ -9,6 +9,8 @@ const BookingsCard = ({
   serviceTitle,
   customerName,
   status,
+  job,
+  complaint,
   amount,
   additional_requirements,
   date,
@@ -63,7 +65,7 @@ const BookingsCard = ({
       </div>
 
       {/* Display amount and additional requirements */}
-      {mappedStatus === 'accepted' && (
+      {mappedStatus === 'Scheduled' || job === 'Active' || (complaint === 'Pending' || complaint === 'Resolved') ? (
         <div className="flex items-center text-gray-400 ml-4">
           <span>Amount: {amount} /-</span>
           {additional_requirements && (
@@ -76,7 +78,8 @@ const BookingsCard = ({
             </div>
           )}
         </div>
-      )}
+      ) : null}
+
 
       {/* Button Component */}
       <div className="mt-2 ml-4 text-center">
@@ -88,7 +91,7 @@ const BookingsCard = ({
         >
           <span className="flex items-center mx-auto">
             {buttonText}
-            {!buttonDisabled && <BiChevronDown className="ml-1 w-6 h-6" aria-hidden="true" />}
+            {!buttonDisabled && job !== 'Active' && complaint !== 'Pending' ? (<BiChevronDown className="ml-1 w-6 h-6" aria-hidden="true" />) : null}
           </span>
           {!buttonDisabled && <img src="./buttonArrow.svg" className="w-6 h-6 absolute right-4" alt="arrow" />}
         </button>

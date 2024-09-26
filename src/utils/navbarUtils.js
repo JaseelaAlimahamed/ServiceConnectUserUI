@@ -9,6 +9,15 @@ const pageConfig = {
   '/bookings': {
     title: 'BOOKINGS',
   },
+  '/active-services': {
+    title: 'JOBS',
+  },
+  '/services': {
+    title: 'SERVICES',
+  },
+  '/complaints': {
+    title: 'COMPLAINTS',
+  },
 };
 
 export default pageConfig;

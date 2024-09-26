@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookingsCard from '../../reUsableComponents/BookingCard';
 import bookings from '../../../utils/bookings/bookingsData';
 import ConfirmationModal from '../../reUsableComponents/ConfirmationModal';
 import { getButtonDetails, mapStatus } from '../../../utils/bookings/bookingStatusUtils';
 import { useNavigate } from 'react-router-dom';
 
-const BookingsPageUser = () => {
+const ComplaintsPageUser = () => {
     // State to handle modal visibility and selected booking
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState(null);
-    const [bookingsData, setBookingsData] = useState(bookings);
+    const [complaints, setComplaints] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const complaint = bookings.filter((booking) => booking.complaint === 'requested' || booking.complaint === 'resolved');
+        setComplaints(complaint);
+    }, []); 
 
     // Open modal handler
     const openModal = (booking) => {
@@ -27,16 +32,16 @@ const BookingsPageUser = () => {
     // Confirm deletion 
     const handleConfirmClose = () => {
         if (selectedBooking) {
-            const updatedBookings = bookingsData.filter(booking => booking.id !== selectedBooking.id);
-            setBookingsData(updatedBookings);
-            console.log(`Booking closed\nBooking_id: ${selectedBooking.id}`);
+            const updatedBookings = complaints.filter(booking => booking.id !== selectedBooking.id);
+            setComplaints(updatedBookings);
+            console.log(`Complaint closed\nBooking_id: ${selectedBooking.id}`);
             closeModal();
         }
     };
 
     const handleButtonClick = (booking) => {
         navigate(`/booking_details/${booking.id}`)
-        console.log(`Navigating to booking details page\nBooking_id: ${booking.id}\nProvider_id: ${booking.provider_id}\n details: ${booking.status}`);
+        console.log(`Navigating to booking details page\nBooking_id: ${booking.id}\nProvider_id: ${booking.provider_id}`);
     };
 
     const handleViewClick = (providerId) => {
@@ -47,15 +52,14 @@ const BookingsPageUser = () => {
     return (
         <div className='min-h-screen bg-light-gray flex items-center flex-col p-4'>
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full max-w-screen-xl">
-                {bookingsData.length === 0 ? (
+                {complaints.length === 0 ? (
                     <div className="col-span-full text-center p-4">
                         <p className="text-lg font-semibold">No bookings available.</p>
                         <p>Please check back later or create a new booking.</p>
                     </div>
                 ) : (
-                    bookingsData.map((booking, index) => {
-                        // Get the status and button details for each booking
-                        const mappedStatus = mapStatus(booking.status);
+                    complaints.map((booking, index) => {
+                        const mappedStatus = mapStatus(booking.complaint);
                         const { text: buttonText, disabled: buttonDisabled } = getButtonDetails(mappedStatus);
 
                         return (
@@ -64,6 +68,7 @@ const BookingsPageUser = () => {
                                 serviceTitle={booking.title}
                                 customerName={booking.providerName}
                                 status={mappedStatus}
+                                complaint={mappedStatus}
                                 additional_requirements={booking.additional_requirements}
                                 amount={booking.amount}
                                 date={booking.availabilityFrom}
@@ -91,4 +96,4 @@ const BookingsPageUser = () => {
     );
 };
 
-export default BookingsPageUser;
+export default ComplaintsPageUser;

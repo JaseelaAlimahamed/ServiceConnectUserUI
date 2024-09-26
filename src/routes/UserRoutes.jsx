@@ -6,6 +6,9 @@ import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
 import UserLayout from '../layouts/UserLayout'
 import BookingsPage from '../pages/userHomePages/BookingsPage'
+import ActiveServicesPage from '../pages/userHomePages/ActiveServicesPage'
+import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
+import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
 
 function UserRoutes() {
   return (
@@ -23,6 +26,9 @@ function UserRoutes() {
 
         <Route element={<UserLayout />}>
           <Route path="/bookings" element={<BookingsPage />} />
+          <Route path="/active-services" element={<ActiveServicesPage />} />
+          <Route path="/services" element={<CompletedServicesPage />} />
+          <Route path="/complaints" element={<ComplaintsPage />} />
         </Route>
 
       </Routes>
