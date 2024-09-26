@@ -4,6 +4,7 @@ import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+import ReviewSection from '../components/user/reviewsPageComponents/ReviewSection'
 
 
 function UserRoutes() {
@@ -19,6 +20,8 @@ function UserRoutes() {
         <Route path="/signup" element={<UserSignUpPage />} />
 
         <Route path="/otp" element={<OtpVerificationPage />} />
+
+        <Route path="/reviews" element={<ReviewSection />} />
 
       </Routes>
     </div>
