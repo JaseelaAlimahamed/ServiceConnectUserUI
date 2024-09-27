@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 const ButtonComponent = ({ label, type, disabled, btnWidth, btnHeight, onClick, bgColor = 'bg-dark-gray', textColor = 'text-primary', hoverColor = 'hover:bg-secondary', showImage = true }) => {
