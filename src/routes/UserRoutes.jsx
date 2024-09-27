@@ -1,15 +1,23 @@
-/* eslint-disable no-unused-vars */
+
+
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+
 import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
 import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
-import AddProfilePage from "../pages/signUpSignInPages/AddProfilePage";
-import OtpVerificationPage from "../pages/signUpSignInPages/OtpVerificationPage";
-import UserSignInPage from "../pages/signUpSignInPages/UserSignInPage";
-import UserSignUpPage from "../pages/signUpSignInPages/UserSignUpPage";
-import CreateNewPasswordPage from "../pages/forgotPasswordPages/CreateNewPasswordPage";
-import ForgotPasswordPage from "../pages/forgotPasswordPages/ForgotPasswordPage";
-import VerifyForgotPassword from "../pages/forgotPasswordPages/VerifyForgotPassword";
+
+import React from 'react'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
+import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
+import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
+import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
+import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
+import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import Home from '../pages/HomePage/Home'
+import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+
+
 
 function UserRoutes() {
   return (
@@ -35,9 +43,16 @@ function UserRoutes() {
 
         <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
 
+        <Route path='/home' element={<Home />} />
+
+        <Route path='/providerprofile' element={<ProviderProfile />} />
+
+
       </Routes>
+
     </div>
   );
 }
 
 export default UserRoutes;
+
