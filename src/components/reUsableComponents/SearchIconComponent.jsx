@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { RiSearch2Line, RiCloseLine } from "react-icons/ri";
-import axios from "axios";
+import { fetchSuggestions, submitSearch } from "../../services/searchIcon/apiFunction"; 
 
 const SearchIconComponent = () => {
   const [showInput, setShowInput] = useState(false);
@@ -28,41 +28,22 @@ const SearchIconComponent = () => {
   // Fetch suggestions
   useEffect(() => {
     if (query.length > 0) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`/api/suggestions?query=${query}`);
-          if (Array.isArray(response.data)) {
-            setSuggestions(response.data);
-          } else {
-            setSuggestions([]);
-          }
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setSuggestions([]);
-        }
-      };
-      fetchData();
+      fetchSuggestions(query).then((data) => setSuggestions(data));
     } else {
       setSuggestions([]);
     }
   }, [query]);
 
-  // Handle search submission and send query and id to backend
+  // Handle search submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!query) return;
 
     const id = 12345;
-
-    try {
-      const response = await axios.post("/api/search", { query, id });
-      console.log("Response from server:", response.data);
-    } catch (error) {
-      console.error("Error submitting search:", error);
-    }
+    const response = await submitSearch(query, id);
+    console.log("Response from server:", response);
   };
-
-  // searchHistory functionality
+  //  search history
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
       const updatedHistory = searchHistory.filter(
@@ -73,8 +54,7 @@ const SearchIconComponent = () => {
     }
     setSuggestions([]);
   };
-
-  // Removehistory functionality
+  //  remove history
   const removeHistoryItem = (itemToRemove) => {
     const updatedHistory = searchHistory.filter(
       (item) => item !== itemToRemove
@@ -85,27 +65,27 @@ const SearchIconComponent = () => {
 
   return (
     <div
-      className="flex justify-center bg-opacity-50"
+      className="flex justify-center bg-opacity-50 p-2"
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative inline-block">
+      <div className="relative inline-block w-full sm:w-auto">
         {/* searchicon */}
         {!showInput && (
           <RiSearch2Line
-            className="text-white cursor-pointer size-5"
+            size={24}
+            className="text-black cursor-pointer"
             onClick={handleSearchClick}
           />
         )}
 
         <div
-          className={`flex items-center gap-2 transition-all duration-500 ease-in-out ${
-            showInput ? "w-80" : "w-0"
-          } overflow-hidden`}
+          className={`flex items-center gap-2 transition duration-500 ease-in-out ${
+            showInput ? "w-full" : "w-0"
+          }`}
         >
           {/* inputfield */}
           {showInput && (
             <>
-              <RiSearch2Line className="absolute size-5 left-3 text-white pointer-events-none" />
               <form
                 onSubmit={handleSubmit}
                 className="flex items-center w-full"
@@ -116,16 +96,15 @@ const SearchIconComponent = () => {
                   placeholder="Search for.."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-80 px-4 h-12 pl-10 pr-4 placeholder:text-primary mt-1 rounded-md border border-light-gray bg-medium-gray font-input text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="w-full sm:w-80 md:w-96 lg:max-w-lg px-4 h-12 pl-10 pr-4 placeholder:text-primary mt-1 rounded-md border border-light-gray bg-medium-gray text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary"
                 />
               </form>
             </>
           )}
         </div>
-
-        {/* search suggestions */}
+         {/* search Suggestions */}
         {showInput && (
-          <div className="absolute z-10 w-80">
+          <div className="absolute z-10 w-full sm:w-80">
             {suggestions.length > 0 && (
               <ul className="bg-white text-black shadow-md max-h-48 overflow-y-auto">
                 {suggestions.map((suggestion, index) => (
@@ -139,8 +118,7 @@ const SearchIconComponent = () => {
                 ))}
               </ul>
             )}
-
-            {/* searchHistory */}
+          {/* search history */}
             {searchHistory.length > 0 && (
               <ul className="bg-gray-100 text-black rounded-md shadow-md max-h-screen mt-2">
                 <h3 className="p-2 font-bold">Recent Searches</h3>
