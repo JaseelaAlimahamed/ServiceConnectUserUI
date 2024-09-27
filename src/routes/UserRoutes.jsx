@@ -1,4 +1,10 @@
-/* eslint-disable no-unused-vars */
+
+
+import React from "react";
+
+import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
+import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
+
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
@@ -8,6 +14,9 @@ import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
 import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
 import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import Home from '../pages/HomePage/Home'
+import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+
 
 
 function UserRoutes() {
@@ -24,17 +33,26 @@ function UserRoutes() {
 
         <Route path="/otp" element={<OtpVerificationPage />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+        <Route path="/allcategories" element={<AllCategoryComponent />} />
 
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+        <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
 
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
-       
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
+
+        <Route path='/home' element={<Home />} />
+
+        <Route path='/providerprofile' element={<ProviderProfile />} />
+
 
       </Routes>
+
     </div>
-  )
+  );
 }
 
-export default UserRoutes
+export default UserRoutes;
+
