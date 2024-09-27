@@ -1,15 +1,39 @@
 import React, { useState } from "react";
-import { getCurrentLocation } from '../../../services/geolocationService'; // Adjust the path as per your project structure
+import ManualLocationInput from "./ManualLocationInput"; // Import the ManualLocationInput component
+import {
+  fetchGeoLocationByPlace,
+  getCurrentLocation,
+  fetchCityStateCountry,
+} from "../../../../services/location/geolocationService"; // Import functions from geolocationService
 
 const LocationModal = () => {
   const [isModalOpen, setModalOpen] = useState(true); // Modal open state
   const [locationData, setLocationData] = useState(null); // Store location data
+  const [manualLocation, setManualLocation] = useState(''); // Store manual input location
   const [error, setError] = useState(null); // Store error message
 
+  // Handle the Allow button click
   const handleAllowLocation = async () => {
     try {
-      const location = await getCurrentLocation(); // Retrieve current location
-      setLocationData(location); // Store retrieved location data
+      let location = null;
+
+      // If the input field is not empty, fetch geolocation based on the place entered
+      if (manualLocation) {
+        location = await fetchGeoLocationByPlace(manualLocation);
+      } else {
+        // If the input field is empty, fetch the user's current location
+        const currentLocation = await getCurrentLocation();
+        const cityStateCountry = await fetchCityStateCountry(currentLocation.latitude, currentLocation.longitude);
+
+        // Combine the latitude, longitude, and city/state/country info
+        location = {
+          latitude: currentLocation.latitude,
+          longitude: currentLocation.longitude,
+          ...cityStateCountry,
+        };
+      }
+
+      setLocationData(location);
       console.log("Location Data:", location);
       closeModal(); // Close modal after retrieving location
     } catch (error) {
@@ -26,25 +50,25 @@ const LocationModal = () => {
     <>
       {isModalOpen && (
         <div className="fixed inset-0 px-7 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-3xl shadow-xl p-6 w-96 relative h-60">
-
-            {/* Close button */}
-            {/* <button
-              onClick={closeModal}
-              className="relative top-4 right-4 text-gray-400 hover:text-gray-600"
-            >
-              &#x2715;
-            </button> */}
-
+          <div className="bg-white rounded-3xl shadow-xl p-6 w-96 relative h-80">
             {/* Modal Content */}
             <div className="text-center">
-              <h2 className="text-2xl font-bold mb-4">Allow Location</h2>
+              {/* Heading */}
+              <h2 className="text-2xl font-bold mb-6">Allow Location</h2>
+
+              {/* Allow Button */}
               <button
                 onClick={handleAllowLocation}
                 className="bg-black text-white font-bold py-2 px-6 rounded-full mb-6 shadow-md hover:bg-gray-800 transition"
               >
                 Allow
               </button>
+
+              {/* Render the ManualLocationInput component */}
+              <ManualLocationInput
+                manualLocation={manualLocation}
+                setManualLocation={setManualLocation}
+              />
 
               {/* Show location or error message */}
               {locationData && (
