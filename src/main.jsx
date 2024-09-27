@@ -6,7 +6,7 @@ import App from './App';
 import './index.css';
 const clientId=import.meta.env.VITE_GOOGLE_CLIENT_ID
 const root = ReactDOM.createRoot(document.getElementById('root'));
-Modal.setAppElement('#root'); // This should be set here
+// Modal.setAppElement('#root'); // This should be set here
 
 root.render(
   <React.StrictMode>  
