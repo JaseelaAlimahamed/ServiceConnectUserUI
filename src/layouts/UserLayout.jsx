@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from '../components/user/Navbar';
+import Navbar from '../components/user/layoutComponents/Navbar';
 
 const UserLayout = () => {
     const location = useLocation();

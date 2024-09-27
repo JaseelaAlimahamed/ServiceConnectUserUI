@@ -4,7 +4,7 @@ import { FaSignOutAlt, FaSignInAlt, FaBars, FaTimes, FaCrown } from 'react-icons
 import { AiOutlineLeft } from 'react-icons/ai';
 import Sidebar from './Sidebar';
 import NotificationButton from './NotificationButton';
-import pageConfig from '../../utils/navbarUtils';
+import pageConfig from '../../../utils/navbarUtils';
 
 const Navbar = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
