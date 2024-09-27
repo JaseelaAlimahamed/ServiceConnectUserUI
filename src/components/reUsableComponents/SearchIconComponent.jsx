@@ -85,27 +85,28 @@ const SearchIconComponent = () => {
 
   return (
     <div
-      className="flex justify-center bg-opacity-50"
+      className="flex justify-center bg-opacity-50 p-2"
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative inline-block">
+      <div className="relative inline-block w-full sm:w-auto">
         {/* searchicon */}
         {!showInput && (
           <RiSearch2Line
-            className="text-white cursor-pointer size-5"
+            color="black"
+            size={24}
+            className="text-black cursor-pointer"
             onClick={handleSearchClick}
           />
         )}
 
         <div
           className={`flex items-center gap-2 transition-all duration-500 ease-in-out ${
-            showInput ? "w-80" : "w-0"
-          } overflow-hidden`}
+            showInput ? "w-full " : "w-0"
+          }`}
         >
           {/* inputfield */}
           {showInput && (
             <>
-              <RiSearch2Line className="absolute size-5 left-3 text-white pointer-events-none" />
               <form
                 onSubmit={handleSubmit}
                 className="flex items-center w-full"
@@ -116,7 +117,7 @@ const SearchIconComponent = () => {
                   placeholder="Search for.."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-80 px-4 h-12 pl-10 pr-4 placeholder:text-primary mt-1 rounded-md border border-light-gray bg-medium-gray font-input text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="w-full sm:w-80 md:w-full lg:max-w-lg px-4 h-12 pl-10 pr-4 placeholder:text-primary mt-1 rounded-md border border-light-gray bg-medium-gray text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary"
                 />
               </form>
             </>
@@ -125,7 +126,7 @@ const SearchIconComponent = () => {
 
         {/* search suggestions */}
         {showInput && (
-          <div className="absolute z-10 w-80">
+          <div className="absolute z-10 w-full sm:w-80">
             {suggestions.length > 0 && (
               <ul className="bg-white text-black shadow-md max-h-48 overflow-y-auto">
                 {suggestions.map((suggestion, index) => (
