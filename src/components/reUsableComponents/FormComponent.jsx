@@ -32,7 +32,9 @@ const FormComponent = ({
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       await apiEndpoint(values); // Call API endpoint with form values
-      
+
+      onSubmit(values);
+
       resetForm(); // Reset the form upon successful submission
     } catch (error) {
       console.error("Error submitting the form:", error);

@@ -1,4 +1,11 @@
-/* eslint-disable no-unused-vars */
+
+
+
+import React from "react";
+
+import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
+import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
+
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
@@ -10,11 +17,27 @@ import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
 import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
 import RequestServicePage from '../pages/requestServicePages/RequestServicePage'
 
+import UserLayout from '../layouts/UserLayout'
+import BookingsPage from '../pages/userHomePages/BookingsPage'
+import ActiveServicesPage from '../pages/userHomePages/ActiveServicesPage'
+import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
+import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
+
+import ReviewSection from '../components/user/reviewsPageComponents/ReviewSection'
+import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
+import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
+import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import Home from '../pages/HomePage/Home'
+import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+
+
+
 
 function UserRoutes() {
   return (
     <div>
       <Routes>
+      <Route element={<UserLayout />}>
         <Route path="/" element={<Navigate to="/signin" />} />
 
         <Route path="/addprofile" element={<AddProfilePage />} />
@@ -31,13 +54,32 @@ function UserRoutes() {
 
         <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
 
-        <Route path="/requestservice" element={<RequestServicePage/>} />
+      
 
-       
+      
+          <Route path="/bookings" element={<BookingsPage />} />
+          <Route path="/active-services" element={<ActiveServicesPage />} />
+          <Route path="/services" element={<CompletedServicesPage />} />
+          <Route path="/complaints" element={<ComplaintsPage />} />
+          <Route path="/requestservice" element={<RequestServicePage/>} />
 
-      </Routes>
+=
+        <Route path="/reviews" element={<ReviewSection />} />
+
+        <Route path="/allcategories" element={<AllCategoryComponent />} />
+
+        <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
+
+
+        <Route path='/home' element={<Home />} />
+
+        <Route path='/providerprofile' element={<ProviderProfile />} />
+
+</Routes>
+
     </div>
-  )
+  );
 }
 
-export default UserRoutes
+export default UserRoutes;
+
