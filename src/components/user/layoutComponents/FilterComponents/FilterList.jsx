@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-const FilterList = ({ filterOptions, setSelectedFilters, selectedFilters }) => {
+const FilterList = ({ currentFilterOptions, setSelectedFilters, selectedFilters }) => {
   const handleFilterChange = useCallback(
     (label, value, isCheckBox, isChecked) => {
       setSelectedFilters((prev) => {
@@ -26,7 +26,7 @@ const FilterList = ({ filterOptions, setSelectedFilters, selectedFilters }) => {
 
   return (
     <div className="p-4 ">
-      {filterOptions.map((filter, idx) => (
+      {currentFilterOptions.map((filter, idx) => (
         <div key={idx} className="mb-6">
           <label className="block font-semibold text-lg mb-2 text-medium-gray">
             {filter.label}

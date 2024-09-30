@@ -6,7 +6,6 @@ import { VscSettings } from "react-icons/vsc";
 const FilterIcon = ({onClick}) => {
 
   return (
-    // need to set the route where you
     <div onClick={onClick} className='border p-1 text-2xl text-primary rounded-full'>  
 
            <VscSettings />
