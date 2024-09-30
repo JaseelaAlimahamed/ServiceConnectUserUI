@@ -1,5 +1,6 @@
 
 
+
 import React from "react";
 
 import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
@@ -11,6 +12,10 @@ import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
 import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
+import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
+import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import RequestServicePage from '../pages/requestServicePages/RequestServicePage'
 
 import UserLayout from '../layouts/UserLayout'
 import BookingsPage from '../pages/userHomePages/BookingsPage'
@@ -43,12 +48,21 @@ function UserRoutes() {
 
         <Route path="/otp" element={<OtpVerificationPage />} />
 
+        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+
+      
+
       
           <Route path="/bookings" element={<BookingsPage />} />
           <Route path="/active-services" element={<ActiveServicesPage />} />
           <Route path="/services" element={<CompletedServicesPage />} />
           <Route path="/complaints" element={<ComplaintsPage />} />
-        
+          <Route path="/requestservice" element={<RequestServicePage/>} />
+
 =
         <Route path="/reviews" element={<ReviewSection />} />
 
@@ -56,19 +70,12 @@ function UserRoutes() {
 
         <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
-
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
 
         <Route path='/home' element={<Home />} />
 
         <Route path='/providerprofile' element={<ProviderProfile />} />
 
-</Route>
-
-      </Routes>
+</Routes>
 
     </div>
   );
