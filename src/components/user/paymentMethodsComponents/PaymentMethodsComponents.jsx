@@ -17,12 +17,18 @@ const services = [
   }
 ]
 
-const PaymentMethodsComponents = ({ handleButtonClick }) => {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
+const PaymentMethodsComponents = ({ handleButtonClick, setSelectedPaymentMethod }) => {
+  const [selectedPaymentMethod, setLocalSelectedPaymentMethod] = useState(null)
 
   const handleSelectPaymentMethod = (method) => {
+    setLocalSelectedPaymentMethod(method);
     setSelectedPaymentMethod(method);
   };
+
+  const handleSubmit = () => {
+    handleButtonClick(); // Call the parent's button click handler
+  };
+
 
   return (
     <div className="bg-light-blue p-6">
@@ -46,14 +52,14 @@ const PaymentMethodsComponents = ({ handleButtonClick }) => {
 
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[360px] h-[60px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
-          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-dark-blue">
+          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-#202244">
             Paypal
           </p>
           <div onClick={() => handleSelectPaymentMethod("paypal")}>
             {
               selectedPaymentMethod === "paypal" ? (
                 <FaRegDotCircle
-                className="text-dark-gray cursor-pointer w-[26px] h-[26px] md:w-[32px] md:h-[32px] xl:w-[38px] xl:h-[38px]"
+                className="text-#202244 cursor-pointer w-[26px] h-[26px] md:w-[32px] md:h-[32px] xl:w-[38px] xl:h-[38px]"
                 />
               ) : (
                 <FaRegCircle
@@ -65,7 +71,7 @@ const PaymentMethodsComponents = ({ handleButtonClick }) => {
         </div>
 
         <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[360px] h-[60px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
-          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-dark-blue">
+          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-#202244">
             Google Pay
           </p>
           <div onClick={() => handleSelectPaymentMethod("googlepay")}>
@@ -73,7 +79,7 @@ const PaymentMethodsComponents = ({ handleButtonClick }) => {
             {
               selectedPaymentMethod === "googlepay" ? (
                 <FaRegDotCircle
-                className="text-dark-gray cursor-pointer w-[26px] h-[26px] md:w-[32px] md:h-[32px] xl:w-[38px] xl:h-[38px]"
+                className="text-#202244 cursor-pointer w-[26px] h-[26px] md:w-[32px] md:h-[32px] xl:w-[38px] xl:h-[38px]"
                 />
               ): (
                 <FaRegCircle
@@ -88,7 +94,7 @@ const PaymentMethodsComponents = ({ handleButtonClick }) => {
         <div className="">
                   {/* check for bottom space pt-40 */}
           <div className="flex items-center justify-end pt-40 p-4 w-[360px] h-[60px] sm:w-[460px] md:w-[560px] lg:w-[600px] xl:w-[760px]">
-            <IoIosAddCircle className="text-dark-gray cursor-pointer w-[62px] h-[62px] md:w-[68px] md:h-[68px] xl:w-[72px] xl:h-[72px]" />
+            <IoIosAddCircle className="text-#1D1F2A cursor-pointer w-[62px] h-[62px] md:w-[68px] md:h-[68px] xl:w-[72px] xl:h-[72px]" />
           </div>
 
           <div className="flex items-center justify-center p-5">
@@ -96,7 +102,7 @@ const PaymentMethodsComponents = ({ handleButtonClick }) => {
             btnWidth="100%"
             label="Enroll Course - $"
             rate="55"
-            onClick={handleButtonClick}
+            onClick={handleSubmit}
             />
           </div>
         </div>

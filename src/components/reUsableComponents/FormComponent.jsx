@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'; // Import Link for navigation
 import InputFieldComponent from './InputFieldComponent';
 import ButtonComponent from './ButtonComponent';
 
-const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, heading, profile, forgotPassword }) => {
+const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, heading, profile, forgotPassword, handleButtonClick }) => {
   const [formData, setFormData] = useState({});
 
   // Set initial form values based on fieldConfigs
@@ -22,6 +22,7 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
     try {
       await apiEndpoint(values); // Call API endpoint with form values
       resetForm(); // Reset the form upon successful submission
+      handleButtonClick();
     } catch (error) {
       console.error('Error submitting the form:', error);
     } finally {
@@ -54,6 +55,7 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
     }, {})
   );
   
+
   return (
     <div className="bg-light-gray p-6 max-w-xl w-full md:max-w-lg lg:max-w-lg lg:p-4 xl:max-w-md xl:p-4">
       {heading && (

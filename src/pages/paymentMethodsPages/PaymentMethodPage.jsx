@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import PaymentMethodsPageComponent from '../../components/user/paymentMethodsComponents/PaymentMethodsPageComponent'
+import PaymentMethodsWithModalComponent from '../../components/user/paymentMethodsComponents/PaymentMethodsWithModalComponent'
+
 
 const PaymentMethodPage = () => {
   return (
     <div>
-      <PaymentMethodsPageComponent />
+      <PaymentMethodsWithModalComponent />
     </div>
   )
 }

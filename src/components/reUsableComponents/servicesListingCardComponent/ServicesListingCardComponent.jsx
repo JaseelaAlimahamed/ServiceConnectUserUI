@@ -15,7 +15,7 @@ const ServicesListingCardComponent = ({ serviceImg, serviceTitle, serviceDescrip
             <h2 className='text-start text-#FF6B00 font-input font-bold text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px]'>{serviceTitle}</h2>
         </div>
         <div>
-            <h2 className='text-start text-dark-blue font-default font-semibold text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px]'>{serviceDescription}</h2>
+            <h2 className='text-start text-#202244 font-default font-semibold text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px]'>{serviceDescription}</h2>
         </div>
       </div>
     </div>
