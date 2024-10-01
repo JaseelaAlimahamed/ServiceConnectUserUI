@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchIconComponent from '../../reUsableComponents/SearchIconComponent'
-import FilterIcon from '../nav-layout/FilterComponents/FilterIcon'
+import FilterIcon from '../FilterComponents/FilterIcon'
 
 const InvisibleNavbar = () => {
   return (
