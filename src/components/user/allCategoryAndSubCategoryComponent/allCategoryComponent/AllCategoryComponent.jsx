@@ -259,7 +259,7 @@ const AllCategoryComponent = () => {
               categoryName={category.categoryName}
             />
           </div>
-        ))}
+        ))}{" "}
         :
         {showAllCategories && (
           <CategoryCardComponent onClick={() => setShowAllCategories(false)} />

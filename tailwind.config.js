@@ -16,6 +16,8 @@ module.exports = {
           primary: "#FFFFFF",
           secondary: "#000000",
           "dark-gray": "#1D1F2A",
+          "dark2-gray": "#ABAFB1",
+          "darker-gray": "#787880",
           "light-gray": "#D9D9DB",
           "medium-gray": "#736A68",
           "#202244": "#202244",
@@ -28,13 +30,13 @@ module.exports = {
           "#167F71": "#167F71"
         },
         // You can add custom breakpoints if needed, but the defaults are generally enough:
-        // screens: {
-        //   'sm': '640px',   // Small screens
-        //   'md': '768px',   // Medium screens
-        //   'lg': '1024px',  // Large screens
-        //   'xl': '1280px',  // Extra-large screens
-        //   '2xl': '1536px', // Extra-extra-large screens
-        // },
+        screens: {
+          'sm': '640px',   // Small screens
+          'md': '768px',   // Medium screens
+          'lg': '1024px',  // Large screens
+          'xl': '1280px',  // Extra-large screens
+          '2xl': '1536px', // Extra-extra-large screens
+        },
       },
     },
     plugins: [],

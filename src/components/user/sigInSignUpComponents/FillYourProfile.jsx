@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState } from "react";
 
 import FormComponent from "../../reUsableComponents/FormComponent";
 import CongratsModal from "../../reUsableComponents/modalComponents/CongratsModal";
 
 const getApiEndpoint = async (formData) => {
+  console.log("api endpoint called")
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     // edit
@@ -145,6 +147,13 @@ const FillYourProfile = () => {
 
   return (
     <div className="min-h-screen bg-dark-gray  flex items-center justify-center">
+const FillYourProfile = ({ handleSubmit }) => {
+  const onSubmit = (values) => {
+    console.log("Form Submitted with values:", values);
+    handleSubmit(values); // Pass JSON data instead of FormData
+  };
+  return (
+    <div className="min-h-screen bg-dark-gray flex items-center justify-center">
       <FormComponent
         fieldConfigs={fieldConfigs}
         buttonConfig={buttonConfig}
@@ -165,6 +174,10 @@ const FillYourProfile = () => {
           buttonConfig={buttonConfig}
         />
       )}
+        heading={headingtext}
+        profile
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };

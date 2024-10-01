@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 
 
@@ -18,10 +19,13 @@ import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
 
 
 
+
+
 function UserRoutes() {
   return (
     <div>
       <Routes>
+      <Route element={<UserLayout />}>
         <Route path="/" element={<Navigate to="/signin" />} />
 
         <Route path="/addprofile" element={<AddProfilePage />} />
@@ -36,20 +40,20 @@ function UserRoutes() {
 
         <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage />} />
-
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />} />
-
         <Route path="/paymentmethods" element={<PaymentMethodPage />} />
+          
+        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+
+        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
 
         <Route path='/home' element={<Home />} />
 
         <Route path='/providerprofile' element={<ProviderProfile />} />
 
-
       </Routes>
+</Routes>
 
     </div>
   );
