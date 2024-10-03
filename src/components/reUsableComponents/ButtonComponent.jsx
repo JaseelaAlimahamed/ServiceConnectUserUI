@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -17,7 +18,6 @@ const ButtonComponent = ({ label, type, disabled, btnWidth, btnHeight, onClick, 
         <img src="./buttonArrow.svg" className="ml-2 w-8 h-8" alt="arrow" />
       )}
     </button>
-
   );
 };
 

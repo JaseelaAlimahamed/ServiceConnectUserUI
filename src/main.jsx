@@ -4,23 +4,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Modal from 'react-modal';
-
+import Modal from "react-modal";
 import App from './App';
 import './index.css';
-const clientId=import.meta.env.VITE_GOOGLE_CLIENT_ID
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-Modal.setAppElement('#root'); // This should be set here
-
+Modal.setAppElement('#root');
 
 root.render(
-  <React.StrictMode>  
-    
-    <GoogleOAuthProvider clientId={clientId} >
+  <React.StrictMode> 
+    <GoogleOAuthProvider clientId={clientId}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </GoogleOAuthProvider>
-  </React.StrictMode>
+      </GoogleOAuthProvider>
 );

@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import ButtonComponent from "./ButtonComponent";
 import InputFieldComponent from "./InputFieldComponent";
 
+const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, heading, profile, forgotPassword, handleButtonClick }) => {
 const FormComponent = ({
   fieldConfigs,
   buttonConfig,
@@ -36,6 +37,7 @@ const FormComponent = ({
       onSubmit(values);
 
       resetForm(); // Reset the form upon successful submission
+      handleButtonClick();
     } catch (error) {
       console.error("Error submitting the form:", error);
     } finally {

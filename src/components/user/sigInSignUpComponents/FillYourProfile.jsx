@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+
 import FormComponent from "../../reUsableComponents/FormComponent";
+import CongratsModal from "../../reUsableComponents/modalComponents/CongratsModal";
 
 const getApiEndpoint = async (formData) => {
   console.log("api endpoint called")
@@ -40,6 +40,12 @@ const buttonConfig = {
 const inputConfig = {
   inputWidth: "100%", // Dynamic input width
   inputHeight: "48px", // Dynamic input height
+};
+
+const modalConfig = {
+  title: "Congratulations",
+  message: "Your Payment is successfully. Purchase a New Course",
+  img: "https://t3.ftcdn.net/jpg/00/98/85/78/360_F_98857800_xtq6QJtDQdDlvYR5VYh3U2FPij7kOgMC.jpg",
 };
 
 const fieldConfigs = [
@@ -122,6 +128,25 @@ const fieldConfigs = [
   },
 ];
 
+const FillYourProfile = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("Modal open state changed:", isModalOpen);
+  }, [isModalOpen]);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true); // Open the congrats modal on button click
+  };
+  const handleCloseModal = () => {
+    console.log("inside handleclose");
+    setIsModalOpen(false);
+    console.log("Modal state after closing:", isModalOpen);
+  };
+  console.log("Modal state:", isModalOpen);
+
+  return (
+    <div className="min-h-screen bg-dark-gray  flex items-center justify-center">
 const FillYourProfile = ({ handleSubmit }) => {
   const onSubmit = (values) => {
     console.log("Form Submitted with values:", values);
@@ -134,6 +159,21 @@ const FillYourProfile = ({ handleSubmit }) => {
         buttonConfig={buttonConfig}
         inputConfig={inputConfig}
         apiEndpoint={getApiEndpoint}
+        getApiEndpoints={getApiEndpoints}
+        heading={headingtext}
+        profile
+        handleButtonClick={handleButtonClick}
+      />
+      {isModalOpen && (
+        <CongratsModal
+          isOpen={isModalOpen}
+          onRequestClose={handleCloseModal}
+          title={modalConfig.title}
+          message={modalConfig.message}
+          img={modalConfig.img}
+          buttonConfig={buttonConfig}
+        />
+      )}
         heading={headingtext}
         profile
         onSubmit={onSubmit}
