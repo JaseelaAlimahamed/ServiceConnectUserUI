@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import ManualLocationInput from "./ManualLocationInput"; // Import the ManualLocationInput component
+import ManualLocationInput from "./ManualLocationInput"; 
 import {
   fetchGeoLocationByPlace,
   getCurrentLocation,
   fetchCityStateCountry,
-} from "../../../../services/location/geolocationService"; // Import functions from geolocationService
+} from "../../../../services/location/geolocationService"; 
 
 const LocationModal = () => {
-  const [isModalOpen, setModalOpen] = useState(true); // Modal open state
-  const [locationData, setLocationData] = useState(null); // Store location data
-  const [manualLocation, setManualLocation] = useState(''); // Store manual input location
-  const [error, setError] = useState(null); // Store error message
+  const [isModalOpen, setModalOpen] = useState(true); 
+  const [locationData, setLocationData] = useState(null); 
+  const [manualLocation, setManualLocation] = useState(''); 
+  const [error, setError] = useState(null); 
 
   // Handle the Allow button click
   const handleAllowLocation = async () => {

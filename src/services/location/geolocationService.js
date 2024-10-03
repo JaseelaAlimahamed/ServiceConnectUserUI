@@ -1,5 +1,4 @@
 // Function to fetch geolocation based on place name using Nominatim
-
 export const fetchGeoLocationByPlace = async (place) => {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(place)}&format=json&limit=1`;
     try {
@@ -22,6 +21,7 @@ export const fetchGeoLocationByPlace = async (place) => {
     }
   };
   
+
   // Function to get the current location using Geolocation API
   export const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
@@ -44,6 +44,7 @@ export const fetchGeoLocationByPlace = async (place) => {
     });
   };
   
+
   // Function to fetch City, State, and Country using reverse geocoding with latitude and longitude
   export const fetchCityStateCountry = async (latitude, longitude) => {
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
