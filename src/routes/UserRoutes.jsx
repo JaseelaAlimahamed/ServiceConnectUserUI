@@ -9,6 +9,7 @@ import BookingsPage from '../pages/userHomePages/BookingsPage'
 import ActiveServicesPage from '../pages/userHomePages/ActiveServicesPage'
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
 import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
+import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
 
 function UserRoutes() {
   return (
@@ -29,6 +30,7 @@ function UserRoutes() {
           <Route path="/active-services" element={<ActiveServicesPage />} />
           <Route path="/services" element={<CompletedServicesPage />} />
           <Route path="/complaints" element={<ComplaintsPage />} />
+          <Route path="/transactions" element={<TransactionsPage />} />
         </Route>
 
       </Routes>
