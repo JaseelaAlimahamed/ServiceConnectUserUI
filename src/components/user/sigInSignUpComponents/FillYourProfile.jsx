@@ -128,7 +128,7 @@ const fieldConfigs = [
   },
 ];
 
-const FillYourProfile = () => {
+const FillYourProfile = ({ handleSubmit }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -144,10 +144,6 @@ const FillYourProfile = () => {
     console.log("Modal state after closing:", isModalOpen);
   };
   console.log("Modal state:", isModalOpen);
-
-  return (
-    <div className="min-h-screen bg-dark-gray  flex items-center justify-center">
-const FillYourProfile = ({ handleSubmit }) => {
   const onSubmit = (values) => {
     console.log("Form Submitted with values:", values);
     handleSubmit(values); // Pass JSON data instead of FormData

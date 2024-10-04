@@ -12,10 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 Modal.setAppElement('#root');
 
 root.render(
-  <React.StrictMode> 
+  <React.StrictMode>
     <GoogleOAuthProvider clientId={clientId}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
       </GoogleOAuthProvider>
+      </React.StrictMode>
 );

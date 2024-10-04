@@ -17,6 +17,7 @@ import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
 import TermsAndConditionPage from "../pages/termsAndConditionPage/TermsAndConditionPage";
+import UserLayout from "../layouts/UserLayout";
 
 
 
@@ -53,12 +54,9 @@ function UserRoutes() {
 
         <Route path='/providerprofile' element={<ProviderProfile />} />
 
-<<<<<<< HEAD
         <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
-        
-=======
->>>>>>> e3bd70b9a5a4bdd71996ddb82ce73e1ed635f065
-      </Routes>
+
+      </Route>
 </Routes>
 
     </div>
