@@ -57,6 +57,7 @@ function UserRoutes() {
         <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
 
       </Route>
+
 </Routes>
 
     </div>

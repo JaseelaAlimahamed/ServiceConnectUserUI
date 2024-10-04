@@ -144,6 +144,7 @@ const FillYourProfile = ({ handleSubmit }) => {
     console.log("Modal state after closing:", isModalOpen);
   };
   console.log("Modal state:", isModalOpen);
+
   const onSubmit = (values) => {
     console.log("Form Submitted with values:", values);
     handleSubmit(values); // Pass JSON data instead of FormData
