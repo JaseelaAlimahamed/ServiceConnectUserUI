@@ -16,6 +16,7 @@ import VerifyForgotPassword from "../pages/forgotPasswordPages/VerifyForgotPassw
 import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
 
 
@@ -51,6 +52,8 @@ function UserRoutes() {
         <Route path='/home' element={<Home />} />
 
         <Route path='/providerprofile' element={<ProviderProfile />} />
+
+        <Route path='/notificationsettings' element={<NotificationSettingsPage/>} />
 
       </Routes>
 </Routes>
