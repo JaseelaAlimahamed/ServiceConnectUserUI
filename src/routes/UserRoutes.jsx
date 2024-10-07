@@ -1,7 +1,5 @@
-
-
-
 import React from "react";
+import Routes from "react-router-dom/Routes";
 
 import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
 import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
