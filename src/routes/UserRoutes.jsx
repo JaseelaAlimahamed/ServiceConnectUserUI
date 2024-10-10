@@ -22,7 +22,6 @@ import UserLayout from "../layouts/UserLayout";
 
 
 
-import UserLayout from "../layouts/UserLayout";
 import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
 import BookingsPage from "../pages/userHomePages/BookingsPage";
 import BookingDetails from "../pages/BookingDetailsPages/BookingDetails";
@@ -44,7 +43,7 @@ function UserRoutes() {
     <div>
       <Routes>
         <Route element={<UserLayout />}>
-          <Route path="/" element={<Navigate to="/signin" />} />
+          <Route path="/" element={<Navigate to="/sign-in" />} />
 
           <Route path="/add-profile" element={<AddProfilePage />} />
 
@@ -96,16 +95,14 @@ function UserRoutes() {
 
           <Route path="/userprofile" element={<UserProfile />} />
 
-          <Route path="/about" element={<AboutSection />} />
 
+          <Route path='/notificationsettings' element={<NotificationSettingsPage />} />
 
-        <Route path='/notificationsettings' element={<NotificationSettingsPage/>} />
+          <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
 
-        <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
+        </Route>
 
-      </Route>
-
-</Routes>
+      </Routes>
 
 
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PlusImage from '../../assets/image/Plus.png'; 
+import PlusImage from '../../../assets/Plus.png'; 
 
 const ImageUploader = ({ onImagesUploaded }) => {
   const [images, setImages] = useState([]);

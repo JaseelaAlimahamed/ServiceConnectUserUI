@@ -55,13 +55,17 @@ const Navbar = () => {
                                     {isSidebarOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
                                 </button>
                             )}
-                            <h1 className="ml-4 text-white font-semibold text-xl">{currentPage.title}</h1>
+                            <h1 className="ml-4 text-white font-semibold text-xl">
+                                {currentPage ? currentPage.title : 'Page Title'}
+                            </h1>
                         </div>
 
                         {/* Logo and Company Name for larger screens */}
                         <div className="hidden sm:flex flex-1 items-center justify-start">
                             <img className="h-8" src="/vite.svg" alt="Company Logo" />
-                            <span className="ml-3 text-white font-semibold text-xl">{currentPage.title}</span>
+                            <span className="ml-3 text-white font-semibold text-xl">
+                                {currentPage ? currentPage.title : 'Page Title'}
+                            </span>
                         </div>
 
                         {/* Profile and Authenticated Views */}
