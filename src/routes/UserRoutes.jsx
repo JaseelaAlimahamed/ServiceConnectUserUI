@@ -19,6 +19,7 @@ import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
 
 
+
 import UserLayout from "../layouts/UserLayout";
 import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
 import BookingsPage from "../pages/userHomePages/BookingsPage";
@@ -31,8 +32,9 @@ import ComplaintsPageUser from '../components/user/complaintsPageComponents/Comp
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
 import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
 import UserProfile from "../pages/userProfilePage/UserProfile";
-import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
 
+import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
+import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
 
 function UserRoutes() {
@@ -94,7 +96,12 @@ function UserRoutes() {
 
           <Route path="/about" element={<AboutSection />} />
 
+
+        <Route path='/notificationsettings' element={<NotificationSettingsPage/>} />
+
+
         </Route>
+
       </Routes>
 
     </div>
