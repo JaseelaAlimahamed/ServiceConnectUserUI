@@ -32,6 +32,7 @@ const FormComponent = ({
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
 
+
       const finalValues = {
         ...values, 
         profileImage: profileImage ? profileImage : '', 
@@ -40,6 +41,7 @@ const FormComponent = ({
       await apiEndpoint(finalValues);
 
       resetForm(); 
+
     } catch (error) {
       console.error('Error submitting the form:', error);
     } finally {
@@ -173,4 +175,4 @@ const FormComponent = ({
   );
 };
 
-export default FormComponent;
+export default FormComponent 

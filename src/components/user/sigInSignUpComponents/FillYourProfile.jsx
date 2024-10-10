@@ -7,6 +7,7 @@ import FormComponent from "../../reUsableComponents/FormComponent";
 import ModalComponent from "../../reUsableComponents/ModalComponent";
 import ReusableModal from "../../reUsableComponents/ReModal";
 
+
 const FillYourProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Loading state for the modal
@@ -35,6 +36,7 @@ const FillYourProfile = () => {
       console.error('Error handling form data:', error);
       return { success: false, error: error.message };
     }
+
   };
 
   const handleCloseModal = () => {
@@ -87,7 +89,7 @@ const FillYourProfile = () => {
         buttonConfig={buttonConfig}
         inputConfig={inputConfig}
         apiEndpoint={getApiEndpoint} // Call the API endpoint
-        heading={headingtext}
+       heading={headingtext}
         profile={true}
       />
 

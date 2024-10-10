@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useGoogleLogin } from '@react-oauth/google';
-import jwtDecode from 'jwt-decode';
+
 import { onGoogleLoginSuccess, onGoogleLoginError } from '../../../services/userSignIn/googleAuth';
 
 
