@@ -1,53 +1,69 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react'
-import OTPComponent from '../../components/reUsableComponents/signInSignUpReusableComponents/OtpComponent'
-import LocationModalOtp from '../../components/user/sigInSignUpComponents/LocationModalOtp'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import OTPComponent from "../../components/user/sigInSignUpComponents/OTPComponent";
+import ModalComponent from "../../components/reUsableComponents/ModalComponent"; 
+import AllowLocationComponent from "../../components/user/sigInSignUpComponents/locationComponents/AllowLocationComponent";
 
-function OtpVerificationPage() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  useEffect(() => {
-    // console.log("Modal open state changed:", isModalOpen);
-  }, [isModalOpen]);
+const OTPPage = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleOtpSubmit = async (otp) => {
-    try {
-      // Simulate an API call with form data
-      const response = await new Promise((resolve) => {
-        setTimeout(() => resolve({ success: true, data: otp }), 1000);
-      });
+    // Function to handle OTP submission
+    const handleOnSubmit = async (otpValue) => {
+        try {
+            console.log("Received OTP:", otpValue);
+            await verifyOTP(otpValue);
+            setIsModalOpen(true);
+        } catch (error) {
+            console.error("Error during OTP submission:", error);
+            alert("Failed to verify OTP. Please try again.");
+        }
+    };
 
-      console.log("Response:", response);
+    // Dummy async function to simulate OTP verification instead of api call
+    const verifyOTP = async (otpValue) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (otpValue === "1234") {
+                    resolve("OTP verified successfully");
+                } else {
+                    reject("Invalid OTP");
+                }
+            }, 1000);
+        });
+    };
 
-      if (response.success) {
-        setIsModalOpen(true);
-      } else {
-        console.error("Form submission failed");
-      }
-    } catch (error) {
-      console.error("Error submitting form", error);
-    }
-  };
-  
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        localStorage.setItem('token',"dfsgtrfgh");
+        navigate("/fill-your-profile");
+    };
 
-  const handleCloseModal = () => {
-    console.log("inside handleclose");
-    setIsModalOpen(false);
-    console.log("Modal state after closing:", isModalOpen);
-  };
-  console.log("Modal state:", isModalOpen);
-  
-  return (
-    <div>
-        <OTPComponent
-        handleOnSubmit={handleOtpSubmit}
-        />
-        {isModalOpen && <LocationModalOtp
-        isOpen={isModalOpen}
-        handleCloseModal={handleCloseModal}
-        />}
-    </div>
-  )
-}
+    return (
+        <div>
+         
 
-export default OtpVerificationPage
+
+            <div className="min-h-screen bg-light-gray flex items-center justify-center">
+
+                {/* OTPComponent handles the OTP submission */}
+                <OTPComponent handleOnSubmit={handleOnSubmit} />
+
+                {/* Modal that opens after OTP submission */}
+                {isModalOpen && (
+                    <ModalComponent
+                        isOpen={isModalOpen}
+                        onClose={handleCloseModal} // Update onClose to use the new function
+                        width="w-fit"
+                        height="h-fit"
+                    >
+                        {/* AllowLocationComponent is responsible for location access */}
+                        <AllowLocationComponent />
+                    </ModalComponent>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default OTPPage;

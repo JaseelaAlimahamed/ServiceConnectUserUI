@@ -29,13 +29,16 @@ module.exports = {
           "#1D1B20": "#1D1B20",
           "#167F71": "#167F71"
         },
-        // You can add custom breakpoints if needed, but the defaults are generally enough:
         screens: {
           'sm': '640px',   // Small screens
           'md': '768px',   // Medium screens
           'lg': '1024px',  // Large screens
           'xl': '1280px',  // Extra-large screens
           '2xl': '1536px', // Extra-extra-large screens
+        },
+         selection: {
+          backgroundColor: '#1D1F2A',  // Dark gray background on selection
+          color: '#1D1F2A',            // White text color on selection
         },
       },
     },
