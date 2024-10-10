@@ -55,7 +55,6 @@ const Navbar = () => {
                                     {isSidebarOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
                                 </button>
                             )}
-
                             <h1 className="ml-4 text-white font-semibold text-xl">
                                 {currentPage ? currentPage.title : 'Page Title'}
                             </h1>

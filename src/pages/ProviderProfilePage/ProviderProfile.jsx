@@ -54,7 +54,7 @@ const ProviderProfile = () => {
             />
             <div className="mx-4 mt-16 md:mx-10">
                 <ProfileCard {...profileData} />
-                <AboutSection description={aboutDescription } />
+                <AboutSection description={aboutDescription} />
                 <ServicesSection services={servicesData} />
                 <ReviewsSection reviews={reviewsData} />
                 <MediaGrid title="Images" mediaItems={imagesData} type="image" />
