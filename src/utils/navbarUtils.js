@@ -18,6 +18,9 @@ const pageConfig = {
   '/complaints': {
     title: 'COMPLAINTS',
   },
+  '/transactions': {
+    title: 'TRANSACTIONS',
+  },
 };
 
 export default pageConfig;
