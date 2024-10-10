@@ -14,6 +14,7 @@ const FormComponent = ({
   apiEndpoint,
   heading,
   profile,
+  handleButtonClick,
   onSubmit,
   forgotPassword,
 }) => {

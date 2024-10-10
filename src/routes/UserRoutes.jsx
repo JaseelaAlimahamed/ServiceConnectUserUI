@@ -17,6 +17,8 @@ import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryCo
 import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
+import TermsAndConditionPage from "../pages/termsAndConditionPage/TermsAndConditionPage";
+import UserLayout from "../layouts/UserLayout";
 
 
 
@@ -99,10 +101,12 @@ function UserRoutes() {
 
         <Route path='/notificationsettings' element={<NotificationSettingsPage/>} />
 
+        <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
 
-        </Route>
+      </Route>
 
-      </Routes>
+</Routes>
+
 
     </div>
   );

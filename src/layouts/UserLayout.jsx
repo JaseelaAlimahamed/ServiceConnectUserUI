@@ -16,7 +16,6 @@ const UserLayout = () => {
         <div className="flex">
             <div className={`flex-grow transition-all ${showNavbar ? 'sm:ml-60' : 'ml-0'}`}>
                 {showNavbar && <Navbar />}
-
                 {showInvisiblenavbar && <InvisibleNavbar/>}
                 <div>
                     <Outlet />

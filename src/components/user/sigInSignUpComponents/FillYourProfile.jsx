@@ -45,6 +45,7 @@ const FillYourProfile = () => {
     navigate('/'); // Redirect to the homepage
   };
 
+
   // useEffect to log modal open/close state
   useEffect(() => {
     if (isModalOpen) {
@@ -66,6 +67,7 @@ const FillYourProfile = () => {
   const inputConfig = {
     inputWidth: "100%", // Dynamic input width
     inputHeight: "48px", // Dynamic input height
+
   };
 
   const fieldConfigs = [
