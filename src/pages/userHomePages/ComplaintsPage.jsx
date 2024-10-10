@@ -9,4 +9,4 @@ const ComplaintsPage = () => {
     )
 }
 
-export default ComplaintsPage
+export default ComplaintsPage;

@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import FormComponent from "../../reUsableComponents/FormComponent";
-import HeaderComponent from "./HeaderComponen";
+import HeaderComponent from "./HeaderComponent";
 
 const CreateNewPassword = () => {
-
+const navigate =useNavigate();
 
   const fieldConfigs = [
     {
@@ -35,6 +36,7 @@ const CreateNewPassword = () => {
 
   const apiEndpoint = async (values) => {
     console.log('Form submitted with values:', values);
+navigate ('/otp-forgot-password')
 };
 
   return (
