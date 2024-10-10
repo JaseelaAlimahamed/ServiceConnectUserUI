@@ -1,33 +1,37 @@
+
+
 import React from "react";
-import Routes from "react-router-dom/Routes";
 
-import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
-import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
-
-import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
+
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
 import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
-import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
-import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
-import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
-import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
-import RequestServicePage from '../pages/requestServicePages/RequestServicePage'
+import OTPPage from '../pages/signUpSignInPages/OtpVerificationPage'
+import CreateNewPasswordPage from '../pages/signUpSignInPages/forgotPasswordPages/CreateNewPasswordPage'
+import ForgotPasswordPage from '../pages/signUpSignInPages/forgotPasswordPages/ForgotPasswordPage'
+import OtpForgotPasswordPage from '../pages/signUpSignInPages/forgotPasswordPages/OtpForgotPasswordPage'
 
-import UserLayout from '../layouts/UserLayout'
-import BookingsPage from '../pages/userHomePages/BookingsPage'
-import ActiveServicesPage from '../pages/userHomePages/ActiveServicesPage'
-import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
-
-import ReviewSection from '../components/user/reviewsPageComponents/ReviewSection'
-import CreateNewPasswordPage from '../pages/forgotPasswordPages/CreateNewPasswordPage'
-import ForgotPasswordPage from '../pages/forgotPasswordPages/ForgotPasswordPage'
-import VerifyForgotPassword from '../pages/forgotPasswordPages/VerifyForgotPassword'
+import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
+import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
+import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
 
+
+import UserLayout from "../layouts/UserLayout";
+import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
+import BookingsPage from "../pages/userHomePages/BookingsPage";
+import BookingDetails from "../pages/BookingDetailsPages/BookingDetails";
+import ReviewSection from "../components/user/reviewsPageComponents/ReviewSection";
+import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
+import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
+import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
+import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
+import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
+import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
+import UserProfile from "../pages/userProfilePage/UserProfile";
+import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
 
 
 
@@ -35,45 +39,63 @@ function UserRoutes() {
   return (
     <div>
       <Routes>
-      <Route element={<UserLayout />}>
-        <Route path="/" element={<Navigate to="/signin" />} />
+        <Route element={<UserLayout />}>
+          <Route path="/" element={<Navigate to="/signin" />} />
 
-        <Route path="/addprofile" element={<AddProfilePage />} />
+          <Route path="/add-profile" element={<AddProfilePage />} />
 
-        <Route path="/signin" element={<UserSignInPage />} />
+          <Route path="/sign-in" element={<UserSignInPage />} />
 
-        <Route path="/signup" element={<UserSignUpPage />} />
+          <Route path="/sign-up" element={<UserSignUpPage />} />
 
-        <Route path="/otp" element={<OtpVerificationPage />} />
+          <Route path="/otp" element={<OTPPage />} />
 
-        <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-        <Route path="/createnewpassword" element={<CreateNewPasswordPage/>} />
+          <Route path="/create-new-password" element={<CreateNewPasswordPage />} />
 
-        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword/>} />
+          <Route path="/otp-forgot-password" element={<OtpForgotPasswordPage />} />
 
-      
+          <Route path="/fill-your-profile" element={<AddProfilePage />} />
 
-      
+
+          <Route path='/home' element={<Home />} />
+
+          <Route path="/allcategories" element={<AllCategoryComponent />} />
+
+          <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
+
+          <Route path="/paymentmethods" element={<PaymentMethodPage />} />
+
+          <Route path='/providerprofile' element={<ProviderProfile />} />
+
+
+          <Route path="/requestservice" element={<RequestServicePage />} />
+
           <Route path="/bookings" element={<BookingsPage />} />
+
+          <Route path="/bookingdetails" element={<BookingDetails />} />
+
+          <Route path="/reviews" element={<ReviewSection />} />
+
+          <Route path="/reviewsubmit" element={<ReviewSubmitPage />} />
+
           <Route path="/active-services" element={<ActiveServicesPage />} />
-          <Route path="/services" element={<CompletedServicesPage />} />
+
+          <Route path="/servicedetails" element={<ActiveServiceDetails />} />
+
           <Route path="/complaints" element={<ComplaintsPage />} />
-          <Route path="/requestservice" element={<RequestServicePage/>} />
 
-=
-        <Route path="/reviews" element={<ReviewSection />} />
+          <Route path="/complaintform" element={<ComplaintsPageUser />} />
 
-        <Route path="/allcategories" element={<AllCategoryComponent />} />
+          <Route path="/completedservices" element={<CompletedServicesPage />} />
 
-        <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
+          <Route path="/userprofile" element={<UserProfile />} />
 
+          <Route path="/about" element={<AboutSection />} />
 
-        <Route path='/home' element={<Home />} />
-
-        <Route path='/providerprofile' element={<ProviderProfile />} />
-
-</Routes>
+        </Route>
+      </Routes>
 
     </div>
   );
