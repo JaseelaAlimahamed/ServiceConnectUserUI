@@ -29,6 +29,10 @@ import ReviewSection from "../components/user/reviewsPageComponents/ReviewSectio
 import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
+
+import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
+import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
+
 import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
 import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
@@ -37,6 +41,7 @@ import UserProfile from "../pages/userProfilePage/UserProfile";
 import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
+>
 
 function UserRoutes() {
   return (
@@ -88,6 +93,9 @@ function UserRoutes() {
           <Route path="/servicedetails" element={<ActiveServiceDetails />} />
 
           <Route path="/complaints" element={<ComplaintsPage />} />
+
+          <Route path="/transactions" element={<TransactionsPage />} />
+
 
           <Route path="/complaintform" element={<ComplaintsPageUser />} />
 
