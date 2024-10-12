@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes, Navigate, Router } from 'react-router-dom'
 
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
@@ -30,15 +30,14 @@ import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
 
-import CompletedServicesPage from '../pages/userHomePages/CompletedServicesPage'
+
 import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
 
 import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
-import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
-import UserProfile from "../pages/userProfilePage/UserProfile";
+import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
+import UserProfile from "../pages/userProfilePage/UserProfile"
 
-import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
 
@@ -106,6 +105,7 @@ function UserRoutes() {
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
           <Route path="/transactions" element={<TransactionsPage />} />
+
 
         </Route>
 
