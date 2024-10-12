@@ -42,6 +42,7 @@ const TopServiceProviders = ({ serviceProviders }) => {
                                 imgUrl={provider.imgUrl}
                                 title={provider.name}
                                 altText={provider.name}
+                                className="w-full h-[220px] flex-shrink-0"
                             />
                         </div>
                     ))}

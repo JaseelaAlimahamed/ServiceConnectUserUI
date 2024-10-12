@@ -446,7 +446,7 @@ const SubCategoryComponent = () => {
   console.log("Subcategories to render:", subCategories);
 
   return (
-    <div className="bg-light-blue flex items-center justify-center w-full p-2">
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <div
         className="grid 
         items-center 
@@ -470,6 +470,7 @@ const SubCategoryComponent = () => {
         {subCategories.map((subCategory, index) => (
           <CategoryCardComponent
             key={index}
+            categoryId={subCategory.id}
             categoryImage={subCategory.subCategoryImage}
             categoryName={subCategory.subCategoryName}
           />

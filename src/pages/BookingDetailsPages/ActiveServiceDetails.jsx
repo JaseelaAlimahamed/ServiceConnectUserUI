@@ -28,7 +28,7 @@ const ActiveServiceDetails = () => {
     };
 
     return (
-        <div className="p-4 bg-light-gray min-h-screen">
+        <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
             <ProfileInfo
                 profileImage="https://randomuser.me/api/portraits/men/32.jpg"
                 name="Nazrul Islam"

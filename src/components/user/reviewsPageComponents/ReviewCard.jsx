@@ -4,7 +4,7 @@ const ReviewCard = ({ reviews }) => {
     return (
         <div>
             {reviews?.map((review, index) => (
-                <div key={index} className="mt-6">
+                <div key={index} className="mt-6 ml-6">
                     <div className="flex items-start p-6 space-x-4 bg-white shadow-lg rounded-xl">
 
                         {/* Avatar */}

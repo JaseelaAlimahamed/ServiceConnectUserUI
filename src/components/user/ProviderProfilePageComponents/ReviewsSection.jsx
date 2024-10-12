@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MdArrowForward } from 'react-icons/md';
 import { FaHeart, FaStar } from 'react-icons/fa';
 
-const ReviewsSection = ({ reviews }) => {
+
+const ReviewsSection = ({ reviews, id }) => {
     return (
         <section className="p-4 mt-4 bg-white shadow-md rounded-2xl text-dark-gray">
             {/* Header */}
             <div className="flex items-center justify-between">
                 <h3 className="text-lg font-bold">Reviews</h3>
-                <a href="#" className="flex items-center text-sm font-bold">
+                <Link to={`/reviews/${id}`} className="flex items-center text-sm font-bold">
                     SEE ALL <MdArrowForward className="ml-1 text-lg font-bold" />
-                </a>
+                </Link>
             </div>
 
             {/* List of Reviews */}
@@ -57,6 +59,7 @@ const ReviewsSection = ({ reviews }) => {
 ReviewsSection.propTypes = {
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
+
             name: PropTypes.string.isRequired,
             rating: PropTypes.number.isRequired,
             avatar: PropTypes.string.isRequired,

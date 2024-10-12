@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useParams,useNavigate} from 'react-router-dom';
 import BookingTitleDescription from '../../components/user/BookingDetailsComponents/BookingTitleDescription';
 import AvailabilitySection from '../../components/user/BookingDetailsComponents/AvailabilitySection';
 import RescheduleButton from '../../components/user/BookingDetailsComponents/RescheduleButton';
@@ -7,11 +8,13 @@ import AcceptPayButton from '../../components/user/BookingDetailsComponents/Acce
 import ImageUploader from '../../components/user/BookingDetailsComponents/ImageUploader';
 import ProfileInfo from '../../components/user/BookingDetailsComponents/ProfileInfo';
 
+
 const BookingDetails = () => {
   const [bookingDetails, setBookingDetails] = useState({}); 
   const [uploadedImages, setUploadedImages] = useState([]);
+const id =useParams().id
+ const navigate = useNavigate();
 
- 
   const handleInputChange = (value, fieldName) => {
     console.log('Input changed:', fieldName, value);
     setBookingDetails((prevDetails) => ({
@@ -26,11 +29,12 @@ const BookingDetails = () => {
   };
 
   const handleAcceptPayClick = () => {
-    console.log('Redirecting to next page');
+    // Navigate to /payment-methods with the extracted id
+    navigate(`/payment-methods/${id}`);
   };
 
   return (
-    <div className="p-4 bg-light-gray min-h-screen">
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <ProfileInfo
         profileImage="https://randomuser.me/api/portraits/men/32.jpg"
         name="Nazrul Islam"

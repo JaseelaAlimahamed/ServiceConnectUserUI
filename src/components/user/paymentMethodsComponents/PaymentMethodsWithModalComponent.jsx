@@ -58,7 +58,7 @@ const PaymentMethodsWithModalComponent = () => {
           buttonConfig={buttonConfig}
           icon={
             <IoCloseOutline
-              size={40}
+              size={20}
               onClick={handleCloseModal}
               className="text-#1D1B20 cursor-pointer"
             />

@@ -64,41 +64,41 @@ function UserRoutes() {
 
           <Route path='/home' element={<Home />} />
 
-          <Route path="/allcategories" element={<AllCategoryComponent />} />
+          <Route path="/categories" element={<AllCategoryComponent />} />
 
-          <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
+          <Route path="/Subcatogaories/:categoryId" element={<SubCategoryComponent />} />
 
-          <Route path="/paymentmethods" element={<PaymentMethodPage />} />
+          <Route path="/payment-methods/:id" element={<PaymentMethodPage />} />
 
-          <Route path='/providerprofile' element={<ProviderProfile />} />
+          <Route path='/provider-profile/:id' element={<ProviderProfile />} />
 
 
-          <Route path="/requestservice" element={<RequestServicePage />} />
+          <Route path="/request-service/:id" element={<RequestServicePage />} />
 
           <Route path="/bookings" element={<BookingsPage />} />
 
-          <Route path="/bookingdetails" element={<BookingDetails />} />
+          <Route path="/booking-details/:id" element={<BookingDetails />} />
 
-          <Route path="/reviews" element={<ReviewSection />} />
+          <Route path="/reviews/:id" element={<ReviewSection />} />
 
-          <Route path="/reviewsubmit" element={<ReviewSubmitPage />} />
+          <Route path="/review-submit/:id" element={<ReviewSubmitPage />} />
 
           <Route path="/active-services" element={<ActiveServicesPage />} />
 
-          <Route path="/servicedetails" element={<ActiveServiceDetails />} />
+          <Route path="/service-details/:id" element={<ActiveServiceDetails />} />
 
           <Route path="/complaints" element={<ComplaintsPage />} />
 
-          <Route path="/complaintform" element={<ComplaintsPageUser />} />
+          <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 
-          <Route path="/completedservices" element={<CompletedServicesPage />} />
+          <Route path="/services" element={<CompletedServicesPage />} />
 
-          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/profile" element={<UserProfile />} />
 
 
-          <Route path='/notificationsettings' element={<NotificationSettingsPage />} />
+          <Route path='/notification-settings' element={<NotificationSettingsPage />} />
 
-          <Route path="/termsandconditions" element={<TermsAndConditionPage />} />
+          <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
         </Route>
 

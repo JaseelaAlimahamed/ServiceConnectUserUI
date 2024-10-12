@@ -217,7 +217,7 @@ const AllCategoryComponent = () => {
       setShowAllCategories(true);
     } else {
       console.log(`Category selected: ${categoryName}`);
-      navigate(`/allcategories/${categoryId}`);
+      navigate(`/Subcatogaories/${categoryId}`);
     }
   };
 
@@ -226,7 +226,7 @@ const AllCategoryComponent = () => {
     : categories.slice(0, 10);
 
   return (
-    <div className="bg-light-blue flex items-center justify-center w-full p-2">
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <div
         className="grid 
         items-center 

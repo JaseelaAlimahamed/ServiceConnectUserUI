@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
 import RatingStars from './RatingStars';
 
@@ -8,6 +9,16 @@ const ReviewSection = () => {
     const [loading, setLoading] = useState(true); // State to track loading
     const [filter, setFilter] = useState('All');
     const [visibleReviews, setVisibleReviews] = useState(10);
+    const id = "121212"
+
+
+    const navigate = useNavigate();
+
+    const handleReviewClick = () => {
+      // Navigate to /review-submit/:id
+      navigate(`/review-submit/${id}`);
+    };
+
 
     // Simulate API call to fetch reviews data
     useEffect(() => {
@@ -75,7 +86,7 @@ const ReviewSection = () => {
     }
 
     return (
-        <div className="relative max-w-screen-lg p-6 mx-auto bg-light-gray">
+        <div className="relative  max-w-screen-xl py-8 px-12 mx-auto bg-light-gray">
             <div className="flex flex-col items-center gap-3 mb-3">
                 <h2 className="text-4xl font-bold">{calculateAverageRating()}</h2>
                 <RatingStars rating={calculateAverageRating()} />
@@ -119,7 +130,10 @@ const ReviewSection = () => {
             {/* Adjusted Write a Review Button */}
             <div className="fixed left-0 right-0 z-50 flex justify-center bottom-4">
                 <div className="flex justify-center w-full max-w-screen-lg mx-auto">
-                    <button className="w-[80%] px-6 py-3 text-white rounded-full bg-dark-gray">
+                    <button
+                        className="w-[80%] px-6 py-3 text-white rounded-full bg-dark-gray"
+                        onClick={handleReviewClick}
+                    >
                         Write a Review
                     </button>
                 </div>

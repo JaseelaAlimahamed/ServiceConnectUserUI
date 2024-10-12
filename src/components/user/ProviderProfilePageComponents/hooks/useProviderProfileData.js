@@ -27,6 +27,7 @@ const useProviderProfileData = () => {
                     setTimeout(() => {
                         resolve({
                             profileData: {
+                                id:'1231',
                                 distance: 3,
                                 rating: 4.2,
                                 reviews: 32,

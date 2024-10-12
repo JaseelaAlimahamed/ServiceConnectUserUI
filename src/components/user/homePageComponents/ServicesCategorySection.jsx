@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import useHorizontalScroll from "./hooks/useHorizontalScroll.js";
 import ServiceCard from "../../reUsableComponents/homeReusuableComponents/ServiceCategoryCard.jsx";
@@ -18,9 +19,11 @@ const ServiceCategorySection = ({ serviceCategories }) => {
                 <h2 className="text-2xl font-bold text-light-violet">
                     Service Categories
                 </h2>
-                <h3 className="text-xl font-bold cursor-pointer text-light-violet hover:underline">
-                    SEE ALL
-                </h3>
+                <Link to="/categories">
+                    <h3 className="text-xl font-bold cursor-pointer text-light-violet hover:underline">
+                        SEE ALL
+                    </h3>
+                </Link>
             </div>
 
             <div className="relative px-10">
@@ -35,10 +38,8 @@ const ServiceCategorySection = ({ serviceCategories }) => {
                 )}
 
                 {/* Scrollable container */}
-                <div
-                    ref={scrollRef}
-                    className="flex gap-4 overflow-x-auto no-scrollbar"
-                >
+                <div ref={scrollRef} className="flex gap-4 overflow-x-auto no-scrollbar w-full">
+
                     {serviceCategories.map((category) => (
                         <div key={category.id} className="flex-shrink-0 snap-start">
                             <ServiceCard

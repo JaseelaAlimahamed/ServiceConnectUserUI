@@ -3,7 +3,7 @@ import BookingsPageUser from '../../components/user/bookingsPageComponents/Booki
 
 const BookingsPage = () => {
   return (
-    <div>
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <BookingsPageUser />
     </div>
   )

@@ -3,7 +3,7 @@ import ServicesSection from '../../components/user/homePageComponents/ServicesSe
 import SearchBar from '../../components/user/homePageComponents/SearchBar';
 import ServicesCategorySection from '../../components/user/homePageComponents/ServicesCategorySection';
 import TopServiceProviders from '../../components/user/homePageComponents/TopServiceProviders';
-import BannerSlider from '../../components/reUsableComponents/homeReusuableComponents/BannerSlider';
+import BannerSlider from '../../components/user/homePageComponents/BannerSlider';
 import BottomNavBar from '../../components/reUsableComponents/BottomNavBar';
 
 /**
@@ -22,23 +22,26 @@ const Home = () => {
     const isLoading = bannerData.length === 0 || serviceCategories.length === 0 || servicesData.length === 0 || serviceProviders.length === 0;
 
     return (
-        <div>
-            {isLoading ? (
-                <div className="flex items-center justify-center h-screen bg-gray-200">
-                    <p>Loading...</p>
-                </div>
-            ) : (
-                <div className="p-4 mt-20">
-                    <SearchBar />
-                    <BannerSlider bannerData={bannerData} />
-                    <ServicesCategorySection serviceCategories={serviceCategories} />
-                    <ServicesSection servicesData={servicesData} />
-                    <TopServiceProviders serviceProviders={serviceProviders} />
-                    <BottomNavBar />
-                </div>
-            )}
-        </div>
+        <div className="overflow-x-hidden">
+        {isLoading ? (
+            <div className="flex items-center justify-center h-screen bg-gray-200">
+                <p>Loading...</p>
+            </div>
+        ) : (
+            <div className=" py-4 mt-16 lgm:ml-12 md:mt-10 md:px-8 lg:px-12 lgx:ml-20 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[76vw] lgm:max-w-[80vw] lgx:max-w-[76vw] lg:max-w-[70vw] xl:max-w-screen-xl">
+
+                <SearchBar />
+                <BannerSlider bannerData={bannerData} />
+                <ServicesCategorySection serviceCategories={serviceCategories} />
+                <ServicesSection servicesData={servicesData} />
+                <TopServiceProviders serviceProviders={serviceProviders} />
+                <BottomNavBar />
+            </div>
+        )}
+    </div>
+    
     );
 };
+
 
 export default Home;

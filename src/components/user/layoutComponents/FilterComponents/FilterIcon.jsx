@@ -6,7 +6,7 @@ import { VscSettings } from "react-icons/vsc";
 const FilterIcon = ({onClick}) => {
 
   return (
-    <div onClick={onClick} className='border p-1 text-2xl text-primary rounded-full'>  
+    <div onClick={onClick} className='border p-1 text-2xl text-secondary rounded-full'>  
 
            <VscSettings />
 
