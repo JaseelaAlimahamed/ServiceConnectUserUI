@@ -34,8 +34,8 @@ import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSu
 import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
 import UserProfile from "../pages/userProfilePage/UserProfile";
 
-import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
+import ComplaintFormPage from "../pages/ComplaintFormPage/ComplaintFormPage";
 
 
 function UserRoutes() {
@@ -94,6 +94,8 @@ function UserRoutes() {
           <Route path="/completedservices" element={<CompletedServicesPage />} />
 
           <Route path="/userprofile" element={<UserProfile />} />
+          
+          <Route path="/complaint" element={<ComplaintFormPage />} />
 
 
           <Route path='/notificationsettings' element={<NotificationSettingsPage />} />
