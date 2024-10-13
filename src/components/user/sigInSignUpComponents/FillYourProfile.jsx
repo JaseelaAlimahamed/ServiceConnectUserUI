@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 
-import image from "../../../assets/image.png"
 import FormComponent from "../../reUsableComponents/FormComponent";
 import ModalComponent from "../../reUsableComponents/ModalComponent";
 import ReusableModal from "../../reUsableComponents/ReModal";
+
+import images from "../../../assets/image.png"
 
 
 const FillYourProfile = () => {
@@ -13,6 +14,7 @@ const FillYourProfile = () => {
   const [isLoading, setIsLoading] = useState(false); // Loading state for the modal
   const [image, setImage] = useState(''); // State for the modal image
   const navigate = useNavigate(); // Initialize navigate for redirection
+
 
   // Simulate API call and handle form submission
   const getApiEndpoint = async (formData) => {
@@ -104,7 +106,7 @@ const FillYourProfile = () => {
         >
           <ReusableModal
             isLoading={isLoading}
-            imageSrc={image} // Pass the image source if needed
+            imageSrc={images} // Pass the image source if needed
             heading="Congratulations!"
             contentLines={["Your account is ready to use."]}
             redirectMessage="You will be redirected to the Home Page in a few seconds."

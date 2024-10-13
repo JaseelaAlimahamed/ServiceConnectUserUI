@@ -39,6 +39,8 @@ import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
 import UserProfile from "../pages/userProfilePage/UserProfile"
 
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
+import AboutPage from "../pages/aboutPage/AboutPage";
+import NotificationsPage from "../pages/userHomePages/NotificationPage";
 
 
 
@@ -68,11 +70,12 @@ function UserRoutes() {
 
           <Route path='/home' element={<Home />} />
 
+          <Route path="/profile" element={<UserProfile />} />
+
           <Route path="/categories" element={<AllCategoryComponent />} />
 
           <Route path="/Subcatogaories/:categoryId" element={<SubCategoryComponent />} />
 
-          <Route path="/payment-methods/:id" element={<PaymentMethodPage />} />
 
           <Route path='/provider-profile/:id' element={<ProviderProfile />} />
 
@@ -91,14 +94,17 @@ function UserRoutes() {
 
           <Route path="/service-details/:id" element={<ActiveServiceDetails />} />
 
+          <Route path="/payment-methods/:id" element={<PaymentMethodPage />} />
+
           <Route path="/complaints" element={<ComplaintsPage />} />
 
           <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 
           <Route path="/services" element={<CompletedServicesPage />} />
 
-          <Route path="/profile" element={<UserProfile />} />
+         
 
+          <Route path='/notification' element={<NotificationsPage />} />
 
           <Route path='/notification-settings' element={<NotificationSettingsPage />} />
 
@@ -106,6 +112,7 @@ function UserRoutes() {
 
           <Route path="/transactions" element={<TransactionsPage />} />
 
+          <Route path="/about-us" element={<AboutPage />} />
 
         </Route>
 

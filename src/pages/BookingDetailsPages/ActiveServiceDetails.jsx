@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import {useParams,useNavigate} from 'react-router-dom';
 import ProfileInfo from '../../components/user/BookingDetailsComponents/ProfileInfo'; 
 import BookingTitleDescription from '../../components/user/BookingDetailsComponents/BookingTitleDescription'; 
 import ImageUploader from '../../components/user/BookingDetailsComponents/ImageUploader'; 
@@ -13,6 +14,9 @@ const ActiveServiceDetails = () => {
     const [bookingDetails, setBookingDetails] = useState({});
     const [uploadedImages, setUploadedImages] = useState([]);
 
+    const id =useParams().id
+ const navigate = useNavigate();
+
     // Handle input change for form fields and custom components
     const handleInputChange = (value, fieldName) => {
         console.log('Input changed:', fieldName, value);
@@ -26,6 +30,10 @@ const ActiveServiceDetails = () => {
         setUploadedImages(images);
         console.log('Images uploaded:', images);
     };
+    const handleAcceptPayClick = () => {
+        // Navigate to /payment-methods with the extracted id
+        navigate(`/payment-methods/${id}`);
+      };
 
     return (
         <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
@@ -40,7 +48,7 @@ const ActiveServiceDetails = () => {
             <AvailabilitySection onInputChange={handleInputChange} />
             <CompleteButton />
             <InvoiceSummary />
-            <CompletePaymentButton />
+            <CompletePaymentButton onClick={handleAcceptPayClick}/>
             <ComplaintButton />
         </div>
     );

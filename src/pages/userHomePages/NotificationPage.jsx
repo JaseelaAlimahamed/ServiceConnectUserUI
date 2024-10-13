@@ -1,5 +1,5 @@
 import React from 'react';
-import Notification from './Notification';
+import Notification from '../../components/user/notificationsPageComponents/Notification';
 import { BsFillCreditCardFill, BsFillBellFill } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
 
