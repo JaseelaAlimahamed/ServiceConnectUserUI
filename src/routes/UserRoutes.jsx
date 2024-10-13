@@ -40,7 +40,7 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
-
+import NotificationPage from "../pages/notificationPage/NotificationPage";
 
 function UserRoutes() {
   return (
@@ -105,6 +105,8 @@ function UserRoutes() {
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
           <Route path="/transactions" element={<TransactionsPage />} />
+
+          <Route path="/notifications" element={<NotificationPage />} />
 
 
         </Route>
