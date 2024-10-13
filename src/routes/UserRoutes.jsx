@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Route, Routes, Navigate, Router } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
 import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
@@ -17,11 +17,10 @@ import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryCo
 import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
-import TermsAndConditionPage from "../pages/termsAndConditionPage/TermsAndConditionPage";
+
+
+
 import UserLayout from "../layouts/UserLayout";
-
-
-
 import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
 import BookingsPage from "../pages/userHomePages/BookingsPage";
 import BookingDetails from "../pages/BookingDetailsPages/BookingDetails";
@@ -29,16 +28,14 @@ import ReviewSection from "../components/user/reviewsPageComponents/ReviewSectio
 import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-
-
-import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
-
 import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
-import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
-import UserProfile from "../pages/userProfilePage/UserProfile"
+import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage";
+import UserProfile from "../pages/userProfilePage/UserProfile";
 
-import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
+import AboutSection from "../components/user/ProviderProfilePageComponents/AboutSection";
+import NotificationSettingsPage from "../pages/notificationSettingsPage/NotificationSettingsPage";
+import NotificationPage from "../pages/notificationPage/NotificationPage";
 
 
 
@@ -47,7 +44,7 @@ function UserRoutes() {
     <div>
       <Routes>
         <Route element={<UserLayout />}>
-          <Route path="/" element={<Navigate to="/sign-in" />} />
+          <Route path="/" element={<Navigate to="/signin" />} />
 
           <Route path="/add-profile" element={<AddProfilePage />} />
 
@@ -68,49 +65,46 @@ function UserRoutes() {
 
           <Route path='/home' element={<Home />} />
 
-          <Route path="/categories" element={<AllCategoryComponent />} />
+          <Route path="/allcategories" element={<AllCategoryComponent />} />
 
-          <Route path="/Subcatogaories/:categoryId" element={<SubCategoryComponent />} />
+          <Route path="/allcategories/:categoryId" element={<SubCategoryComponent />} />
 
-          <Route path="/payment-methods/:id" element={<PaymentMethodPage />} />
+          <Route path="/paymentmethods" element={<PaymentMethodPage />} />
 
-          <Route path='/provider-profile/:id' element={<ProviderProfile />} />
+          <Route path='/providerprofile' element={<ProviderProfile />} />
 
 
-          <Route path="/request-service/:id" element={<RequestServicePage />} />
+          <Route path="/requestservice" element={<RequestServicePage />} />
 
           <Route path="/bookings" element={<BookingsPage />} />
 
-          <Route path="/booking-details/:id" element={<BookingDetails />} />
+          <Route path="/bookingdetails" element={<BookingDetails />} />
 
-          <Route path="/reviews/:id" element={<ReviewSection />} />
+          <Route path="/reviews" element={<ReviewSection />} />
 
-          <Route path="/review-submit/:id" element={<ReviewSubmitPage />} />
+          <Route path="/reviewsubmit" element={<ReviewSubmitPage />} />
 
           <Route path="/active-services" element={<ActiveServicesPage />} />
 
-          <Route path="/service-details/:id" element={<ActiveServiceDetails />} />
+          <Route path="/servicedetails" element={<ActiveServiceDetails />} />
 
           <Route path="/complaints" element={<ComplaintsPage />} />
 
-          <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
+          <Route path="/complaintform" element={<ComplaintsPageUser />} />
 
-          <Route path="/services" element={<CompletedServicesPage />} />
+          <Route path="/completedservices" element={<CompletedServicesPage />} />
 
-          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/userprofile" element={<UserProfile />} />
 
+          <Route path="/about" element={<AboutSection />} />
+          
+          <Route path='/notification' element={<NotificationPage/>} />
 
-          <Route path='/notification-settings' element={<NotificationSettingsPage />} />
-
-          <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
-
-          <Route path="/transactions" element={<TransactionsPage />} />
-
+          <Route path='/notification-settings' element={<NotificationSettingsPage/>} />
 
         </Route>
 
       </Routes>
-
 
     </div>
   );
