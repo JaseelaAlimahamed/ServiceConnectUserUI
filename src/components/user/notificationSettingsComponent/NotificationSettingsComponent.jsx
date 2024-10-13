@@ -27,7 +27,7 @@ const NotificationSettingsComponent = () => {
     });
   };
   return (
-    <div className="bg-primary h-screen">
+    <div className="bg-primary h-screen p-6">
       {notificationData.map((noti, index) => (
         <div
           key={index}
@@ -40,18 +40,16 @@ const NotificationSettingsComponent = () => {
           </h2>
           <button
             onClick={() => handleToggle(index)}
-            className="bg-light-blue border-solid border-2 border-light-gray rounded-full 
-                   w-12 h-7 md:w-14 md:h-8 lg:w-14 lg:h-8 md:p-1
-                   flex items-center pl-1 focus:outline-none hover:outline-none hover:border-light-gray"
+            className={`${enabledNotifications[index] ? 'bg-light-gray' : 'bg-light-gray'
+              } border-solid border-2 border-light-gray rounded-full w-12 h-7 md:w-14 md:h-8 lg:w-14 lg:h-8
+     flex items-center transition duration-300 ease-in-out focus:outline-none hover:border-light-gray`}
           >
             <div
-              className={
-                enabledNotifications[index]
-                  ? "bg-dark-gray w-5 h-5 rounded-full md:w-6 md:h-6 md:p-3"
-                  : ""
-              }
+              className={`transform ${enabledNotifications[index] ? 'translate-x-6' : 'translate-x-0'
+                } bg-dark-gray w-5 h-5 md:w-6 md:h-6 rounded-full shadow-md transition duration-300 ease-in-out`}
             ></div>
           </button>
+
         </div>
       ))}
     </div>

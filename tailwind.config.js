@@ -33,6 +33,7 @@ module.exports = {
         "#167F71": "#167F71"
       },
       screens: {
+        'smx': '320px',   // Small screens
         'sm': '640px',   // Small screens
         'md': '768px',   // Medium screens
         'lg': '1024px',
