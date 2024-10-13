@@ -41,6 +41,7 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
+import ComplaintFormPage from "../pages/ComplaintFormPage/ComplaintFormPage";
 
 
 
@@ -97,6 +98,8 @@ function UserRoutes() {
           <Route path="/payment-methods/:id" element={<PaymentMethodPage />} />
 
           <Route path="/complaints" element={<ComplaintsPage />} />
+
+          <Route path="/complaint-submit" element={<ComplaintFormPage />} />
 
           <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 
