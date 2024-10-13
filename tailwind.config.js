@@ -22,6 +22,7 @@ module.exports = {
         "medium-gray": "#736A68",
         "sidebar-gray": '#303039',
         "button-red": " #670200",
+        "light-blue" : "#E8F1FF",
         "#202244": "#202244",
         "#545454": "#545454",
         "#1D1F2A": "#1D1F2A",
