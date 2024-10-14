@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import InputFieldComponent from "./InputFieldComponent";
+import InputFieldComponent from "../reUsableComponents/InputFieldComponent"
 import { RiSearch2Line, RiCloseLine } from "react-icons/ri";
 
 
 const SearchIconComponent = () => {
-  const [showInput, setShowInput] = useState(true);
+  const [showInput, setShowInput] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
