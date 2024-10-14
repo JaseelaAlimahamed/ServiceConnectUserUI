@@ -41,6 +41,8 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
+import Error404Page from "../pages/ErrorPages/Error404Page";
+import Error403 from "../components/user/errorPageComponents/Error403";
 
 
 
@@ -102,7 +104,7 @@ function UserRoutes() {
 
           <Route path="/services" element={<CompletedServicesPage />} />
 
-         
+
 
           <Route path='/notification' element={<NotificationsPage />} />
 
@@ -114,7 +116,11 @@ function UserRoutes() {
 
           <Route path="/about-us" element={<AboutPage />} />
 
+
         </Route>
+
+        <Route path="/error" element={<Error404Page />} />
+        <Route path="/access-denied" element={<Error403 />} />
 
       </Routes>
 
