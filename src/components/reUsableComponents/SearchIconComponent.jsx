@@ -1,19 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import InputFieldComponent from "./InputFieldComponent";
 import { RiSearch2Line, RiCloseLine } from "react-icons/ri";
-import { fetchSuggestions, submitSearch } from "../../services/searchIcon/apiFunction"; 
+
 
 const SearchIconComponent = () => {
-  const [showInput, setShowInput] = useState(false);
+  const [showInput, setShowInput] = useState(true);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (showInput) {
-      inputRef.current?.focus();
-    }
-  }, [showInput]);
 
   const handleSearchClick = () => {
     setShowInput(true);
@@ -24,26 +18,17 @@ const SearchIconComponent = () => {
     setQuery("");
     setSuggestions([]);
   };
-
-  // Fetch suggestions
+  // function for fetch sugestions
   useEffect(() => {
+    console.log("User typing: ", query);
+    // call ApI  here to fetch suggestions
     if (query.length > 0) {
-      fetchSuggestions(query).then((data) => setSuggestions(data));
+      setSuggestions([]); // fetch and set real suggestions here
     } else {
       setSuggestions([]);
     }
   }, [query]);
-
-  // Handle search submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!query) return;
-
-    const id = 12345;
-    const response = await submitSearch(query, id);
-    console.log("Response from server:", response);
-  };
-  //  search history
+  //  function for  search
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
       const updatedHistory = searchHistory.filter(
@@ -54,7 +39,7 @@ const SearchIconComponent = () => {
     }
     setSuggestions([]);
   };
-  //  remove history
+//  function for remove search item from history
   const removeHistoryItem = (itemToRemove) => {
     const updatedHistory = searchHistory.filter(
       (item) => item !== itemToRemove
@@ -65,48 +50,35 @@ const SearchIconComponent = () => {
 
   return (
     <div
-      className="flex justify-center bg-opacity-50 p-2"
+      className="flex justify-center items-center mx-8 sm:mx-16 md:mx-24"
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative inline-block w-full sm:w-auto">
-        {/* searchicon */}
+      {/* SearchIcon */}
+      <div className="w-full max-w-2xl relative">
         {!showInput && (
           <RiSearch2Line
             size={24}
-            className="text-black cursor-pointer"
             onClick={handleSearchClick}
+            className="cursor-pointer"
           />
         )}
-
-        <div
-          className={`flex items-center gap-2 transition duration-500 ease-in-out ${
-            showInput ? "w-full" : "w-0"
-          }`}
-        >
-          {/* inputfield */}
-          {showInput && (
-            <>
-              <form
-                onSubmit={handleSubmit}
-                className="flex items-center w-full"
-              >
-                <input
-                  ref={inputRef}
-                  type="text"
-                  placeholder="Search for.."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="w-full sm:w-80 md:w-96 lg:max-w-lg px-4 h-12 pl-10 pr-4 placeholder:text-primary mt-1 rounded-md border border-light-gray bg-medium-gray text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary"
-                />
-              </form>
-            </>
-          )}
-        </div>
-         {/* search Suggestions */}
+        {/* InputField */}
         {showInput && (
-          <div className="absolute z-10 w-full sm:w-80">
+          <form onSubmit={handleSearch}>
+            <InputFieldComponent
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search..."
+              inputWidth="100%"
+            />
+          </form>
+        )}
+
+        {showInput && (
+          <div className="absolute z-10 w-full">
+             {/* Suggestions Dropdown  */}
             {suggestions.length > 0 && (
-              <ul className="bg-white text-black shadow-md max-h-48 overflow-y-auto">
+              <ul className="bg-white text-black shadow-md max-h-screen w-full overflow-y-auto">
                 {suggestions.map((suggestion, index) => (
                   <li
                     key={index}
@@ -118,10 +90,10 @@ const SearchIconComponent = () => {
                 ))}
               </ul>
             )}
-          {/* search history */}
+            {/* Search History Dropdown */}
             {searchHistory.length > 0 && (
-              <ul className="bg-gray-100 text-black rounded-md shadow-md max-h-screen mt-2">
-                <h3 className="p-2 font-bold">Recent Searches</h3>
+              <ul className="bg-gray-100 text-black shadow-md max-h-48 overflow-y-auto mt-2 w-full">
+                <h3 className="p-2 font-bold">Search History</h3>
                 {searchHistory.map((historyItem, index) => (
                   <li
                     key={index}
