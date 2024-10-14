@@ -41,6 +41,7 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
+import SecurityPage from "../pages/securityPage/SecurityPage";
 
 
 
@@ -107,6 +108,8 @@ function UserRoutes() {
           <Route path='/notification' element={<NotificationsPage />} />
 
           <Route path='/notification-settings' element={<NotificationSettingsPage />} />
+
+          <Route path='/security' element={<SecurityPage/>} />
 
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
