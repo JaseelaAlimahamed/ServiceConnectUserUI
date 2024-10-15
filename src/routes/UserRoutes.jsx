@@ -41,6 +41,7 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
+import ServicesPage from "../pages/serviceProviderListingPage/ServicesPage"
 
 
 
@@ -113,6 +114,7 @@ function UserRoutes() {
           <Route path="/transactions" element={<TransactionsPage />} />
 
           <Route path="/about-us" element={<AboutPage />} />
+          <Route path="/service-provider-list" element={<ServicesPage />} />
 
         </Route>
 
