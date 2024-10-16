@@ -29,7 +29,10 @@ module.exports = {
         "#FF6B00": "#FF6B00",
         "#B4BDC4": "#B4BDC4",
         "#1D1B20": "#1D1B20",
-        "#167F71": "#167F71"
+        "#167F71": "#167F71",
+        "#FBFBFB": "#FBFBFB",
+        "#65558F": "#65558F",
+        "#F7F6F6": "#F7F6F6"
       },
       screens: {
         'sm': '640px',   // Small screens

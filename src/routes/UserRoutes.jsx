@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 
 import React from "react";
@@ -39,6 +40,7 @@ import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
 import UserProfile from "../pages/userProfilePage/UserProfile"
 
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
+import HelpCenterPage from "../pages/helpCenterPage/helpCenterPage";
 
 
 
@@ -106,7 +108,7 @@ function UserRoutes() {
 
           <Route path="/transactions" element={<TransactionsPage />} />
 
-
+          <Route path="/help-center" element={<HelpCenterPage />} />
         </Route>
 
       </Routes>
