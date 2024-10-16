@@ -22,6 +22,7 @@ module.exports = {
         "medium-gray": "#736A68",
         "sidebar-gray": '#303039',
         "button-red": " #670200",
+        "light-blue" : "#E8F1FF",
         "#202244": "#202244",
         "#545454": "#545454",
         "#1D1F2A": "#1D1F2A",
@@ -35,6 +36,7 @@ module.exports = {
         "#F7F6F6": "#F7F6F6"
       },
       screens: {
+        'smx': '320px',   // Small screens
         'sm': '640px',   // Small screens
         'md': '768px',   // Medium screens
         'lg': '1024px',

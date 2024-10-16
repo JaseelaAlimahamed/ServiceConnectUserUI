@@ -39,7 +39,9 @@ const Navbar = () => {
     const handleBackClick = () => {
         navigate('/home');
     };
-
+const handleOnClickNotification = () => {
+navigate('/notification');
+}
     return (
         <div className="mb-16">
             <nav className="bg-dark-gray z-50 fixed top-0 left-0 w-full">
@@ -81,7 +83,7 @@ const Navbar = () => {
                         {/* Profile and Authenticated Views */}
                         <div className="flex items-center pr-2 sm:ml-6">
                             {isAuthenticated && (
-                                <NotificationButton />
+                                <NotificationButton onClick={handleOnClickNotification} />
                             )}
 
                             {isAuthenticated && (

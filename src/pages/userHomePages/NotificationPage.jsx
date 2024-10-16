@@ -1,5 +1,5 @@
 import React from 'react';
-import Notification from './Notification';
+import Notification from '../../components/user/notificationsPageComponents/Notification';
 import { BsFillCreditCardFill, BsFillBellFill } from 'react-icons/bs';
 import { FaCheckCircle } from 'react-icons/fa';
 
@@ -52,7 +52,7 @@ const NotificationsPage = () => {
   const groupedNotifications = groupNotificationsByDate(notificationsData);
 
   return (
-    <div className="min-h-screen bg-light-gray p-6">
+    <div className="min-h-screen bg-light-gray lg:p-24 sm:p-8 smx:p-6 md:p-12 ">
       {/* Attach Navbar here */}
       <div>
         {/* Loop through each date group and display notifications */}

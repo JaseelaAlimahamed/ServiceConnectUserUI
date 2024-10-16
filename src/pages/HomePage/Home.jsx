@@ -28,7 +28,7 @@ const Home = () => {
                 <p>Loading...</p>
             </div>
         ) : (
-            <div className=" py-4 mt-16 lgm:ml-12 md:mt-10 md:px-8 lg:px-12 lgx:ml-20 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[76vw] lgm:max-w-[80vw] lgx:max-w-[76vw] lg:max-w-[70vw] xl:max-w-screen-xl">
+            <div className=" py-4 mt-16 lg:ml-12  lgm:ml-16 md:mt-10 md:px-8 lg:px-12 lgx:ml-32 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[76vw] lgm:max-w-[80vw] lgx:max-w-[78vw] lg:max-w-[78vw] xl:max-w-screen-xl">
 
                 <SearchBar />
                 <BannerSlider bannerData={bannerData} />

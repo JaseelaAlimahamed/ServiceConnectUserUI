@@ -31,7 +31,7 @@ const PaymentMethodsComponents = ({ handleButtonClick, setSelectedPaymentMethod 
 
 
   return (
-    <div className="bg-light-blue p-6">
+    <div className="p-12 bg-light-gray min-h-screen max-w-full overflow-hidden">
 
       <div className="flex items-center justify-center">
       {services.map((service, index) => (
@@ -51,8 +51,8 @@ const PaymentMethodsComponents = ({ handleButtonClick, setSelectedPaymentMethod 
       </div>
 
       <div className="flex flex-col items-center justify-center gap-4">
-        <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[360px] h-[60px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
-          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-#202244">
+        <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[240px] h-[40px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
+          <p className="text-center font-input font-extrabold text-[10px] xl:text-[18px] text-#202244">
             Paypal
           </p>
           <div onClick={() => handleSelectPaymentMethod("paypal")}>
@@ -70,8 +70,8 @@ const PaymentMethodsComponents = ({ handleButtonClick, setSelectedPaymentMethod 
           </div>
         </div>
 
-        <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[360px] h-[60px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
-          <p className="text-center font-input font-extrabold text-[14px] xl:text-[18px] text-#202244">
+        <div className="flex items-center justify-end bg-primary shadow-lg gap-4 p-4 rounded-2xl w-[240px]] h-[40px] sm:w-[460px] md:w-[560px] lg:w-[660px] xl:w-[760px]">
+          <p className="text-center font-input font-extrabold text-[10px] xl:text-[18px] text-#202244">
             Google Pay
           </p>
           <div onClick={() => handleSelectPaymentMethod("googlepay")}>
