@@ -22,26 +22,31 @@ import UserLayout from "../layouts/UserLayout";
 
 
 
-import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
+
 import BookingsPage from "../pages/userHomePages/BookingsPage";
+import ServicesPage from "../pages/serviceProviderListingPage/ServicesPage"
 import BookingDetails from "../pages/BookingDetailsPages/BookingDetails";
 import ReviewSection from "../components/user/reviewsPageComponents/ReviewSection";
 import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
+import RequestServicePage from "../pages/requestServicePages/RequestServicePage";
+import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
+
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-
-
+import ComplaintFormPage from "../pages/ComplaintFormPage/Complain"
 import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
-
 import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
-import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
-import UserProfile from "../pages/userProfilePage/UserProfile"
 
+import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
-import ServicesPage from "../pages/serviceProviderListingPage/ServicesPage"
+import SecurityPage from "../pages/securityPage/SecurityPage";
+
+
+import Error404Page from "../pages/ErrorPages/Error404Page";
+import Error403Page from "../pages/ErrorPages/Error403Page";
 
 
 
@@ -77,7 +82,6 @@ function UserRoutes() {
 
           <Route path="/Subcatogaories/:categoryId" element={<SubCategoryComponent />} />
 
-
           <Route path='/provider-profile/:id' element={<ProviderProfile />} />
 
 
@@ -99,24 +103,33 @@ function UserRoutes() {
 
           <Route path="/complaints" element={<ComplaintsPage />} />
 
+          <Route path="/complaint-submit" element={<ComplaintFormPage />} />
+
           <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 
           <Route path="/services" element={<CompletedServicesPage />} />
 
-         
+
 
           <Route path='/notification' element={<NotificationsPage />} />
 
           <Route path='/notification-settings' element={<NotificationSettingsPage />} />
+
+          <Route path='/security' element={<SecurityPage/>} />
 
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
           <Route path="/transactions" element={<TransactionsPage />} />
 
           <Route path="/about-us" element={<AboutPage />} />
+            
           <Route path="/service-provider-list" element={<ServicesPage />} />
 
+
         </Route>
+
+        <Route path="/*" element={<Error404Page />} />
+        <Route path="/403" element={<Error403Page />} />
 
       </Routes>
 
