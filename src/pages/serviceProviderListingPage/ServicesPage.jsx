@@ -1,6 +1,6 @@
 import  { useState } from "react";
-import DeliveryPersonCard from "./ServiceDeliveryPersonCard";
-import FilterButtons from "./LocationFilterButton"; // Import the FilterButtons component
+import DeliveryPersonCard from "../../components/user/serviceProviderListingComponents/ServiceDeliveryPersonCard";
+import FilterButtons from "../../components/user/serviceProviderListingComponents/LocationFilterButton"; // Import the FilterButtons component
 
 const Services = () => {
   const data = [
@@ -54,7 +54,7 @@ const Services = () => {
   });
 
   return (
-    <div className="min-h-screen bg-light-gray">
+    <div className="min-h-screen bg-light-gray lg:pl-32">
       {/* Location and Open Request */}
       <div className="bg-light-gray p-4">
         <div className="flex items-center gap-2">
