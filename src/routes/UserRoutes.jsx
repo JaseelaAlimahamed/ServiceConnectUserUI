@@ -29,7 +29,7 @@ import ReviewSection from "../components/user/reviewsPageComponents/ReviewSectio
 import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-
+import ComplaintFormPage from "../pages/ComplaintFormPage/Complain
 
 import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
 
@@ -41,7 +41,11 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
-import ComplaintFormPage from "../pages/ComplaintFormPage/ComplaintFormPage";
+tFormPage";
+
+import Error404Page from "../pages/ErrorPages/Error404Page";
+import Error403Page from "../pages/ErrorPages/Error403Page";
+
 
 
 
@@ -105,7 +109,7 @@ function UserRoutes() {
 
           <Route path="/services" element={<CompletedServicesPage />} />
 
-         
+
 
           <Route path='/notification' element={<NotificationsPage />} />
 
@@ -117,7 +121,11 @@ function UserRoutes() {
 
           <Route path="/about-us" element={<AboutPage />} />
 
+
         </Route>
+
+        <Route path="/*" element={<Error404Page />} />
+        <Route path="/403" element={<Error403Page />} />
 
       </Routes>
 
