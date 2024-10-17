@@ -41,7 +41,8 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
-tFormPage";
+import SecurityPage from "../pages/securityPage/SecurityPage";
+
 
 import Error404Page from "../pages/ErrorPages/Error404Page";
 import Error403Page from "../pages/ErrorPages/Error403Page";
@@ -114,6 +115,8 @@ function UserRoutes() {
           <Route path='/notification' element={<NotificationsPage />} />
 
           <Route path='/notification-settings' element={<NotificationSettingsPage />} />
+
+          <Route path='/security' element={<SecurityPage/>} />
 
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
