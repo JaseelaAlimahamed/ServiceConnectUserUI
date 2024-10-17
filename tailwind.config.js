@@ -19,24 +19,14 @@ module.exports = {
           "dark2-gray": "#ABAFB1",
           "darker-gray": "#787880",
           "light-gray": "#D9D9DB",
-<<<<<<< HEAD
           "medium-gray": "#797C7B",   
           "dark-brown": "#736A68",
           "medium-blue": "#303972",       
           "light-red": "#EC221F",
           "bt-red":"#670200",
           "light-blue": "#F5F9FF",
-        
-          // New colors used in edit profile page
-          "edit-main":  "#F5F9FF",  // main bg
-          "field-text": "#505050", // Field text color
-        },
-        //Shadow for inputs
-          boxShadow: {
-            'custom-input': '0px 2px 10px 0px rgba(0, 0, 0, 0.1)', // Custom shadow
-          },
+
         // You can add custom breakpoints if needed, but the defaults are generally enough:
-=======
           "medium-gray": "#736A68",
           "#202244": "#202244",
           "#545454": "#545454",
@@ -45,9 +35,16 @@ module.exports = {
           "#FF6B00": "#FF6B00",
           "#B4BDC4": "#B4BDC4",
           "#1D1B20": "#1D1B20",
-          "#167F71": "#167F71"
+          "#167F71": "#167F71",
+        
+        // New colors used in edit profile page
+        "edit-main":  "#F5F9FF",  // main bg
+        "field-text": "#505050", // Field text color
+      },
+      //Shadow for inputs
+        boxShadow: {
+          'custom-input': '0px 2px 10px 0px rgba(0, 0, 0, 0.1)', // Custom shadow
         },
->>>>>>> dffe9ba3d217609a98033ad295fc3c438b10c45d
         screens: {
           'sm': '640px',   // Small screens
           'md': '768px',   // Medium screens
