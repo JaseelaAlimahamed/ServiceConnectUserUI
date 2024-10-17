@@ -231,7 +231,7 @@ const AllCategoryComponent = () => {
         className="grid 
         items-center 
         justify-center 
-        gap-3 
+        gap-5 
         sm:p-6 
         md:p-8 
         lg:p-10 
@@ -241,11 +241,11 @@ const AllCategoryComponent = () => {
         lg:gap-12 
         xl:gap-16 
         grid-cols-3 
-        sm:grid-cols-4 
-        md:grid-cols-5 
-        lg:grid-cols-6 
-        xl:grid-cols-7 
-        2xl:grid-cols-8"
+        sm:grid-cols-3 
+        md:grid-cols-4
+        lg:grid-cols-4
+        xl:grid-cols-6
+        2xl:grid-cols-6"
       >
         {displayedCategories.map((category, index) => (
           <div

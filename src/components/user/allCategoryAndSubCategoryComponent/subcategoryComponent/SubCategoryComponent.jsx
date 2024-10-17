@@ -461,11 +461,11 @@ const SubCategoryComponent = () => {
         lg:gap-12 
         xl:gap-16 
         grid-cols-3 
-        sm:grid-cols-4 
-        md:grid-cols-5 
-        lg:grid-cols-6 
-        xl:grid-cols-7 
-        2xl:grid-cols-8"
+        sm:grid-cols-3 
+        md:grid-cols-4
+        lg:grid-cols-4
+        xl:grid-cols-6
+        2xl:grid-cols-6"
       >
         {subCategories.map((subCategory, index) => (
           <CategoryCardComponent

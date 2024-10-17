@@ -1,5 +1,5 @@
 import React from 'react'
-import NotificationSettingsComponent from '../../components/user/NotificationSettingsComponent/NotificationSettingsComponent'
+import NotificationSettingsComponent from '../../components/user/notificationSettingsComponent/NotificationSettingsComponent'
 
 const NotificationSettingsPage = () => {
   return (
