@@ -10,7 +10,7 @@ const CategoryCardComponent = ({ categoryImage, categoryName, subcategories }) =
         src={categoryImage}
         alt={categoryName}
       />
-      <div className="text-center font-bold font-mulish text-[8px] md:text-[10px] xl:text-[12px] mb-2 text-secondary">{categoryName}</div>
+      <div className="text-center font-bold font-input text-[8px] md:text-[10px] xl:text-[12px] mb-2 text-secondary">{categoryName}</div>
       {subcategories && subcategories.length > 0 && (
         <div className="flex flex-col items-center">
           {subcategories.map((subcategory, index) => (
