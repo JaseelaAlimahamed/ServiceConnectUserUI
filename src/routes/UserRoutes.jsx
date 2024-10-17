@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 
 import React from "react";
@@ -40,6 +41,9 @@ import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSu
 
 import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
+
+import HelpCenterPage from "../pages/helpCenterPage/helpCenterPage";
+
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
 import SecurityPage from "../pages/securityPage/SecurityPage";
@@ -47,6 +51,7 @@ import SecurityPage from "../pages/securityPage/SecurityPage";
 
 import Error404Page from "../pages/ErrorPages/Error404Page";
 import Error403Page from "../pages/ErrorPages/Error403Page";
+
 
 
 
@@ -121,9 +126,13 @@ function UserRoutes() {
 
           <Route path="/transactions" element={<TransactionsPage />} />
 
+
+          <Route path="/help-center" element={<HelpCenterPage />} />
+
           <Route path="/about-us" element={<AboutPage />} />
             
           <Route path="/service-provider-list" element={<ServicesPage />} />
+
 
 
         </Route>
