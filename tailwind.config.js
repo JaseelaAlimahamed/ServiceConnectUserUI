@@ -23,10 +23,17 @@ module.exports = {
           "dark-brown": "#736A68",
           "medium-blue": "#303972",       
           "light-red": "#EC221F",
-         "bt-red":"#670200"
-          "light-blue": "#F5F9FF"
-
+          "bt-red":"#670200",
+          "light-blue": "#F5F9FF",
+        
+          // New colors used in edit profile page
+          "edit-main":  "#F5F9FF",  // main bg
+          "field-text": "#505050", // Field text color
         },
+        //Shadow for inputs
+          boxShadow: {
+            'custom-input': '0px 2px 10px 0px rgba(0, 0, 0, 0.1)', // Custom shadow
+          },
         // You can add custom breakpoints if needed, but the defaults are generally enough:
         screens: {
           'sm': '640px',   // Small screens
