@@ -29,7 +29,7 @@ import ReviewSection from "../components/user/reviewsPageComponents/ReviewSectio
 import ActiveServicesPage from "../pages/userHomePages/ActiveServicesPage";
 import ActiveServiceDetails from "../pages/BookingDetailsPages/ActiveServiceDetails";
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-
+import ComplaintFormPage from "../pages/ComplaintFormPage/Complain
 
 import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
 
@@ -41,8 +41,11 @@ import UserProfile from "../pages/userProfilePage/UserProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 import AboutPage from "../pages/aboutPage/AboutPage";
 import NotificationsPage from "../pages/userHomePages/NotificationPage";
+tFormPage";
+
 import Error404Page from "../pages/ErrorPages/Error404Page";
 import Error403Page from "../pages/ErrorPages/Error403Page";
+
 
 
 
@@ -100,6 +103,8 @@ function UserRoutes() {
 
           <Route path="/complaints" element={<ComplaintsPage />} />
 
+          <Route path="/complaint-submit" element={<ComplaintFormPage />} />
+
           <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 
           <Route path="/services" element={<CompletedServicesPage />} />
@@ -119,8 +124,8 @@ function UserRoutes() {
 
         </Route>
 
-        <Route path="/error" element={<Error404Page />} />
-        <Route path="/access-denied" element={<Error403Page />} />
+        <Route path="/*" element={<Error404Page />} />
+        <Route path="/403" element={<Error403Page />} />
 
       </Routes>
 
