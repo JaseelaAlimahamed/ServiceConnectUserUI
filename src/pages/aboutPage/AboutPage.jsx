@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutPage = () => {
   return (
-    <div className="bg-white min-h-screen p-6">
+    <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
 
       {/* Content Section */}
       <div className="mt-8">

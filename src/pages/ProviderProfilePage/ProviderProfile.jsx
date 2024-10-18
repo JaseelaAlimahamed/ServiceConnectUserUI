@@ -57,7 +57,7 @@ const ProviderProfile = () => {
     }
 
     return (
-        <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
+        <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
             <ProfilePic
                 imageUrl={profileData.imageUrl}
                 altText={`${profileData.name}'s Profile Picture`}

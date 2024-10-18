@@ -4,7 +4,7 @@ import HelpCenterComponent from '../../components/user/helpCenterComponents/Help
 
 const HelpCenterPage = () => {
   return (
-    <div>
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <HelpCenterComponent />
     </div>
   )

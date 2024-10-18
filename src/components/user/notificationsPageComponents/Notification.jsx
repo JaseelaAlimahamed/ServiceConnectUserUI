@@ -2,7 +2,7 @@ import React from "react";
 
 const Notification = ({ title, description, icon,  }) => {
   return (
-    <div class="bg-primary shadow-lg rounded-lg py-6 px-4 mb-4 flex items-start">
+    <div className="bg-primary shadow-lg rounded-lg py-6 px-4 mb-4 flex items-start">
       <div className="mr-4">
         {/* Icon */}
         <div className="bg-light-gray p-3 rounded-full">{icon}</div>

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
 
 const subCategoriesData = [
@@ -444,6 +444,12 @@ const SubCategoryComponent = () => {
   const subCategories = category?.subCategories;
 
   console.log("Subcategories to render:", subCategories);
+  const navigate = useNavigate();
+  // If you need the params
+
+  const handleCardClick = (subCategoryId) => {
+    navigate(`/service-provider-list/${subCategoryId}`); // Adjust the route as needed
+  };
 
   return (
     <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
@@ -468,12 +474,16 @@ const SubCategoryComponent = () => {
         2xl:grid-cols-6"
       >
         {subCategories.map((subCategory, index) => (
+          <div   onClick={() =>
+            handleCardClick(subCategory.id)
+          }>
           <CategoryCardComponent
             key={index}
             categoryId={subCategory.id}
             categoryImage={subCategory.subCategoryImage}
             categoryName={subCategory.subCategoryName}
           />
+          </div>
         ))}
       </div>
     </div>

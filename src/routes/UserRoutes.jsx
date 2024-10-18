@@ -14,7 +14,7 @@ import ForgotPasswordPage from '../pages/signUpSignInPages/forgotPasswordPages/F
 import OtpForgotPasswordPage from '../pages/signUpSignInPages/forgotPasswordPages/OtpForgotPasswordPage'
 
 import AllCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/allCategoryComponent/AllCategoryComponent";
-import SubCategoryComponent from "../components/user/allCategoryAndSubCategoryComponent/subcategoryComponent/SubCategoryComponent";
+import SubCategoriesPage from "../pages/allCategoryAndSubCategoryPage/SubCategoryPage";
 import PaymentMethodPage from "../pages/paymentMethodsPages/PaymentMethodPage";
 import Home from '../pages/HomePage/Home'
 import ProviderProfile from '../pages/ProviderProfilePage/ProviderProfile'
@@ -34,7 +34,7 @@ import RequestServicePage from "../pages/requestServicePages/RequestServicePage"
 import CompletedServicesPage from "../pages/userHomePages/CompletedServicesPage"
 
 import ComplaintsPage from '../pages/userHomePages/ComplaintsPage'
-import ComplaintFormPage from "../pages/ComplaintFormPage/Complain"
+import ComplaintFormPage from "../pages/ComplaintFormPage/ComplaintFormPage"
 import TransactionsPage from '../pages/transactionsPage/TransactionsPage'
 import ComplaintsPageUser from '../components/user/complaintsPageComponents/ComplaintsPageUser'
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
@@ -85,7 +85,7 @@ function UserRoutes() {
 
           <Route path="/categories" element={<AllCategoryComponent />} />
 
-          <Route path="/Subcatogaories/:categoryId" element={<SubCategoryComponent />} />
+          <Route path="/Subcatogaories/:categoryId" element={<SubCategoriesPage />} />
 
           <Route path='/provider-profile/:id' element={<ProviderProfile />} />
 
@@ -131,7 +131,7 @@ function UserRoutes() {
 
           <Route path="/about-us" element={<AboutPage />} />
             
-          <Route path="/service-provider-list" element={<ServicesPage />} />
+          <Route path="/service-provider-list/:id" element={<ServicesPage />} />
 
 
 

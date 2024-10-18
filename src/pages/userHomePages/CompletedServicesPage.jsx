@@ -3,7 +3,7 @@ import CompletedServicesPageUser from '../../components/user/serviceStatusPageCo
 
 const CompletedServicesPage = () => {
     return (
-        <div>
+        <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
             <CompletedServicesPageUser />
         </div>
     )
