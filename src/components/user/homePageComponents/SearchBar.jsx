@@ -2,6 +2,8 @@ import React from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+
+
 const SearchBar = () => {
     return (
         <div className="flex items-center justify-center mt-4">

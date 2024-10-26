@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import ServiceCard from '../../reUsableComponents/homeReusuableComponents/ServiceCardComponent';
 
-/**
- * ServicesSection component that displays a list of services and allows filtering by category.
- * The component supports horizontal scrolling for mobile view and flex-wrap for larger screens.
- */
 const ServicesSection = ({ servicesData }) => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -29,11 +25,11 @@ const ServicesSection = ({ servicesData }) => {
             </div>
 
             {/* Category Filters */}
-            <div className="flex gap-4 mb-6 overflow-x-auto no-scrollbar scroll-smooth">
+            <div className="relative px-4 sm:px-8 md:px-12 lg:px-16">
                 {uniqueCategories.map((category) => (
                     <button
                         key={category}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold ${selectedCategory === category
+                        className={`px-4 py-1 m-2 rounded-full text-sm font-semibold ${selectedCategory === category
                             ? 'bg-gray-800 text-white'
                             : 'bg-[#736a68] text-white'
                             }`}
@@ -44,7 +40,7 @@ const ServicesSection = ({ servicesData }) => {
                 ))}
             </div>
 
-            {/* Services Section - Horizontal scroll on mobile */}
+            {/* Services Section */}
             <div className="flex gap-6 overflow-x-auto md:overflow-x-visible md:flex-wrap scroll-smooth no-scrollbar">
                 {filteredServices.slice(0, 8).map((service) => (
                     <ServiceCard
@@ -55,7 +51,7 @@ const ServicesSection = ({ servicesData }) => {
                         rating={service.rating}
                         reviews={service.reviews}
                         imgUrl={service.imgUrl}
-                        className="min-w-[250px] max-w-[300px] h-[220px] flex-shrink-0"
+                        className="w-[85vw] md:w-[30%] lg:w-[22%] h-[220px] flex-shrink-0 md:flex-shrink"
                     />
                 ))}
             </div>

@@ -25,7 +25,7 @@ const BookingsCard = ({
   const mappedStatus = status;
 
   return (
-    <div className="relative bg-white rounded-3xl shadow-md p-6 max-w-sm mx-auto">
+    <div className="relative bg-white rounded-3xl shadow-md w-full p-6 min-w-lg mx-auto">
       {/* Left color bar based on status */}
       <div className={`absolute top-0 left-0 h-full w-5 rounded-l-3xl ${getStatusColor(mappedStatus)}`}></div>
 
@@ -82,18 +82,18 @@ const BookingsCard = ({
 
 
       {/* Button Component */}
-      <div className="mt-2 ml-4 text-center">
+      <div className="mt-4 ml-4 text-center">
         <button
           className={`${getStatusColor(mappedStatus)} ${buttonDisabled ? 'cursor-not-allowed' : ''} text-white px-4 text-xs shadow-xl rounded-full focus:outline-none focus:ring-0 flex items-center justify-center relative`}
-          style={{ width: '100%' }}
+          style={{ width: '100%' ,height : '25px' }}
           disabled={buttonDisabled}
           onClick={onButtonClick}
         >
-          <span className="flex items-center mx-auto">
+          <span className="flex items-center  mx-auto" style={{ width: '100%' ,height : '25px' }}>
             {buttonText}
-            {!buttonDisabled && job !== 'Active' && complaint !== 'Pending' ? (<BiChevronDown className="ml-1 w-6 h-6" aria-hidden="true" />) : null}
+            {!buttonDisabled && job !== 'Active' && complaint !== 'Pending' ? (<BiChevronDown className="w-6 h-18 absolute right-4" aria-hidden="true" />) : null}
           </span>
-          {!buttonDisabled && <img src="./buttonArrow.svg" className="w-6 h-6 absolute right-4" alt="arrow" />}
+          {!buttonDisabled && <img src="./buttonArrow.svg" className="w-6 h-18 absolute right-4" alt="arrow" />}
         </button>
       </div>
     </div>

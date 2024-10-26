@@ -4,8 +4,8 @@ import ProfileOptions from '../../components/user/userProfilePageComponents/Prof
 
 const UserProfile = () => {
   return (
-    <div className="bg-light-gray min-h-screen flex justify-center items-center px-4">
-    <div className="bg-primary w-full max-w-md mx-auto p-6 rounded-2xl shadow-lg">
+    <div className="bg-light-gray p-4 min-h-screen flex justify-center items-center px-4">
+    <div className="bg-light-gray w-full min-w-screen-sm  max-w-screen-lg mx-auto p-6 rounded-2xl shadow-lg">
       <ProfileInfo/>
       <ProfileOptions />
     </div>

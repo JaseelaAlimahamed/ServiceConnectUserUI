@@ -1,3 +1,6 @@
+import React from 'react';
+import { useNavigate ,useParams} from 'react-router-dom';
+
 import useProviderProfileData from '../../components/user/ProviderProfilePageComponents/hooks/useProviderProfileData';
 import ProfileCard from '../../components/user/ProviderProfilePageComponents/ProfileCard';
 import AboutSection from '../../components/user/ProviderProfilePageComponents/AboutSection';
@@ -8,7 +11,11 @@ import ProfilePic from '../../components/user/ProviderProfilePageComponents/Prof
 import MediaGrid from '../../components/user/ProviderProfilePageComponents/MediaGrid';
 
 const ProviderProfile = () => {
+    
+    const navigate = useNavigate();
+    const id = useParams().id;
     const {
+       
         profileData,
         aboutDescription,
         servicesData,
@@ -19,10 +26,14 @@ const ProviderProfile = () => {
         error,
     } = useProviderProfileData();
 
+
+
+
     const handleBookService = () => {
-        // Implement the booking logic here
         console.log('Book service clicked');
-    };
+        // Navigate to the booking page with the dynamic id
+        navigate(`/request-service/${profileData.id}`);
+      };
 
     const handleChatClick = () => {
         // Implement the chat logic here
@@ -46,22 +57,22 @@ const ProviderProfile = () => {
     }
 
     return (
-        <div className="mt-20 mb-3 bg-gray-200">
+        <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
             <ProfilePic
                 imageUrl={profileData.imageUrl}
                 altText={`${profileData.name}'s Profile Picture`}
                 onChatClick={handleChatClick}
             />
-            <div className="mx-4 mt-16 md:mx-10">
+            <div className="mx-4 mt-16 md:mx-10 gap-2">
                 <ProfileCard {...profileData} />
                 <AboutSection description={aboutDescription} />
                 <ServicesSection services={servicesData} />
-                <ReviewsSection reviews={reviewsData} />
+                <ReviewsSection reviews={reviewsData} id={profileData.id} />
                 <MediaGrid title="Images" mediaItems={imagesData} type="image" />
                 <MediaGrid title="Videos" mediaItems={videosData} type="video" />
                 <ButtonComponent
                     label="Book Service"
-                    btnWidth="100%"
+                    btnWidth="w-full"
                     onClick={handleBookService}
                 />
             </div>

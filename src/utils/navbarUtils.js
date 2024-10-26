@@ -18,6 +18,9 @@ const pageConfig = {
   '/complaints': {
     title: 'COMPLAINTS',
   },
+  '/payment-methods/': {
+    title: 'PAYMENT',
+  },
 };
 
 export default pageConfig;

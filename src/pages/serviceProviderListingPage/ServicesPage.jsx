@@ -1,6 +1,7 @@
-import  { useState } from "react";
-import DeliveryPersonCard from "./ServiceDeliveryPersonCard";
-import FilterButtons from "./LocationFilterButton"; // Import the FilterButtons component
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DeliveryPersonCard from "../../components/user/serviceProviderListingComponents/ServiceDeliveryPersonCard";
+import FilterButtons from "../../components/user/serviceProviderListingComponents/LocationFilterButton"; // Import the FilterButtons component
 
 const Services = () => {
   const data = [
@@ -41,7 +42,7 @@ const Services = () => {
       booked: true,
     },
   ];
-
+const navigate = useNavigate();
   const [filter, setFilter] = useState("all");
 
   const filteredData = data.filter((item) => {
@@ -52,9 +53,12 @@ const Services = () => {
     }
     return true;
   });
+  const handleCardClick = (id) => {
+    navigate(`/provider-profile/${id}`); // Adjust the route as needed
+  };
 
   return (
-    <div className="min-h-screen bg-light-gray">
+    <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
       {/* Location and Open Request */}
       <div className="bg-light-gray p-4">
         <div className="flex items-center gap-2">
@@ -70,8 +74,11 @@ const Services = () => {
       <FilterButtons filter={filter} setFilter={setFilter} />
 
       {/* List of Services */}
-      <div className="p-0 md:mx-auto md:w-3/5 lg:w-1/2">
+      <div className="p-0 grid grid-cols-1 gap-4 md:grid-cols-2 md:mx-auto ">
         {filteredData.map((item) => (
+          <div   onClick={() =>
+            handleCardClick(item.id)
+          }>
           <DeliveryPersonCard
             key={item.id}
             name={item.name}
@@ -81,8 +88,10 @@ const Services = () => {
             distance={item.distance}
             booked={item.booked}
           />
+          </div>
         ))}
       </div>
+
     </div>
   );
 };

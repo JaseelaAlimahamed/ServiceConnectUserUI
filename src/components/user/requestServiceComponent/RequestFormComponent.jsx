@@ -88,7 +88,7 @@ const ServiceRequestForm = ({ onSubmitForm }) => {
                         {/* Submit Button */}
                         <div className="mt-6">
                             <ButtonComponent
-                                btnWidth={"100%"}
+                                btnWidth={"w-full"}
                                 btnHeight={"3rem"}
                                 label={"Confirm"}
                                 disabled={isSubmitting}

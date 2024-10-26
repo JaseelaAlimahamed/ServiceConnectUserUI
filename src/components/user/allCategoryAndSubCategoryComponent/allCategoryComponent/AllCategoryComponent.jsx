@@ -217,7 +217,7 @@ const AllCategoryComponent = () => {
       setShowAllCategories(true);
     } else {
       console.log(`Category selected: ${categoryName}`);
-      navigate(`/allcategories/${categoryId}`);
+      navigate(`/Subcatogaories/${categoryId}`);
     }
   };
 
@@ -226,12 +226,12 @@ const AllCategoryComponent = () => {
     : categories.slice(0, 10);
 
   return (
-    <div className="bg-light-blue flex items-center justify-center w-full p-2">
+    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <div
         className="grid 
         items-center 
         justify-center 
-        gap-3 
+        gap-5 
         sm:p-6 
         md:p-8 
         lg:p-10 
@@ -241,11 +241,11 @@ const AllCategoryComponent = () => {
         lg:gap-12 
         xl:gap-16 
         grid-cols-3 
-        sm:grid-cols-4 
-        md:grid-cols-5 
-        lg:grid-cols-6 
-        xl:grid-cols-7 
-        2xl:grid-cols-8"
+        sm:grid-cols-3 
+        md:grid-cols-4
+        lg:grid-cols-4
+        xl:grid-cols-6
+        2xl:grid-cols-6"
       >
         {displayedCategories.map((category, index) => (
           <div

@@ -3,7 +3,7 @@ import ComplaintsPageUser from '../../components/user/complaintsPageComponents/C
 
 const ComplaintsPage = () => {
     return (
-        <div>
+        <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
             <ComplaintsPageUser />
         </div>
     )

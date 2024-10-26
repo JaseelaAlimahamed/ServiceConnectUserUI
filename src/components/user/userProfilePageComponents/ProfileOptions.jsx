@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CiUser, CiCreditCard1 } from "react-icons/ci";
 import { PiBellThin } from "react-icons/pi";
 import { HiOutlineShieldCheck } from "react-icons/hi2";
@@ -28,13 +29,13 @@ const ProfileOptions = () => {
         <FaChevronRight />
       </div>
 
-      <div className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
-        <div className="flex items-center">
-          <PiBellThin className="text-xl" />
-          <span className="ml-4 text-lg">Notifications</span>
-        </div>
-        <FaChevronRight />
+      <Link to="/notification-settings" className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
+      <div className="flex items-center">
+        <PiBellThin className="text-xl" />
+        <span className="ml-4 text-lg">Notifications</span>
       </div>
+      <FaChevronRight />
+    </Link>
 
       <div className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
         <div className="flex items-center">

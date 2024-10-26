@@ -1,3 +1,4 @@
+
 // src/services/locationService.js
 
 export const fetchLocationData = async (latitude, longitude) => {
@@ -76,3 +77,4 @@ export const getCurrentLocation = async () => {
       throw error;
   }
 };
+

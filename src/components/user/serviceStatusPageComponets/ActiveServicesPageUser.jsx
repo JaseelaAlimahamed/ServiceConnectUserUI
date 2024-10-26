@@ -37,24 +37,24 @@ const ActiveServicesPageUser = () => {
             const updatedBookings = filteredBookings.filter(booking => booking.id !== selectedBooking.id);
             setFilteredBookings(updatedBookings);
             closeModal();
-            console.log(`Service closed\nBooking_id: ${selectedBooking.id}`);
+            console.log(`Service-closed/Booking_id: ${selectedBooking.id}`);
         }
     };
 
     const handleButtonClick = (booking) => {
-        navigate(`/booking_details/${booking.id}`)
+        navigate(`/service-details/${booking.id}`)
         console.log(`Navigating to booking details page\nBooking_id: ${booking.id}\nProvider_id: ${booking.provider_id}`);
     };
 
     const handleViewClick = (providerId) => {
-        navigate(`/provider_profile/${providerId}`)
+        navigate(`/provider-profile/${providerId}`)
         console.log(`Navigating to provider profile page\nProvider_id: ${providerId}`);
     };
 
     return (
-        <div className='min-h-screen bg-light-gray flex items-center flex-col p-4'>
+        <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
             <StatusTabs activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-full max-w-screen-xl">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 w-full max-w-screen-xl">
                 {filteredBookings.length === 0 ? (
                     <div className="col-span-full text-center p-4">
                         <p className="text-lg font-semibold">No bookings available.</p>

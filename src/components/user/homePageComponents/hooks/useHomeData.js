@@ -29,13 +29,13 @@ const useHomeData = () => {
                         discount: '25% OFF',
                         title: "Today's Special",
                         description: 'Get a Discount for Every Course Order only Valid for Today!',
-                        imgUrl: 'https://via.placeholder.com/1920x400',
+                        imgUrl: 'https://img.freepik.com/free-vector/abstract-black-futuristic-background_361591-1761.jpg?w=826&t=st=1728750012~exp=1728750612~hmac=85df7cffc8e130e5084c2bcb639be71615edba7f90569a8f3e004cee41379fdd',
                     },
                     {
                         discount: '30% OFF',
                         title: 'Holiday Sale',
                         description: "Limited Time Offer for all Courses. Don't Miss Out!",
-                        imgUrl: 'https://via.placeholder.com/1920x400',
+                        imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsvPO8MNLebKGKrEnqEZCcmZGrXxWLoEtiGQ&s',
                     },
                     {
                         discount: '20% OFF',
@@ -116,12 +116,8 @@ const useHomeData = () => {
                     { id: 3, category: 'Electrical', serviceTitle: 'Home Electrical Repairs', price: 3, rating: 4.5, reviews: 970, imgUrl: 'https://via.placeholder.com/240' },
                     { id: 4, category: 'Health', serviceTitle: 'Fitness Coaching', price: 5, rating: 5, reviews: 1500, imgUrl: 'https://via.placeholder.com/240' },
                     { id: 5, category: 'Electrical', serviceTitle: 'Residential Cleaning Services', price: 2.5, rating: 4.2, reviews: 850, imgUrl: 'https://via.placeholder.com/240' },
-                    { id: 6, category: 'Automotive', serviceTitle: 'Car Wash and Detailing', price: 3.5, rating: 4.8, reviews: 1200, imgUrl: 'https://via.placeholder.com/240' },
-                    { id: 7, category: 'Landscaping', serviceTitle: 'Lawn Mowing and Maintenance', price: 2, rating: 4.6, reviews: 2000, imgUrl: 'https://via.placeholder.com/240' },
-                    { id: 8, category: 'Education', serviceTitle: 'Math Tutoring Services', price: 4.5, rating: 4.9, reviews: 230, imgUrl: 'https://via.placeholder.com/240' },
                     { id: 9, category: 'Health', serviceTitle: 'Nutrition Consultation', price: 5, rating: 4.7, reviews: 620, imgUrl: 'https://via.placeholder.com/240' },
                     { id: 10, category: 'Health', serviceTitle: 'Hair Styling and Makeup', price: 4.2, rating: 4.4, reviews: 900, imgUrl: 'https://via.placeholder.com/240' },
-                    { id: 11, category: 'Automotive', serviceTitle: 'Furniture Moving Services', price: 3, rating: 4.1, reviews: 1400, imgUrl: 'https://via.placeholder.com/240' },
                     { id: 12, category: 'Electrical', serviceTitle: 'Computer Repair and Maintenance', price: 4, rating: 4.3, reviews: 510, imgUrl: 'https://via.placeholder.com/240' }
                 ]);
 

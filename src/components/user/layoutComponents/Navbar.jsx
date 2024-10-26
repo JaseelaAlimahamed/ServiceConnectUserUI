@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
 import { FaSignOutAlt, FaSignInAlt, FaBars, FaTimes, FaCrown } from 'react-icons/fa';
 import { AiOutlineLeft } from 'react-icons/ai';
+
 import Sidebar from './Sidebar';
 import NotificationButton from './NotificationButton';
 import pageConfig from '../../../utils/navbarUtils';
@@ -22,19 +24,29 @@ const Navbar = () => {
         setIsSidebarOpen(false);
     };
 
-    const currentPage = pageConfig[location.pathname]
+    const currentPage = pageConfig[location.pathname];
+
+
+    const pathParts = location.pathname.split('/');
+    const pathName = pathParts[1] || 'Home';
+    const formattedPathName = pathName
+        .charAt(0)
+        .toUpperCase() + pathName.slice(1).toLowerCase().replace(/-/g, ' ');
+
 
     const isHomePage = location.pathname === '/home';
 
     const handleBackClick = () => {
         navigate('/home');
     };
-
+const handleOnClickNotification = () => {
+navigate('/notification');
+}
     return (
-        <div className='mb-20'>
+        <div className="mb-16">
             <nav className="bg-dark-gray z-50 fixed top-0 left-0 w-full">
-                <div className="mx-auto px-2 lg:px-20">
-                    <div className="relative flex h-20 items-center justify-between">
+                <div className="mx-auto px-2 lg:px-10">
+                    <div className="relative flex h-16 items-center justify-between">
 
                         {/* Mobile menu button / Back button */}
                         <div className="flex items-center sm:hidden">
@@ -55,28 +67,32 @@ const Navbar = () => {
                                     {isSidebarOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
                                 </button>
                             )}
-                            <h1 className="ml-4 text-white font-semibold text-xl">{currentPage.title}</h1>
+                            <h1 className="ml-4 text-white font-semibold text-xl">
+                                  {formattedPathName}
+                            </h1>
                         </div>
 
                         {/* Logo and Company Name for larger screens */}
                         <div className="hidden sm:flex flex-1 items-center justify-start">
                             <img className="h-8" src="/vite.svg" alt="Company Logo" />
-                            <span className="ml-3 text-white font-semibold text-xl">{currentPage.title}</span>
+                            <span className="ml-3 text-white font-semibold text-xl">
+                            {formattedPathName}
+                            </span>
                         </div>
 
                         {/* Profile and Authenticated Views */}
                         <div className="flex items-center pr-2 sm:ml-6">
                             {isAuthenticated && (
-                                <NotificationButton />
+                                <NotificationButton onClick={handleOnClickNotification} />
                             )}
 
                             {isAuthenticated && (
-                                <div className={`relative flex items-center `}>
+                                <div className="relative flex items-center">
                                     <div className="flex flex-col items-center mr-4 ml-1 hidden sm:block">
                                         <span className="text-rose-500 text-lg text-center">
                                             {profileName}
                                         </span>
-                                        <span className="text-yellow-500 text-xs  sm:block text-center">
+                                        <span className="text-yellow-500 text-xs sm:block text-center">
                                             Prime Member <FaCrown className="inline text-xs" />
                                         </span>
                                     </div>

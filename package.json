@@ -13,10 +13,9 @@
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.7",
     "formik": "^2.4.6",
-
     "jwt-decode": "^2.2.0",
-
     "react": "^18.3.1",
+    "react-datepicker": "^7.4.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "react-modal": "^3.16.1",
@@ -35,6 +34,8 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "tailwindcss": "^3.4.10",
-    "vite": "^5.4.1"
+
+    "vite": "^5.4.9"
+
   }
 }
