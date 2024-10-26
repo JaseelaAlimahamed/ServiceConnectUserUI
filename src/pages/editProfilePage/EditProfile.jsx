@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import ProfilePicture from '../../components/user/profileEditComponents/ProfilePicture';
 import ProfileName from '../../components/user/profileEditComponents/ProfileName';
 import DOB from '../../components/user/profileEditComponents/DOB';
 import PhoneNumber from '../../components/user/profileEditComponents/PhoneNumber';
 import UserProfession from '../../components/user/profileEditComponents/UserProfession';
 import UpdateButton from '../../components/user/profileEditComponents/UpdateButton';
+=======
+import ProfilePicture from '../../components/user/EditProfileComponents/ProfilePicture';
+import ProfileName from '../../components/user/EditProfileComponents/ProfileName';
+import DOB from '../../components/user/EditProfileComponents/DOB';
+import PhoneNumber from '../../components/user/EditProfileComponents/PhoneNumber';
+import UserProfession from '../../components/user/EditProfileComponents/UserProfession';
+import UpdateButton from '../../components/user/EditProfileComponents/UpdateButton';
+>>>>>>> 46c35e6 (Merge pull request #92 from JaseelaAlimahamed/shreejithsDevelopment)
 
 const EditProfile = () => {
   const [profile, setProfile] = useState({
@@ -29,7 +38,11 @@ const EditProfile = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="flex flex-col  items-center p-4 sm:p-6 bg-light-gray h-screen">
+=======
+    <div className="flex flex-col items-center p-4 sm:p-6 bg-edit-main h-screen">
+>>>>>>> 46c35e6 (Merge pull request #92 from JaseelaAlimahamed/shreejithsDevelopment)
       <ProfilePicture />
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <ProfileName profile={profile} handleInputChange={handleInputChange} />
