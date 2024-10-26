@@ -11,7 +11,7 @@ const ProfileName = ({ profile, handleInputChange }) => {
           value={profile.fullName}
           onChange={handleInputChange}
           placeholder="Full Name"
-          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-custom-input"
+          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-xl"
         />
       </div>
 
@@ -23,7 +23,7 @@ const ProfileName = ({ profile, handleInputChange }) => {
           value={profile.nickName}
           onChange={handleInputChange}
           placeholder="Nick Name"
-          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-custom-input"
+          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-xl"
         />
       </div>
     </>

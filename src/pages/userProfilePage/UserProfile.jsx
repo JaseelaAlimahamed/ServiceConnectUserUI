@@ -2,6 +2,9 @@ import React from 'react'
 import ProfileInfo from '../../components/user/userProfilePageComponents/ProfileInfo'
 import ProfileOptions from '../../components/user/userProfilePageComponents/ProfileOptions'
 
+
+
+
 const UserProfile = () => {
   return (
     <div className="bg-light-gray p-4 min-h-screen flex justify-center items-center px-4">

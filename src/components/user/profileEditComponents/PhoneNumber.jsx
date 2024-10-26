@@ -9,7 +9,7 @@ const PhoneNumber = ({ profile, handleInputChange }) => {
           name="countryCode"
           value={profile.countryCode}
           onChange={handleInputChange}
-          className="bg-dark2-gray text-white font-semibold p-3 pr-8 rounded-l-lg appearance-none cursor-pointer"
+          className="bg-dark-gray text-white font-semibold p-3 pr-8 rounded-l-lg shadow-xl appearance-none cursor-pointer"
         >
           <option value="+91">🇮🇳 +91</option>
           <option value="+1">🇺🇸 +1</option>
@@ -29,7 +29,7 @@ const PhoneNumber = ({ profile, handleInputChange }) => {
         value={profile.phone}
         onChange={handleInputChange}
         placeholder="Phone Number"
-        className="input-field bg-primary text-field-text font-semibold p-3 rounded-r-lg w-full shadow-custom-input flex-grow"
+        className="input-field bg-primary text-field-text font-semibold p-3 rounded-r-lg w-full shadow-xl flex-grow"
       />
     </div>
   );

@@ -21,11 +21,11 @@ const ProfilePicture = () => {
       <label className="absolute bottom-0 right-0 bg-primary p-1 rounded-lg cursor-pointer border border-light-gray">
         <input 
           type="file" 
-          className="hidden" 
+          className="hidden shadow-xl" 
           onChange={handleImageChange} 
         />
         <img
-          className="w-6 h-6"
+          className="w-6 h-6 shadow-xl"
           src={EditPic} 
           alt="Edit"
         />

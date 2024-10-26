@@ -16,7 +16,9 @@ const ProfileOptions = () => {
       <div className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
         <div className="flex items-center">
           <CiUser className="text-xl" />
-          <span className="ml-4 text-lg">Edit Profile</span>
+          <Link to="/edit-profile">
+            <span className="ml-4 text-lg">Edit Profile</span>
+          </Link>
         </div>
         <FaChevronRight />
       </div>
@@ -24,18 +26,18 @@ const ProfileOptions = () => {
       <div className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
         <div className="flex items-center">
           <CiCreditCard1 className="text-xl" />
-          <span className="ml-4 text-lg">Payment Option</span>
+          <Link to="/transactions"> <span className="ml-4 text-lg">My Transactions</span></Link>
         </div>
         <FaChevronRight />
       </div>
 
       <Link to="/notification-settings" className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
-      <div className="flex items-center">
-        <PiBellThin className="text-xl" />
-        <span className="ml-4 text-lg">Notifications</span>
-      </div>
-      <FaChevronRight />
-    </Link>
+        <div className="flex items-center">
+          <PiBellThin className="text-xl" />
+          <Link to="/notification"> <span className="ml-4 text-lg">Notifications</span></Link>
+        </div>
+        <FaChevronRight />
+      </Link>
 
       <div className="flex items-center justify-between text-dark-gray cursor-pointer hover:text-secondary transition duration-300">
         <div className="flex items-center">

@@ -24,7 +24,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, isAuthenticated, onLogout }) =>
     return (
         <div className="flex">
     <div
-        className={`fixed top-16 h-full left-0 min-w-1/6 bg-sidebar-gray text-white transform transition-transform sm:translate-x-0 lg:w-1/6 z-40 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto scrollbar-hide`} // Added scroll
+        className={`fixed top-16 h-full left-0 min-w-1/6 bg-dark-gray text-white transform transition-transform sm:translate-x-0 lg:w-1/6 z-40 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto scrollbar-hide`} // Added scroll
     >
         <ul className="p-2 mt-5 space-y-3">
             {links.map((link) => (

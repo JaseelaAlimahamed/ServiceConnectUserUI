@@ -40,6 +40,7 @@ import ComplaintsPageUser from '../components/user/complaintsPageComponents/Comp
 import ReviewSubmitPage from '../components/user/reviewSubmitComponents/ReviewSubmitPage'
 
 import UserProfile from "../pages/userProfilePage/UserProfile"
+import EditProfile from "../pages/editProfilePage/EditProfile"
 import NotificationSettingsPage from "../pages/NotificationSettingsPage/NotificationSettingsPage";
 
 import HelpCenterPage from "../pages/helpCenterPage/helpCenterPage";
@@ -82,6 +83,8 @@ function UserRoutes() {
           <Route path='/home' element={<Home />} />
 
           <Route path="/profile" element={<UserProfile />} />
+
+          <Route path="/edit-profile" element={<EditProfile/>} />
 
           <Route path="/categories" element={<AllCategoryComponent />} />
 

@@ -9,7 +9,7 @@ const UserProfession = ({ profile, handleInputChange }) => {
           name="gender"
           value={profile.gender}
           onChange={handleInputChange}
-          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-custom-input"
+          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-xl"
         >
           <option value="">Select Gender</option>
           <option value="male">Male</option>
@@ -26,7 +26,7 @@ const UserProfession = ({ profile, handleInputChange }) => {
           value={profile.studentStatus}
           onChange={handleInputChange}
           placeholder="Student"
-          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-custom-input"
+          className="input-field bg-primary text-field-text font-semibold p-3 rounded-lg w-full shadow-xl"
         />
       </div>
     </>
