@@ -7,7 +7,7 @@ const ComplaintButton = () => {
   const navigate = useNavigate(); // Hook for navigation
 
   const handleButtonClick = () => {
-    navigate(`/complaintform/${id}`); // Navigating to /complaintform/:id
+    navigate(`/complaint-submit/${id}`); // Navigating to /complaintform/:id
   };
 
   return (

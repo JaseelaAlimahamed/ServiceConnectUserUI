@@ -10,7 +10,7 @@ const UserLayout = () => {
 
     return (
         <div className="flex">
-            <div className={`flex-grow transition-all ${showNavbar ? 'sm:ml-44 lg:ml-40 lgm:ml-40 lgx:ml-44 ml-auto' : 'ml-0'}`}>
+            <div className={`flex-grow transition-all ${showNavbar ? 'sm:ml-44 lg:ml-44 lgm:ml-40 lgx:ml-44 xl:ml-44 ml-auto' : 'ml-0'}`}>
                 {showNavbar && <Navbar />}
                 <div>
                     <Outlet />

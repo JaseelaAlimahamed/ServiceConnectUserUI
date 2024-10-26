@@ -16,7 +16,7 @@ const serviceProvider = {
     
   };
   return (
-    <div className='flex justify-center'><RequestService serviceProvider={serviceProvider} handleSubmit={handleFormSubmit}/></div>
+    <div className='flex  justify-center'><RequestService serviceProvider={serviceProvider} handleSubmit={handleFormSubmit}/></div>
   )
 }
 

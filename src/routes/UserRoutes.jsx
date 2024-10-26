@@ -96,7 +96,7 @@ function UserRoutes() {
 
           <Route path="/booking-details/:id" element={<BookingDetails />} />
 
-          <Route path="/reviews/:id" element={<ReviewSection />} />
+          <Route path="/reviews" element={<ReviewSection />} />
 
           <Route path="/review-submit/:id" element={<ReviewSubmitPage />} />
 
@@ -108,7 +108,7 @@ function UserRoutes() {
 
           <Route path="/complaints" element={<ComplaintsPage />} />
 
-          <Route path="/complaint-submit" element={<ComplaintFormPage />} />
+          <Route path="/complaint-submit/:id" element={<ComplaintFormPage />} />
 
           <Route path="/complaint-form/:id" element={<ComplaintsPageUser />} />
 

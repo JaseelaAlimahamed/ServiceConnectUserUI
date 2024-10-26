@@ -5,6 +5,7 @@ import SubCategoryComponent from '../../components/user/allCategoryAndSubCategor
 
 
 const SubCategoriesPage = () => {
+  
   return (
     <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       {/* ------call header Component------ */}
