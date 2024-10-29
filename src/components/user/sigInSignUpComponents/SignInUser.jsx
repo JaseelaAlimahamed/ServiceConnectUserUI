@@ -3,17 +3,19 @@ import FormComponent from '../../reUsableComponents/FormComponent'; // Importing
 import GoogleLoginButton from './GoogleButtonComponent';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { userLogin } from '../../../services/userSignIn/userLogin';
 
 
 const SignInUser = () => {
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // Define the configurations for the fields in the form
   const fieldConfigs = [
     {
-      name: 'email',
-      type: 'email',
-      placeholder: 'Enter your email',
+      name: 'email' ,
+      type: '',
+      placeholder: 'Enter your email or phone',
       required: true,
     },
     {
@@ -41,14 +43,13 @@ const SignInUser = () => {
 
   // Simulating an API endpoint function for form submission
   const apiEndpoint = async (values) => {
-    try {
-      console.log('Form submitted with values:', values);
-      
-      await new Promise((resolve) => setTimeout(resolve, 500));
+    const { email, password } = values;
 
-      navigate('/otp');
+    try {
+      return await userLogin(email, password, dispatch, navigate);
+
     } catch (error) {
-      console.error('Error occurred during form submission:', error);
+      console.error(error.message);
     }
   };
 
