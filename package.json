@@ -21,7 +21,6 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.2",
     "react-swipeable": "^7.0.1",
-    "serviceconnect-user": "file:",
     "yup": "^1.4.0"
   },
   "devDependencies": {
