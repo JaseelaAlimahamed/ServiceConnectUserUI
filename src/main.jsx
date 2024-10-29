@@ -7,6 +7,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import Modal from "react-modal";
 import App from './App';
 import './index.css';
+import { Provider } from 'react-redux';
+import store from "./store";
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,12 +16,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-
-    <GoogleOAuthProvider clientId={clientId} >
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </GoogleOAuthProvider>
+    <Provider store={store}>
+      <GoogleOAuthProvider clientId={clientId}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </GoogleOAuthProvider>
+    </Provider>
   </React.StrictMode>
-
 );

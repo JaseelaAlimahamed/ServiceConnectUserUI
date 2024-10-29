@@ -69,8 +69,14 @@ const FormComponent = ({
           .oneOf([Yup.ref("password"), null], "Passwords must match");
       } else if (field.placeholder.toLowerCase().includes("email")) {
         schema[field.name] = Yup.string()
-          .email("Invalid email address")
-          .required(`${field.label} is required`);
+        .required(`${field.label} is required`)
+        .test(
+          "email-or-phone",
+          "Must be a valid email or phone number",
+          (value) =>
+            /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) || // Email pattern
+          /^\+[1-9]{1}[0-9]{1,3}[0-9]{7,12}$/.test(value)    // Phone pattern (E.164 format)
+        );
       } else if (field.required) {
         schema[field.name] = Yup.string().required(
           `${field.label} is required`

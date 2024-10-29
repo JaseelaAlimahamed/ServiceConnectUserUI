@@ -23,7 +23,6 @@ import UserLayout from "../layouts/UserLayout";
 
 
 
-
 import BookingsPage from "../pages/userHomePages/BookingsPage";
 import ServicesPage from "../pages/serviceProviderListingPage/ServicesPage"
 import BookingDetails from "../pages/BookingDetailsPages/BookingDetails";
@@ -79,7 +78,7 @@ function UserRoutes() {
           <Route path="/fill-your-profile" element={<AddProfilePage />} />
 
 
-          <Route path='/home' element={<Home />} />
+          <Route path='/home' element={<Home />}/>
 
           <Route path="/profile" element={<UserProfile />} />
 
