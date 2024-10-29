@@ -3,31 +3,35 @@ import { RiSearch2Line } from "react-icons/ri";
 import { fetchSearching } from "../../../services/homeApi/HomeApi";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 
+
 const SearchBar = () => {
 
     const [query, setQuery] = useState(''); // State to store user input
-  const [categories, setCategories] = useState([]); // State to store search results
+  const [results, setResults] = useState([]); // State to store search results
   const [loading, setLoading] = useState(false); // State to track loading
   const [error, setError] = useState(null); // State to track errors
+
+  
 
     // UseEffect to fetch data whenever the query changes
   useEffect(() => {
     if (query.trim() === '') {
-        setCategories([]);  // Reset  list when the input is empty
+      setResults([]);  // Reset  list when the input is empty
       return;
     }
 
     const fetchData = async () => {
-      setLoading(true);
+      
       setError(null);
       try {
         const result = await fetchSearching(query);
-        setCategories(result);  // Update the state with API response
+        setResults(result);  // Update the state with API response
       } catch (err) {
         setError('Failed to fetch ditails Please try again.');
-      } finally {
-        setLoading(false);
+      
+        
       }
+      query?setLoading(true):setLoading(false);
     };
 
     // Debounce search: wait 500ms after the user stops typing
@@ -40,9 +44,10 @@ const SearchBar = () => {
 
   }, [query]);  // Effect is triggered whenever the `query` changes
 
-    console.log(categories) //Search result console
+    console.log(results)
 
     return (
+      <div>
         <div className="flex items-center justify-center mt-4">
             <div className="relative max-w-md w-96 drop-shadow-lg">
                 <RiSearch2Line className="absolute top-0 bottom-0 w-6 h-6 my-auto text-primary left-3" />
@@ -55,6 +60,9 @@ const SearchBar = () => {
                 />
                 <HiOutlineAdjustmentsHorizontal className="absolute top-0 bottom-0 my-auto rounded bg-primary w-9 h-9 text-dark-gray right-3" />
             </div>
+           
+        </div>
+        
         </div>
     );
 };
