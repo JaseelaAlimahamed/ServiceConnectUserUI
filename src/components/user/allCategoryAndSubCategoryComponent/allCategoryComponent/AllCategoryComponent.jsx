@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
@@ -61,9 +59,9 @@ const AllCategoryComponent = () => {
           xl:grid-cols-6
           2xl:grid-cols-6"
       >
-        {displayedCategories.map((category, index) => (
+        {displayedCategories.map((category) => (
           <div
-            key={index}
+            key={category.id}
             onClick={() =>
               handleCategoryClick(category.id, category.title)
             }
@@ -75,7 +73,9 @@ const AllCategoryComponent = () => {
           </div>
         ))}
         {showAllCategories && (
-          <CategoryCardComponent onClick={() => setShowAllCategories(false)} />
+          <button onClick={() => setShowAllCategories(false)} className="bg-blue-500 text-white p-2 rounded mt-4">
+            Show Less
+          </button>
         )}
       </div>
     </div>
