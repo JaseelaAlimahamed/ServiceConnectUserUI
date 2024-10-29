@@ -85,7 +85,7 @@ function UserRoutes() {
 
           <Route path="/categories" element={<AllCategoryComponent />} />
 
-          <Route path="/Subcatogaories/:categoryId" element={<SubCategoriesPage />} />
+          <Route path="/subcategories/:categoryId" element={<SubCategoriesPage />} />
 
           <Route path='/provider-profile/:id' element={<ProviderProfile />} />
 
