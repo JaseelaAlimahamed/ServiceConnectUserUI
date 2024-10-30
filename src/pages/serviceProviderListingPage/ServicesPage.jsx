@@ -1,64 +1,38 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import DeliveryPersonCard from "../../components/user/serviceProviderListingComponents/ServiceDeliveryPersonCard";
-import FilterButtons from "../../components/user/serviceProviderListingComponents/LocationFilterButton"; // Import the FilterButtons component
+import FilterButtons from "../../components/user/serviceProviderListingComponents/LocationFilterButton";
+import serviceProviderListApi from "../../services/serviceProviderList/serviceProviderListApi";
 
 const Services = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Thomas",
-      price: "₹280 - 300",
-      rating: 4.2,
-      reviews: 78,
-      distance: 3,
-      booked: false,
-    },
-    {
-      id: 2,
-      name: "Jacop",
-      price: "₹280 - 300",
-      rating: 3.9,
-      reviews: 12,
-      distance: 4,
-      booked: true,
-    },
-    {
-      id: 3,
-      name: "Thomas",
-      price: "₹280 - 300",
-      rating: 4.2,
-      reviews: 78,
-      distance: 10,
-      booked: false,
-    },
-    {
-      id: 4,
-      name: "Thomas",
-      price: "₹280 - 300",
-      rating: 4.2,
-      reviews: 78,
-      distance: 15,
-      booked: true,
-    },
-  ];
-const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState("all");
 
-  const filteredData = data.filter((item) => {
-    if (filter === "nearby") {
-      return item.distance <= 5;
-    } else if (filter === "10km") {
-      return item.distance <= 10;
-    }
-    return true;
-  });
-  const handleCardClick = (id) => {
-    navigate(`/provider-profile/${id}`); // Adjust the route as needed
+  useEffect(() => {
+    const callData = async () => {
+      try {
+        const response = await serviceProviderListApi(id);
+        console.log("Response data:", response);
+        setData(response);
+      } catch (err) {
+        console.error("Error fetching service providers:", err);
+      }
+    };
+
+    callData();
+  }, [id]);
+
+  const handleCardClick = (providerId) => {
+    navigate(`/provider-profile/${providerId}`);
   };
 
   return (
-    <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
+    <div className="p-4 sm:p-6 
+          md:p-8 
+          lg:p-10 
+          xl:p-12 bg-light-gray min-h-screen ml-12">
       {/* Location and Open Request */}
       <div className="bg-light-gray p-4">
         <div className="flex items-center gap-2">
@@ -74,24 +48,20 @@ const navigate = useNavigate();
       <FilterButtons filter={filter} setFilter={setFilter} />
 
       {/* List of Services */}
-      <div className="p-0 grid grid-cols-1 gap-4 md:grid-cols-2 md:mx-auto ">
-        {filteredData.map((item) => (
-          <div   onClick={() =>
-            handleCardClick(item.id)
-          }>
-          <DeliveryPersonCard
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            rating={item.rating}
-            reviews={item.reviews}
-            distance={item.distance}
-            booked={item.booked}
-          />
+      <div className="p-0 grid grid-cols-1 gap-4 md:grid-cols-2 md:mx-auto">
+        {data.map((item) => (
+          <div key={item.id} onClick={() => handleCardClick(item.id)}>
+            <DeliveryPersonCard
+              name={item.full_name}
+              price={item.price}
+              rating={item.rating}
+              // reviews={item.reviews}
+              // distance={item.distance}
+              // booked={item.booked}
+            />
           </div>
         ))}
       </div>
-
     </div>
   );
 };
