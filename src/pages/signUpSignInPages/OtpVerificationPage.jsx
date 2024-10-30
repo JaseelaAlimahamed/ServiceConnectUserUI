@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import OTPComponent from "../../components/user/sigInSignUpComponents/OTPComponent";
 import ModalComponent from "../../components/reUsableComponents/ModalComponent"; 
 import AllowLocationComponent from "../../components/user/sigInSignUpComponents/locationComponents/AllowLocationComponent";
+import { verifyOTP } from "../../services/UserLoginApis/register";
 
 const OTPPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,18 +21,6 @@ const OTPPage = () => {
         }
     };
 
-    // Dummy async function to simulate OTP verification instead of api call
-    const verifyOTP = async (otpValue) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (otpValue === "1234") {
-                    resolve("OTP verified successfully");
-                } else {
-                    reject("Invalid OTP");
-                }
-            }, 1000);
-        });
-    };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -41,9 +30,7 @@ const OTPPage = () => {
 
     return (
         <div>
-         
-
-
+        
             <div className="min-h-screen bg-light-gray flex items-center justify-center">
 
                 {/* OTPComponent handles the OTP submission */}
