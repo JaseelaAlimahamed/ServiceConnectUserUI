@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from '../../../services/userSignIn/userLogin';
 
 
+
 const SignInUser = () => {
   const [loginMessage, setLoginMessage] = useState(null)
 
@@ -51,9 +52,14 @@ const SignInUser = () => {
     const { email, password } = values;
 
     try {
-     await userLogin(email, password, dispatch, navigate, setLoginMessage)
-
+      await userLogin(email, password, dispatch);
+      setLoginMessage("Logged In Successfully!");
+      setTimeout(() => {
+        navigate("/home");
+      }, 1000);
+      
     } catch (error) {
+      setLoginMessage("Invalid email or password!");
       console.error(error.message);
     }
   };
