@@ -32,19 +32,43 @@ const FormComponent = ({
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+      let finalValues;
 
+      if (profile) {
+        // Object for fill in profile
+        finalValues = {
+          user: {
+            full_name: values.full_name,
+            address: values.address,
+            housename: values.housename,
+            landmark: values.landmark,
+            pin_code: values.pin_code,
+            district: Number(values.district),
+            state: Number(values.state),
+            email: values.email,
+            phone_number: values.phone_number,
+          },
+          profile_image: profileImage ? profileImage : null,
+          date_of_birth: values.date_of_birth || null,
+          gender: values.gender || "",
+          accepted_terms: true,
+        };
 
-      const finalValues = {
-        ...values, 
-        profileImage: profileImage ? profileImage : '', 
-      };
+        await apiEndpoint(finalValues);
 
-      await apiEndpoint(finalValues);
+      } else {
 
-      resetForm(); 
+        // Object for login
+        finalValues = {
+          ...values,
+        };
 
+        await apiEndpoint(finalValues);
+
+        resetForm();
+      }
     } catch (error) {
-      console.error('Error submitting the form:', error);
+      console.error("Error submitting the form:", error);
     } finally {
       setSubmitting(false); // Stop submitting state
     }

@@ -3,7 +3,7 @@ import { login } from "../../redux/authSlice";
 
 
 
-export const userLogin = async (emailorphone, password, dispatch, navigate) => {
+export const userLogin = async (emailorphone, password, dispatch) => {
   const LOGIN_URL = '/customer/login/';
 
   const payload = {email_or_phone: emailorphone, password: password}
@@ -14,9 +14,10 @@ export const userLogin = async (emailorphone, password, dispatch, navigate) => {
 
     console.log("Login Success")
     dispatch(login({ token }));
-    navigate("/home");
+    return token;
 
   } catch (error) {
     console.error(error.response?.data || "Login Failed", error.message);
+    throw new Error("Invalid email or password!"); 
   }
 };
