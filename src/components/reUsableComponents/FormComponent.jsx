@@ -35,7 +35,9 @@ const FormComponent = ({
     try {
       let finalValues;
 
+
       if (type === "profileUpdate") {
+
         // Object for fill in profile
         finalValues = {
           user: {
@@ -54,6 +56,7 @@ const FormComponent = ({
           gender: values.gender || "",
           accepted_terms: true,
         };
+
         
         await apiEndpoint(finalValues);
 
@@ -65,6 +68,7 @@ const FormComponent = ({
         };
 
         await apiEndpoint(finalValues);
+
 
         resetForm();
       }
