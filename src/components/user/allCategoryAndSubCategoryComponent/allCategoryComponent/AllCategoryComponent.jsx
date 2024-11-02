@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
 import { fetchCategories } from "../../../../services/categories/categoriesApi";
+import NoImage from "../../../../assets/NoImage.jpg";
 
 const AllCategoryComponent = () => {
   const [categories, setCategories] = useState([]);
@@ -67,7 +68,7 @@ const AllCategoryComponent = () => {
             }
           >
             <CategoryCardComponent
-              categoryImage={category.image || "default-image-url.jpg"}
+              categoryImage={category.image || NoImage}
               categoryName={category.title}
             />
           </div>

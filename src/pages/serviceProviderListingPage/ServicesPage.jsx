@@ -3,12 +3,19 @@ import { useNavigate, useParams } from "react-router-dom";
 import DeliveryPersonCard from "../../components/user/serviceProviderListingComponents/ServiceDeliveryPersonCard";
 import FilterButtons from "../../components/user/serviceProviderListingComponents/LocationFilterButton";
 import serviceProviderListApi from "../../services/serviceProviderList/serviceProviderListApi";
+import NoImage from '../../assets/NoImage.jpg';
 
 const Services = () => {
   const [data, setData] = useState([]);
+  const [popUp, setPopup] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
   const [filter, setFilter] = useState("all");
+
+  const toCategories = () => {
+    setPopup(false);
+    navigate("/categories");
+  };
 
   useEffect(() => {
     const callData = async () => {
@@ -29,39 +36,54 @@ const Services = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 
-          md:p-8 
-          lg:p-10 
-          xl:p-12 bg-light-gray min-h-screen ml-12">
-      {/* Location and Open Request */}
-      <div className="bg-light-gray p-4">
+    <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen ml-12">
+      {/* Location and Open Request Section */}
+      <div className="bg-light-gray p-4 mb-4">
         <div className="flex items-center gap-2">
           <span>[Location name]</span>
           <span className="text-sm text-blue-500 cursor-pointer">✎</span>
         </div>
-        <button className="mt-2 w-full py-2 bg-dark-gray text-primary rounded-3xl">
+        <button className="mt-2 w-full py-2 bg-dark-gray text-primary rounded-2xl">
           Open Request (Request to Random Accounts)
         </button>
       </div>
 
-      {/* Use the FilterButtons component */}
+      {/* Filter Buttons */}
       <FilterButtons filter={filter} setFilter={setFilter} />
 
-      {/* List of Services */}
-      <div className="p-0 grid grid-cols-1 gap-4 md:grid-cols-2 md:mx-auto">
-        {data.map((item) => (
-          <div key={item.id} onClick={() => handleCardClick(item.id)}>
-            <DeliveryPersonCard
-              name={item.full_name}
-              price={item.price}
-              rating={item.rating}
-              // reviews={item.reviews}
-              // distance={item.distance}
-              // booked={item.booked}
-            />
+      {/* List of Services or No Data Message */}
+      {data.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {data.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => handleCardClick(item.id)}
+              className="cursor-pointer"
+            >
+              <DeliveryPersonCard
+                name={item.full_name}
+                price={item.price}
+                rating={item.rating}
+                img={item.profile_image || NoImage}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        popUp && (
+          <div className="flex flex-col items-center justify-center h-full">
+            <p className="text-xl font-semibold text-center mb-4">
+              No Service Provider Available for this SubCategory
+            </p>
+            <button
+              onClick={toCategories}
+              className="bg-secondary text-white px-4 py-2 rounded-full w-1/3 sm:w-1/4 lg:w-1/5"
+            >
+              OK
+            </button>
           </div>
-        ))}
-      </div>
+        )
+      )}
     </div>
   );
 };
