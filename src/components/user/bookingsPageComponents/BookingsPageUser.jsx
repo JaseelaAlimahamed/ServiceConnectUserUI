@@ -68,13 +68,13 @@ const BookingsPageUser = () => {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 w-full max-w-screen-xl">
-                    {bookingsData.map((booking) => {
+                    {bookingsData.map((booking,index) => {
                         const mappedStatus = mapStatus(booking.acceptance_status); 
                         const { text: buttonText, disabled: buttonDisabled } = getButtonDetails(mappedStatus);
 
                         return (
                             <BookingsCard
-                                key={booking.id} 
+                                key={index} 
                                 serviceTitle={booking.title}
                                 customerName={booking.providerName}
                                 status={mappedStatus}

@@ -9,7 +9,7 @@ import InvoiceSummary from '../../components/user/BookingDetailsComponents/Invoi
 import CompletePaymentButton from '../../components/user/BookingDetailsComponents/CompletePaymentButton';
 import ComplaintButton from '../../components/user/BookingDetailsComponents/ComplaintButton'; 
 import axios from 'axios';
-import { serviceRequestInvoice } from '../../services/userApi/UserApi';
+import { serviceRequestInvoice } from '../../services/userApiStore/UserApiStore';
 
 
 const ActiveServiceDetails = () => {
