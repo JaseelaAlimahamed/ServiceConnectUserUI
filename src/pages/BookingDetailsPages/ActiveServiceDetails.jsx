@@ -8,7 +8,6 @@ import CompleteButton from '../../components/user/BookingDetailsComponents/Compl
 import InvoiceSummary from '../../components/user/BookingDetailsComponents/InvoiceSummary'; 
 import CompletePaymentButton from '../../components/user/BookingDetailsComponents/CompletePaymentButton';
 import ComplaintButton from '../../components/user/BookingDetailsComponents/ComplaintButton'; 
-import axios from 'axios';
 import { serviceRequestInvoice } from '../../services/userApiStore/UserApiStore';
 
 
@@ -23,23 +22,9 @@ const ActiveServiceDetails = () => {
     useEffect(() => {
         const fetchServiceDetails = async () => {
 
-            // const url = 'http://127.0.0.1:8000/customer/service-request-invoice/';
-            // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwMzk1NDk0LCJpYXQiOjE3MzAzOTM2OTQsImp0aSI6IjI2ZjE0MmQwZWI2NjRjMGE4MWZkMWM4ZGE1NjYzNjA5IiwidXNlcl9pZCI6N30.Nl6q_zbJxQwMubLggD3JMKJHJAJbmN_EjHhOBWv6eRo';
-        
-            // const requestBody = {
-            //     service_request_id: id, //change to 'id'
-            // };
 
             try {
                 
-                // const response = await axios.post(url, requestBody, {
-                //     headers: {
-                //     'Content-Type': 'application/json',
-                //     'Authorization': `Bearer ${token}`,
-                //     },
-                // });
-                // setBookingDetails(response.data);
-
                 const response =await serviceRequestInvoice(id);
                 setBookingDetails(response)
             } catch (error) {
@@ -64,36 +49,8 @@ const ActiveServiceDetails = () => {
         jobTitle: 'Electrification'
     };
 
-    // const response={
-    //     "service_request": {
-    //         "title": "tty",
-    //         "service": "food delivery",
-    //         "work_status": "completed",
-    //         "request_date": "2024-10-20T09:44:19.746525Z",
-    //         "availability_from": "2024-10-05T14:30:00Z",
-    //         "availability_to": "2024-10-06T14:30:00Z",
-    //         "additional_notes": "service needed ",
-    //         "image": null,
-    //         "booking_id": "eadc699ffbf749e2b158ba76989839ad"
-    //     },
-    //     "invoice": {
-    //         "invoice_ID": 8,
-    //         "appointment_date": "2024-11-01T14:00:00Z",
-    //         "quantity": 1,
-    //         "price": 300.0,
-    //         "total_amount": 300.0,
-    //         "additional_requirements": "Need extra care for the service",
-    //         "payment_status": "partially_paid"
-    //     }
-    // }
-
-    //   const {image, booking_id, title, additional_notes, availability_from, availability_to, work_status } = response.service_request;
-    //   const description = `Service: ${response.service_request.service}. Notes: ${additional_notes}`;
-    //   const invoice = response.invoice || null;
-    //   const {payment_status} = response.invoice ||{};
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+    if (loading) return <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">Loading...</div>;
+    if (error) return <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">{error}</div>;
 
     const { service_request } = bookingDetails;
     if (!service_request) return <div>No data available</div>;
@@ -118,7 +75,7 @@ const ActiveServiceDetails = () => {
                     <InvoiceSummary invoice={invoice} />
                     <CompletePaymentButton onClick={handleAcceptPayClick} payment_status={payment_status}/>
                     <ComplaintButton />
-                </>
+                </> 
             )}
         </div>
     );
