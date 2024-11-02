@@ -1,6 +1,10 @@
 //    localStorage.setItem(authtoken)
 const authtoken =
+<<<<<<< HEAD
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNjIyNTAyLCJpYXQiOjE3MzA1MzYxMDIsImp0aSI6IjcwNzVjZDFhMWFmZjRkM2ViZjI5ODdmNTZkNGYyOTgzIiwidXNlcl9pZCI6N30.M-BUhSsvWFROuPzsSCV0GPuZGTFmvfCbp4eEhcltgao"
+=======
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNTI1MDIzLCJpYXQiOjE3MzA1MjMyMjMsImp0aSI6IjY2YjhjMzM2MWI1YjQ3YThhYjY1MGRmMWZkYjUxY2JmIiwidXNlcl9pZCI6N30.ilLvGm6dJsPcrK1ut9QR3CdjE1u8Kl6qbtavkLbbz-w"
+>>>>>>> 8c3a06e (token)
 //Api is ok
 export async function viewRequestUser() {
   // Retrieve token from local storage (or other storage)
