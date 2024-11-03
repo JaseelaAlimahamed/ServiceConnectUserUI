@@ -14,41 +14,26 @@ import noImage from "../../assets/Noimage.jpg";
 
 const ProviderProfile = () => {
   const navigate = useNavigate();
-  const id = useParams().id;
-  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getServiceProviderDetails = async () => {
       try {
-        const response = await fetchServiceProviderDetails();
+        const response = await fetchServiceProviderDetails(id);
         setData(response);
       } catch (error) {
-        console.log("Error fetching provider details:", error);
+        console.error("Error fetching provider details:", error);
+      } finally {
+        setLoading(false);
       }
     };
-
     getServiceProviderDetails();
-  }, []);
+  }, [id]);
 
-  const {
-    profileData,
-    aboutDescription,
-    servicesData,
-    reviewsData,
-    imagesData,
-    videosData,
-    loading,
-    error,
-  } = useProviderProfileData();
-
-  const handleBookService = () => {
-    console.log("Book service clicked");
-    navigate(`/request-service/${id}`);
-  };
-
-  const handleChatClick = () => {
-    console.log("Chat button clicked");
-  };
+  const handleBookService = () => navigate(`/request-service/${id}`);
+  const handleChatClick = () => console.log("Chat button clicked");
 
   if (loading) {
     return (
@@ -58,42 +43,38 @@ const ProviderProfile = () => {
     );
   }
 
-  if (error) {
-    return (
-      <div className="mb-3 bg-gray-200">
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
+    <div className="bg-light-gray min-h-screen lg:ml-24 ">
       <ProfilePic
         imageUrl={data.imageUrl || noImage}
         altText={`${data.full_name || "Profile"}'s Profile Picture`}
         onChatClick={handleChatClick}
       />
-      <div className="mx-4 mt-16 md:mx-10 gap-2">
+      <div className="mt-16 pb-4 mx-4 md:mx-10 space-y-6">
         <ProfileCard
           name={data.full_name}
           servicesListed={data.services?.length || 0}
           reviews={data.reviews?.length || 0}
-          mediaCount={0}
+          mediaCount={(data.images?.length || 0) + (data.videos?.length || 0)}
         />
-        <AboutSection description={data.about} />
-        <ServicesSection services={data.services} />
-        {data.reviews && data.reviews.length > 0 ? (
-          <ReviewsSection reviews={data.reviews} /> 
+        
+        <AboutSection description={data.about || "No information available"} />
+        
+        <ServicesSection services={data.services || []} />
+        
+        {data.reviews?.length ? (
+          <ReviewsSection reviews={data.reviews} />
         ) : (
-          <div className="bg-white my-5 px-5 py-2 rounded-lg">
-            <h1 className="text-xl font-bold">No reviews</h1>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold">No reviews available</h2>
           </div>
         )}
-        {data.videos && data.videos.length > 0 ? (
-          <MediaGrid title="Images" mediaItems={imagesData} type="image" />
+        
+        {(data.images?.length > 0 || data.videos?.length > 0) ? (
+          <MediaGrid title="Media" mediaItems={[...data.images, ...data.videos]} type="media" />
         ) : (
-          <div className="bg-white my-5 px-5 py-2 rounded-lg">
-            <h1 className="text-xl font-bold">No videos and images</h1>
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold">No videos or images available</h2>
           </div>
         )}
 

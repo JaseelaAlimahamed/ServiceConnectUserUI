@@ -42,23 +42,23 @@ const AllCategoryComponent = () => {
     <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
       <div
         className="grid 
-          items-center 
-          justify-center 
-          gap-5 
-          sm:p-6 
-          md:p-8 
-          lg:p-10 
-          xl:p-12 
-          sm:gap-4 
-          md:gap-8 
-          lg:gap-12 
-          xl:gap-16 
-          grid-cols-2 
-          sm:grid-cols-3 
-          md:grid-cols-4
-          lg:grid-cols-4
-          xl:grid-cols-6
-          2xl:grid-cols-6"
+        items-center 
+        justify-center 
+        gap-5 
+        sm:p-6 
+        md:p-8 
+        lg:p-10 
+        xl:p-12 
+        sm:gap-4 
+        md:gap-8 
+        lg:gap-12 
+        xl:gap-16 
+        grid-cols-3 
+        sm:grid-cols-3 
+        md:grid-cols-4
+        lg:grid-cols-4
+        xl:grid-cols-6
+        2xl:grid-cols-6"
       >
         {displayedCategories.map((category) => (
           <div

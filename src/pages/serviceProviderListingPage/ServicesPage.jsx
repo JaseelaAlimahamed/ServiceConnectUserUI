@@ -36,9 +36,9 @@ const Services = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen ml-12">
+    <div className="p-4 sm:p-4 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen">
       {/* Location and Open Request Section */}
-      <div className="bg-light-gray p-4 mb-4">
+      <div className="bg-light-gray p-4 mb-4 lg:ml-12">
         <div className="flex items-center gap-2">
           <span>[Location name]</span>
           <span className="text-sm text-blue-500 cursor-pointer">✎</span>
@@ -53,7 +53,7 @@ const Services = () => {
 
       {/* List of Services or No Data Message */}
       {data.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:ml-12">
           {data.map((item) => (
             <div
               key={item.id}

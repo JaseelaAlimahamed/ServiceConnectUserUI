@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
 import { fetchSubCategories } from "../../../../services/subcategories/subcategoriesApi";
+import NoImage from "../../../../assets/NoImage.jpg";
 
 const SubCategoryComponent = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const SubCategoryComponent = () => {
               className="cursor-pointer transition-transform transform hover:scale-105"
             >
               <CategoryCardComponent
-                categoryImage={subCategory.image}
+                categoryImage={subCategory.image || NoImage}
                 categoryName={subCategory.title}
               />
             </div>
