@@ -1,11 +1,12 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import Navbar from '../components/user/layoutComponents/Navbar';
 
 const UserLayout = () => {
     const location = useLocation();
+    const {uidb64,token} = useParams()
 
-    const pathsWithoutNavbar = ['/sign-up', '/sign-in', '/otp','/forgot-password','/create-new-password','/otp-forgot-password','/fill-your-profile'];
+    const pathsWithoutNavbar = ['/sign-up', '/sign-in', '/otp','/forgot-password','/create-new-password',`/create-new-password/${uidb64}/${token}`,'/fill-your-profile'];
     const showNavbar = !pathsWithoutNavbar.includes(location.pathname);
 
     return (
