@@ -1,87 +1,95 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 import FormComponent from "../../reUsableComponents/FormComponent";
 import ModalComponent from "../../reUsableComponents/ModalComponent";
 import ReusableModal from "../../reUsableComponents/ReModal";
 
-import images from "../../../assets/image.png"
-
+import fillProfile from "../../../services/api/fillProfileAPI";
+import images from "../../../assets/image.png";
 
 const FillYourProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Loading state for the modal
-  const [image, setImage] = useState(''); // State for the modal image
-  const navigate = useNavigate(); // Initialize navigate for redirection
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [formData, setFormData] = useState({}); // State to hold form data
 
+  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
+  // console.log(token)
 
-  // Simulate API call and handle form submission
-  const getApiEndpoint = async (formData) => {
+  // Fetch profile data on component load
+  // useEffect(() => {
+  //   const fetchProfileData = async () => {
+  //     if (!token) {
+  //       console.error("Token is missing");
+  //       return;
+  //     }
+  //     try {
+  //       const profileData = await fillProfile(token);
+  //       setFormData(profileData);
+  //     } catch (error) {
+  //       console.error("Error fetching profile:", error);
+  //       setErrorMessage("Failed to load profile data.");
+  //     }
+  //   };
+
+  //   fetchProfileData();
+  // }, [token]);
+
+  const getApiEndpoint = async (submittedData) => {
     try {
-      console.log('Form Data:', formData);
-
-      setIsLoading(true); // Start loading
-
-      setTimeout(() => {
-        setIsLoading(false); // Stop loading
-        setIsModalOpen(true); // Open the ModalComponent
-
-        // Navigate to homepage after 5 seconds
+      if (!token) {
+        console.error("Token is missing");
+        return;
+      }
+      setIsLoading(true);
+      const response = await fillProfile(token, submittedData, setIsModalOpen , navigate);
+      console.log("API Response:", response);
+     
+        setIsModalOpen(true);
         setTimeout(() => {
           navigate("/home");
         }, 5000);
-      }, 2000);
-
-      return { success: true, data: formData };
+      
     } catch (error) {
-      console.error('Error handling form data:', error);
-      return { success: false, error: error.message };
+      console.error("Error handling form data:", error);
+      setErrorMessage("An unexpected error occurred.");
+    } finally {
+      setIsLoading(false);
     }
-
   };
 
   const handleCloseModal = () => {
-    console.log("Closing modal and redirecting to homepage...");
-    setIsModalOpen(false); // Close the modal
-    navigate('/'); // Redirect to the homepage
+    setIsModalOpen(false);
+    navigate('/');
   };
-
-
-  // useEffect to log modal open/close state
-  useEffect(() => {
-    if (isModalOpen) {
-      console.log("Modal is now open");
-    } else {
-      console.log("Modal is now closed");
-    }
-  }, [isModalOpen]); // This will log whenever `isModalOpen` changes
 
   const headingtext = "Fill Your Profile";
   const buttonConfig = {
     label: "Continue",
     type: "submit",
-    btnWidth: "w-full", // Dynamic button width
+    btnWidth: "w-full",
     btnHeight: "50px",
-    hasIcon:true // Dynamic button height
+    hasIcon: true,
   };
 
   const inputConfig = {
-    inputWidth: "100%", // Dynamic input width
-    inputHeight: "48px", // Dynamic input height
-
+    inputWidth: "100%",
+    inputHeight: "48px",
   };
 
   const fieldConfigs = [
-    { name: "fullname", label: "Full Name", placeholder: "Enter your full name", type: "text", required: true },
+    { name: "full_name", label: "Full Name", placeholder: "Enter your full name", type: "text", required: true },
     { name: "address", label: "Address", placeholder: "Enter your address", type: "text", required: true },
-    { name: "dob", label: "Date of Birth", placeholder: "Enter your date of birth", type: "date", required: true },
+    { name: "date_of_birth", label: "Date of Birth", placeholder: "Enter your date of birth", type: "date", required: true },
     { name: "email", label: "Email", placeholder: "Enter your email", type: "email", required: true },
-    { name: "mobile", label: "Mobile", placeholder: "Enter your mobile number", type: "tel", required: true },
+    { name: "phone_number", label: "Mobile", placeholder: "Enter your mobile number", type: "tel", required: true },
     { name: "gender", label: "Gender", placeholder: "Enter your gender", type: "text", required: false },
     { name: "housename", label: "House Name", placeholder: "Enter your house name", type: "text", required: true },
     { name: "landmark", label: "Landmark", placeholder: "Enter landmark", type: "text", required: true },
-    { name: "pincode", label: "Pincode", placeholder: "Enter your pincode", type: "text", required: true },
+    { name: "pin_code", label: "Pincode", placeholder: "Enter your pincode", type: "text", required: true },
     { name: "district", label: "District", placeholder: "Enter your district", type: "text", required: true },
     { name: "state", label: "State", placeholder: "Enter your state", type: "text", required: true },
   ];
@@ -92,23 +100,24 @@ const FillYourProfile = () => {
         fieldConfigs={fieldConfigs}
         buttonConfig={buttonConfig}
         inputConfig={inputConfig}
-        apiEndpoint={getApiEndpoint} // Call the API endpoint
-       heading={headingtext}
+        apiEndpoint={getApiEndpoint}
+        heading={headingtext}
         profile={true}
+        initialValues={formData} // Pass initial form data to pre-fill form fields
       />
 
       {isModalOpen && (
-        <ModalComponent 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} // Close modal on button click
-          width="400px" // Set desired width
-          height="h-fit" // Set desired height
+        <ModalComponent
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          width="400px"
+          height="h-fit"
         >
           <ReusableModal
             isLoading={isLoading}
-            imageSrc={images} // Pass the image source if needed
+            imageSrc={images}
             heading="Congratulations!"
-            contentLines={["Your account is ready to use."]}
+            contentLines={["Your account is ready to use.", errorMessage]}
             redirectMessage="You will be redirected to the Home Page in a few seconds."
           />
         </ModalComponent>

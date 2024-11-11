@@ -84,7 +84,7 @@ const FormComponent = ({
         schema[field.name] = Yup.string()
           .required(`${field.label} is required`)
           .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@])(?=.*\d)[A-Za-z\d@]{8,}$/,
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%&*])(?=.*\d)[A-Za-z\d@!#$%&*]{8,}$/,
             "Password must contain at least 8 characters, including uppercase, lowercase, number, and @"
           );
       } else if (field.name === "confirmPassword") {
