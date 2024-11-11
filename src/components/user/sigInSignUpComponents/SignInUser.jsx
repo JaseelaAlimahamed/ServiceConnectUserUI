@@ -4,7 +4,7 @@ import GoogleLoginButton from './GoogleButtonComponent';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from '../../../services/userSignIn/userLogin';
+import { userLogin } from '../../../services/UserLoginApis/userLogin';
 
 
 

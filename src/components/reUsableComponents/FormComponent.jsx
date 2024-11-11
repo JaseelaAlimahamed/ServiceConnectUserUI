@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/*eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ const FormComponent = ({
   handleButtonClick,
   onSubmit,
   forgotPassword,
+  type
 }) => {
   const [formData, setFormData] = useState({});
   const [profileImage, setProfileImage] = useState(null); // State to hold selected profile image
@@ -34,7 +35,7 @@ const FormComponent = ({
     try {
       let finalValues;
 
-      if (profile) {
+      if (type === "profileUpdate") {
         // Object for fill in profile
         finalValues = {
           user: {
@@ -53,7 +54,7 @@ const FormComponent = ({
           gender: values.gender || "",
           accepted_terms: true,
         };
-
+        
         await apiEndpoint(finalValues);
 
       } else {

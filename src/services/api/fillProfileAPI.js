@@ -1,9 +1,9 @@
-import axios from "../../api/axios"
+import axios from "../../axios/axios"
 
 
 export const fillProfile = async (token, data) => {
   try {
-    const response = await axios.put('/customer/profile/', data, {
+    const response = await axios.put('customer/profile/', data, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const updatedUser = response.data.user; 
