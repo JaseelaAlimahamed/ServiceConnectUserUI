@@ -1,10 +1,10 @@
-import useHomeData from '../../components/user/homePageComponents/hooks/useHomeData';
-import ServicesSection from '../../components/user/homePageComponents/ServicesSection';
-import SearchBar from '../../components/user/homePageComponents/SearchBar';
-import ServicesCategorySection from '../../components/user/homePageComponents/ServicesCategorySection';
-import TopServiceProviders from '../../components/user/homePageComponents/TopServiceProviders';
-import BannerSlider from '../../components/user/homePageComponents/BannerSlider';
-import BottomNavBar from '../../components/reUsableComponents/BottomNavBar';
+import useHomeData from '../../../components/user/homePageComponents/hooks/useHomeData';
+import ServicesSection from '../../../components/user/homePageComponents/ServicesSection';
+import SearchBar from '../../../components/user/homePageComponents/SearchBar';
+import ServicesCategorySection from '../../../components/user/homePageComponents/ServicesCategorySection';
+import TopServiceProviders from '../../../components/user/homePageComponents/TopServiceProviders';
+import BannerSlider from '../../../components/user/homePageComponents/BannerSlider';
+import BottomNavBar from '../../../components/reUsableComponents/BottomNavBar';
 
 /**
  * Home component that serves as the main page.
@@ -28,7 +28,7 @@ const Home = () => {
                 <p>Loading...</p>
             </div>
         ) : (
-            <div className=" py-4 mt-16 lg:ml-12  lgm:ml-16 md:mt-10 md:px-8 lg:px-12 lgx:ml-32 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[76vw] lgm:max-w-[80vw] lgx:max-w-[78vw] lg:max-w-[78vw] xl:max-w-screen-xl">
+            <div className=" py-4 mt-16 lg:ml-6  lgm:ml-8 md:mt-5 md:px-4 lg:px-6 lgx:ml-16 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[66vw] lgm:max-w-[76vw] lgx:max-w-[78vw] lg:max-w-[78vw] xl:max-w-screen-xl">
 
                 <SearchBar />
                 <BannerSlider bannerData={bannerData} />
@@ -39,7 +39,8 @@ const Home = () => {
             </div>
         )}
     </div>
-    
+
+
     );
 };
 

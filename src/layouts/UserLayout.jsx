@@ -1,23 +1,24 @@
+// MainLayout.js
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../components/user/layoutComponents/Navbar';
 
-const UserLayout = () => {
-    const location = useLocation();
 
-    const pathsWithoutNavbar = ['/sign-up', '/sign-in', '/otp','/forgot-password','/create-new-password','/otp-forgot-password','/fill-your-profile'];
-    const showNavbar = !pathsWithoutNavbar.includes(location.pathname);
-
+const MainLayout = ({ isSidebarOpen }) => {
     return (
-        <div className="flex">
-            <div className={`flex-grow transition-all ${showNavbar ? 'sm:ml-44 lg:ml-44 lgm:ml-40 lgx:ml-44 xl:ml-44 ml-auto' : 'ml-0'}`}>
-                {showNavbar && <Navbar />}
-                <div>
-                    <Outlet />
-                </div>
-            </div>
+      <div className="flex">
+        {/* Sidebar occupies space in desktop view */}
+  
+        {/* Main content section */}
+        <div className={`flex-1 transition-all ${isSidebarOpen ? 'ml-60' : 'ml-0'} sm:ml-60`}>
+          <Navbar />
+          <main className="p-4 bg-light-gray">
+            <Outlet />
+          </main>
         </div>
+      </div>
     );
-};
+  };
+  
 
-export default UserLayout;
+export default MainLayout;
