@@ -71,7 +71,7 @@ function UserRoutes() {
 
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-          <Route path="/create-new-password/:uidb64/:token" element={<CreateNewPasswordPage />} />
+          <Route path="/create-new-password" element={<CreateNewPasswordPage />} />
 
           <Route path="/otp-forgot-password" element={<OtpForgotPasswordPage />} />
 

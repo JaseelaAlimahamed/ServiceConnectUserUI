@@ -69,7 +69,7 @@ const OtpForgotPasswordPage = () => {
             imageSrc={image}
             heading="Congratulations!"
             contentLines={["Your Password is Updated"]}
-            redirectMessage="You will be redirected to the Home Page in a few seconds."
+            redirectMessage="You will be redirected to the Home Page in  a few seconds."
           />
         </ModalComponent>
       )}

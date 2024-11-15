@@ -42,7 +42,7 @@ const OTPComponent = ({ handleOnSubmit }) => {
         <div className="bg-light-gray p-4 max-w-xl w-full  md:max-w-lg sm:h-full lg:max-w-xl lg:p-0 xl:max-w-lg xl:p-4">
             <form
                 onSubmit={handleSubmit}
-                className="bg-light-gray shadow-lg p-4 max-w-xl w-full md:max-w-sm sm:h-full lg:max-w-sm lg:p-0 xl:max-w-sm xl:p-4"
+                className="bg-slate-300 shadow-lg p-4 max-w-xl w-full md:max-w-sm sm:h-full lg:max-w-sm xl:max-w-sm xl:p-4"
             >
                 <div className="flex justify-center space-x-3 mb-6">
                     {otp.map((_, index) => (

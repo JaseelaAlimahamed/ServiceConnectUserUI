@@ -32,7 +32,7 @@ const BookingsCard = ({
       {/* Top section with service title, view button, and close icon */}
       <div className="flex justify-between items-center ml-4">
         <div className="flex items-center space-x-3">
-          <h3 className="text-lg font-bold text-xl text-indigo-900">{serviceTitle}</h3>
+          <h3 className="text-lg font-bold text-indigo-900">{serviceTitle}</h3>
           <span className="text-xs underline font-medium cursor-pointer" onClick={() => onClickView(providerId)}>
             View
           </span>
@@ -84,7 +84,7 @@ const BookingsCard = ({
       {/* Button Component */}
       <div className="mt-4 ml-4 text-center">
         <button
-          className={`${getStatusColor(mappedStatus)} ${buttonDisabled ? 'cursor-not-allowed' : ''} text-white px-4 text-xs shadow-xl rounded-full focus:outline-none focus:ring-0 flex items-center justify-center relative`}
+          className={`${getStatusColor(mappedStatus)} ${buttonDisabled ? 'cursor-not-allowed' : ''} text-white p-5 text-sm  rounded-full focus:outline-none focus:ring-0 flex items-center justify-center relative`}
           style={{ width: '100%' ,height : '25px' }}
           disabled={buttonDisabled}
           onClick={onButtonClick}

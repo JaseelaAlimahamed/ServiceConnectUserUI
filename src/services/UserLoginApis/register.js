@@ -1,5 +1,5 @@
 // api.js
-import api from "../../axios/address";
+import api from "../../axios/axios";
 
 // Register Customer
 export const registerCustomer = async (data) => {

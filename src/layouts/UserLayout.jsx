@@ -4,9 +4,8 @@ import Navbar from '../components/user/layoutComponents/Navbar';
 
 const UserLayout = () => {
     const location = useLocation();
-    const {uidb64,token} = useParams()
 
-    const pathsWithoutNavbar = ['/sign-up', '/sign-in', '/otp','/forgot-password','/create-new-password',`/create-new-password/${uidb64}/${token}`,'/fill-your-profile'];
+    const pathsWithoutNavbar = ['/sign-up', '/sign-in', '/otp','/forgot-password','/otp-forgot-password','/create-new-password','/fill-your-profile'];
     const showNavbar = !pathsWithoutNavbar.includes(location.pathname);
 
     return (
