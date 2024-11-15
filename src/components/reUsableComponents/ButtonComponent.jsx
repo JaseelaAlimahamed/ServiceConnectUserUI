@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const ButtonComponent = ({
@@ -6,11 +5,11 @@ const ButtonComponent = ({
   type = "button",
   disabled = false,
   btnWidth = "w-full",
-  btnHeight="h-auto",
+  btnHeight = "h-auto",
   btnColor = "bg-dark-gray",
   variant = "default",
   onClick,
-  hasIcon , // Added to conditionally render the icon
+  hasIcon, // Added to conditionally render the icon
 }) => {
   const variantClasses = {
     default: `${btnColor} rounded-full shadow-boxshadow-1 mt-2 p-2 text-primary font-default hover:bg-secondary transition-all duration-300 disabled:opacity-50 flex items-center justify-between`,

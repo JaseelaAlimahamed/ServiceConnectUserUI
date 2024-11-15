@@ -128,7 +128,7 @@ function UserRoutes() {
           <Route path="/terms-conditions" element={<TermsAndConditionPage />} />
 
           <Route path="/transactions" element={<TransactionsPage />} />
-
+ 
 
           <Route path="/help-center" element={<HelpCenterPage />} />
 

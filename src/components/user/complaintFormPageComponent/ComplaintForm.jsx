@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'; // For validation
 import ButtonComponent from '../../reUsableComponents/ButtonComponent';
+import { useState } from 'react';
 
 // Yup validation schema
 const validationSchema = Yup.object({
@@ -11,20 +13,63 @@ const validationSchema = Yup.object({
 });
 
 function ComplaintForm({ onSubmit }) {
+  const [apiMessage, setApiMessage] = useState('');
+  const [apiError, setApiError] = useState(false);
   return (
     <Formik
       initialValues={{
+        booking_id: 'eadc699ffbf749e2b158ba76989839ad',
         title: '',
         description: '',
         media: null,
       }}
+      
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        onSubmit(values);
+      onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(true);
+        const formData = new FormData();
+        formData.append('booking_id',values.booking_id);
+        formData.append('subject', values.title);
+        formData.append('description', values.description);
+        // Append images if available:
+        if (values.media) {
+          formData.append('images', values.media);
+        }
+        
+        
+        const token = localStorage.getItem('token');
+        axios.post(`https://learnbudsgvr.pythonanywhere.com/customer/complaint/`, formData, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            console.log('Complaint submitted successfully:', response.data);
+            setApiMessage('Complaint submitted successfully!');
+            setApiError(false);
+            
+          })
+          .catch(error => {
+            console.error('Error submitting complaint:', error.response.data);
+            setApiMessage(error.response?.data?.detail || `${error.response.data.error}`);
+            setApiError(true);
+          })
+          .finally(() => {
+            setSubmitting(false);
+          });
+          return false;
       }}
     >
       {({ setFieldValue }) => (
         <Form className="mt-6 rounded-lg">
+                    {/* Success/Error Message */}
+                    {apiMessage && (
+            <div
+              className={`p-4 mb-4 text-sm rounded-lg ${apiError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}
+            >
+              {apiMessage}
+            </div>
+          )}
           {/* Title Field */}
           <div className="mb-4 bg-white py-2 px-4 shadow-xl border-2 border-gray-500 rounded-lg">
             <label className="block text-gray-700 mb-2  text-sm" htmlFor="title">
@@ -103,9 +148,14 @@ function ComplaintForm({ onSubmit }) {
             btnColor='bg-red-900'
             label={"Confirm"}
             type={"submit"}
+            onClick={onSubmit}
+            
           />
+          
         </Form>
+        
       )}
+
     </Formik>
   );
 }

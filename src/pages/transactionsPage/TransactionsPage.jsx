@@ -8,5 +8,4 @@ const TransactionsPage = () => {
     </div>
   )
 }
-
-export default TransactionsPage
+export default TransactionsPage;
