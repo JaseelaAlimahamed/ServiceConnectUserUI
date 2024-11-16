@@ -35,7 +35,7 @@ const SubCategoryComponent = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen flex flex-col items-center">
+    <div className="p-1 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen flex flex-col items-center">
       {isLoading ? (
         <div className="flex flex-col items-center justify-center h-full text-center">
           <div className="loader mb-4"></div> {/* Optional: Add a spinner/loader */}
@@ -43,8 +43,24 @@ const SubCategoryComponent = () => {
         </div>
       ) : subCategories.length > 0 ? (
         <div
-          className="grid gap-10 sm:gap-6 md:gap-8 lg:gap-10 w-full 
-                      grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6"
+        className="grid 
+        items-center 
+        justify-center 
+        gap-5 
+        sm:p-6 
+        md:p-8 
+        lg:p-10 
+        xl:p-12 
+        sm:gap-4 
+        md:gap-8 
+        lg:gap-12 
+        xl:gap-16 
+        grid-cols-2 
+        sm:grid-cols-1 
+        md:grid-cols-3
+        lg:grid-cols-3
+        xl:grid-cols-4
+        2xl:grid-cols-6"
         >
           {subCategories.map((subCategory) => (
             <div
