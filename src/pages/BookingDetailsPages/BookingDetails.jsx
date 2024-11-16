@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {useParams,useNavigate} from 'react-router-dom';
-import BookingTitleDescription from '../../components/user/BookingDetailsComponents/BookingTitleDescription';
-import AvailabilitySection from '../../components/user/BookingDetailsComponents/AvailabilitySection';
-import RescheduleButton from '../../components/user/BookingDetailsComponents/RescheduleButton';
-import InvoiceSummary from '../../components/user/BookingDetailsComponents/InvoiceSummary';
-import AcceptPayButton from '../../components/user/BookingDetailsComponents/AcceptPayButton';
-import ImageUploader from '../../components/user/BookingDetailsComponents/ImageUploader';
-import ProfileInfo from '../../components/user/BookingDetailsComponents/ProfileInfo';
+import BookingTitleDescription from '../../components/user/bookingDetailsComponents/BookingTitleDescription';
+import AvailabilitySection from '../../components/user/bookingDetailsComponents/AvailabilitySection';
+import RescheduleButton from '../../components/user/bookingDetailsComponents/RescheduleButton';
+import InvoiceSummary from '../../components/user/bookingDetailsComponents/InvoiceSummary';
+import AcceptPayButton from '../../components/user/bookingDetailsComponents/AcceptPayButton';
+import ImageUploader from '../../components/user/bookingDetailsComponents/ImageUploader';
+import ProfileInfo from '../../components/user/bookingDetailsComponents/ProfileInfo';
 
 
 const BookingDetails = () => {

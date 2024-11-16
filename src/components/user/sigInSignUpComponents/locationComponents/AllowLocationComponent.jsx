@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getCurrentLocation, fetchLocationData, fetchCoordinatesFromPlace } from "../../../../services/geolocationService";
+import { getCurrentLocation, fetchLocationData, fetchCoordinatesFromPlace } from "../../../../services/location/geolocationService";
 import ButtonComponent from "../../../reUsableComponents/ButtonComponent";
 
 const AllowLocationComponent = () => {

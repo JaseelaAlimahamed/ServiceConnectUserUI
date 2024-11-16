@@ -1,67 +1,80 @@
-// Function to fetch geolocation based on place name using Nominatim
-export const fetchGeoLocationByPlace = async (place) => {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(place)}&format=json&limit=1`;
-    try {
+
+// src/services/locationService.js
+
+export const fetchLocationData = async (latitude, longitude) => {
+  const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+
+  try {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error('Failed to fetch geolocation for the entered place.');
+          throw new Error('Failed to fetch location data');
       }
       const data = await response.json();
-      if (data.length === 0) {
-        throw new Error('No geolocation found for the entered place.');
-      }
       return {
-        latitude: data[0].lat,
-        longitude: data[0].lon,
-        display_name: data[0].display_name,
+          latitude: latitude,
+          longitude: longitude,
+          city: data.city,
+          state: data.principalSubdivision,
+          country: data.countryName,
       };
-    } catch (error) {
-      console.error('Error fetching geolocation for place:', error);
+  } catch (error) {
+      console.error('Error fetching location data:', error);
       throw error;
-    }
-  };
-  
+  }
+};
 
-  // Function to get the current location using Geolocation API
-  export const getCurrentLocation = () => {
-    return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            resolve({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              accuracy: position.coords.accuracy,
-            });
-          },
-          (error) => {
-            reject(new Error('Failed to retrieve current location.'));
-          }
-        );
+// src/services/locationService.js
+
+export const fetchCoordinatesFromPlace = async (place) => {
+  const apiKey = "AIzaSyAR2fo9JIH2bfm8KmiZym2UAD60OblT4tw"; // Make sure to replace this with your actual API key
+  const url = `https://api.example.com/geocode?address=${encodeURIComponent(place)}&key=${apiKey}`;
+
+  try {
+      const response = await fetch(url);
+      if (!response.ok) {
+          throw new Error("Failed to fetch coordinates for the place");
+      }
+      const data = await response.json();
+
+      // Assuming the API returns an array of results
+      if (data.results && data.results.length > 0) {
+          const { lat, lng } = data.results[0].geometry.location;
+          return { latitude: lat, longitude: lng };
       } else {
-        reject(new Error('Geolocation is not supported by this browser.'));
+          throw new Error("No results found for the given place");
       }
-    });
-  };
-  
+  } catch (error) {
+      console.error("Error fetching coordinates from place:", error);
+      throw error; // Rethrow error to be handled by the caller
+  }
+};
 
-  // Function to fetch City, State, and Country using reverse geocoding with latitude and longitude
-  export const fetchCityStateCountry = async (latitude, longitude) => {
-    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Failed to fetch city, state, and country.');
+
+export const getCurrentLocation = async () => {
+  try {
+      if (navigator.geolocation) {
+          return new Promise((resolve, reject) => {
+              navigator.geolocation.getCurrentPosition(
+                  async (position) => {
+                      const { latitude, longitude } = position.coords;
+                      try {
+                          const locationData = await fetchLocationData(latitude, longitude);
+                          resolve(locationData);
+                      } catch (error) {
+                          reject(error);
+                      }
+                  },
+                  (error) => {
+                      reject(new Error(`Error fetching location: ${error.message}`));
+                  }
+              );
+          });
+      } else {
+          throw new Error("Geolocation is not supported by your browser.");
       }
-      const data = await response.json();
-      return {
-        city: data.address.city || data.address.town || data.address.village || 'Unknown',
-        state: data.address.state || 'Unknown',
-        country: data.address.country || 'Unknown',
-        display_name: data.display_name || 'Unknown Location',
-      };
-    } catch (error) {
-      console.error('Error fetching city, state, and country:', error);
+  } catch (error) {
+      console.error(error.message);
       throw error;
-    }
-  };  
+  }
+};
+
