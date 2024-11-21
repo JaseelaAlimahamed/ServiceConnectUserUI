@@ -1,83 +1,91 @@
-import React from 'react';
-import { useNavigate ,useParams} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import useProviderProfileData from '../../components/user/ProviderProfilePageComponents/hooks/useProviderProfileData';
-import ProfileCard from '../../components/user/ProviderProfilePageComponents/ProfileCard';
-import AboutSection from '../../components/user/ProviderProfilePageComponents/AboutSection';
-import ServicesSection from '../../components/user/ProviderProfilePageComponents/ServicesSection';
-import ReviewsSection from '../../components/user/ProviderProfilePageComponents/ReviewsSection';
-import ButtonComponent from '../../components/reUsableComponents/ButtonComponent';
-import ProfilePic from '../../components/user/ProviderProfilePageComponents/ProfilePic';
-import MediaGrid from '../../components/user/ProviderProfilePageComponents/MediaGrid';
+import useProviderProfileData from "../../components/user/ProviderProfilePageComponents/hooks/useProviderProfileData";
+import ProfileCard from "../../components/user/ProviderProfilePageComponents/ProfileCard";
+import AboutSection from "../../components/user/ProviderProfilePageComponents/AboutSection";
+import ServicesSection from "../../components/user/ProviderProfilePageComponents/ServicesSection";
+import ReviewsSection from "../../components/user/ProviderProfilePageComponents/ReviewsSection";
+import ButtonComponent from "../../components/reUsableComponents/ButtonComponent";
+import ProfilePic from "../../components/user/ProviderProfilePageComponents/ProfilePic";
+import MediaGrid from "../../components/user/ProviderProfilePageComponents/MediaGrid";
+import { fetchServiceProviderDetails } from "../../services/serviceProviderDetails/serviceProviderDetailsApi";
+import noImage from "../../assets/Noimage.jpg";
 
 const ProviderProfile = () => {
-    
-    const navigate = useNavigate();
-    const id = useParams().id;
-    const {
-       
-        profileData,
-        aboutDescription,
-        servicesData,
-        reviewsData,
-        imagesData,
-        videosData,
-        loading,
-        error,
-    } = useProviderProfileData();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
 
-
-
-
-    const handleBookService = () => {
-        console.log('Book service clicked');
-        // Navigate to the booking page with the dynamic id
-        navigate(`/request-service/${profileData.id}`);
-      };
-
-    const handleChatClick = () => {
-        // Implement the chat logic here
-        console.log('Chat button clicked');
+  useEffect(() => {
+    const getServiceProviderDetails = async () => {
+      try {
+        const response = await fetchServiceProviderDetails(id);
+        setData(response);
+      } catch (error) {
+        console.error("Error fetching provider details:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+    getServiceProviderDetails();
+  }, [id]);
 
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center h-screen bg-gray-200">
-                <p>Loading...</p>
-            </div>
-        );
-    }
+  const handleBookService = () => navigate(`/request-service/${id}`);
+  const handleChatClick = () => console.log("Chat button clicked");
 
-    if (error) {
-        return (
-            <div className="mb-3 bg-gray-200">
-                <p>{error}</p>
-            </div>
-        );
-    }
-
+  if (loading) {
     return (
-        <div className="p-6 lg:ml-24 bg-light-gray min-h-screen">
-            <ProfilePic
-                imageUrl={profileData.imageUrl}
-                altText={`${profileData.name}'s Profile Picture`}
-                onChatClick={handleChatClick}
-            />
-            <div className="mx-4 mt-16 md:mx-10 gap-2">
-                <ProfileCard {...profileData} />
-                <AboutSection description={aboutDescription} />
-                <ServicesSection services={servicesData} />
-                <ReviewsSection reviews={reviewsData} id={profileData.id} />
-                <MediaGrid title="Images" mediaItems={imagesData} type="image" />
-                <MediaGrid title="Videos" mediaItems={videosData} type="video" />
-                <ButtonComponent
-                    label="Book Service"
-                    btnWidth="w-full"
-                    onClick={handleBookService}
-                />
-            </div>
-        </div>
+      <div className="flex items-center justify-center h-screen bg-gray-200">
+        <p>Loading...</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="bg-light-gray min-h-screen lg:ml-24 ">
+      <ProfilePic
+        imageUrl={data.imageUrl || noImage}
+        altText={`${data.full_name || "Profile"}'s Profile Picture`}
+        onChatClick={handleChatClick}
+      />
+      <div className="mt-16 pb-4 mx-4 md:mx-10 space-y-6">
+        <ProfileCard
+          name={data.full_name}
+          servicesListed={data.services?.length || 0}
+          reviews={data.reviews?.length || 0}
+          mediaCount={(data.images?.length || 0) + (data.videos?.length || 0)}
+        />
+        
+        <AboutSection description={data.about || "No information available"} />
+        
+        <ServicesSection services={data.services || []} />
+        
+        {data.reviews?.length ? (
+          <ReviewsSection reviews={data.reviews} />
+        ) : (
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold">No reviews available</h2>
+          </div>
+        )}
+        
+        {(data.images?.length > 0 || data.videos?.length > 0) ? (
+          <MediaGrid title="Media" mediaItems={[...data.images, ...data.videos]} type="media" />
+        ) : (
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold">No videos or images available</h2>
+          </div>
+        )}
+
+        <ButtonComponent
+          label="Book Service"
+          btnWidth="w-full"
+          onClick={handleBookService}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default ProviderProfile;

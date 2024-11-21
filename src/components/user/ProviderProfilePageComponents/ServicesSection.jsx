@@ -14,9 +14,9 @@ const ServicesSection = ({ services }) => {
                     return (
                         <li key={index} className="flex items-center mb-6">
                             {/* Icon */}
-                            <IconComponent className="mr-4 text-2xl text-dark-gray" aria-hidden="true" />
+                            {/* <IconComponent className="mr-4 text-2xl text-dark-gray" aria-hidden="true" /> */}
                             {/* Service Name */}
-                            <span className="font-semibold text-gray-700">{service.name}</span>
+                            <span className="font-semibold text-gray-700">{service.subcategory}</span>
                         </li>
                     );
                 })}

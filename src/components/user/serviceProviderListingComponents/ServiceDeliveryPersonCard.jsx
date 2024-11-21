@@ -6,15 +6,16 @@ const DeliveryPersonCard = ({
   name,
   price,
   rating,
+  img,
   reviews,
   distance,
   booked,
 }) => {
   return (
-    <div className="bg-primary rounded-lg h-32 shadow-md m-4 flex">
+    <div className="bg-primary rounded-lg h-32 shadow-md m-4  lg:ml-10 flex">
       {/* Avatar Placeholder */}
       <div className="imgSection">
-        <div className="w-28 h-full rounded-tl-[8px] rounded-bl-[8px] bg-black "></div>
+        <img className="w-28 h-full rounded-tl-[8px] rounded-bl-[8px] object-cover " src={img} alt="photo"></img>
       </div>
       <div className="contentSection p-4 flex-1">
         {/* Delivery Info */}
