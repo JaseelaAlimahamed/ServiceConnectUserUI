@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import * as Yup from "yup";
-import ButtonComponent from "./ButtonComponent";
-import InputFieldComponent from "./InputFieldComponent";
+import React, { useState, useEffect } from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { Link } from 'react-router-dom'; // Import Link for navigation
+import InputFieldComponent from './InputFieldComponent';
+import ButtonComponent from './ButtonComponent';
 
+<<<<<<< HEAD
 const FormComponent = ({
   fieldConfigs,
   buttonConfig,
@@ -18,20 +17,24 @@ const FormComponent = ({
   onSubmit,
   forgotPassword,
 }) => {
+=======
+const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, heading, profile, forgotPassword }) => {
+>>>>>>> main
   const [formData, setFormData] = useState({});
   const [profileImage, setProfileImage] = useState(null); // State to hold selected profile image
   const [previewImage, setPreviewImage] = useState(null); // State for image preview
   // Set initial form values based on fieldConfigs
   useEffect(() => {
     const initialFormData = fieldConfigs.reduce((acc, field) => {
-      acc[field.name] = "";
+      acc[field.name] = ''; 
       return acc;
     }, {});
-    setFormData(initialFormData);
+    setFormData(initialFormData); 
   }, [fieldConfigs]);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
+<<<<<<< HEAD
 
 
       const finalValues = {
@@ -43,6 +46,10 @@ const FormComponent = ({
 
       resetForm(); 
 
+=======
+      await apiEndpoint(values); // Call API endpoint with form values
+      resetForm(); // Reset the form upon successful submission
+>>>>>>> main
     } catch (error) {
       console.error('Error submitting the form:', error);
     } finally {
@@ -53,32 +60,28 @@ const FormComponent = ({
   // Yup validation schema
   const validationSchema = Yup.object(
     fieldConfigs.reduce((schema, field) => {
-      if (
-        field.placeholder.toLowerCase().includes("password") &&
-        field.name !== "confirmPassword"
-      ) {
+      if (field.placeholder.toLowerCase().includes('password') && field.name !== 'confirmPassword') {
         schema[field.name] = Yup.string()
           .required(`${field.label} is required`)
           .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@])(?=.*\d)[A-Za-z\d@]{8,}$/,
-            "Password must contain at least 8 characters, including uppercase, lowercase, number, and @"
+            'Password must contain at least 8 characters, including uppercase, lowercase, number, and @'
           );
-      } else if (field.name === "confirmPassword") {
+      } else if (field.name === 'confirmPassword') {
         schema[field.name] = Yup.string()
-          .required("Confirm password is required")
-          .oneOf([Yup.ref("password"), null], "Passwords must match");
-      } else if (field.placeholder.toLowerCase().includes("email")) {
+          .required('Confirm password is required')
+          .oneOf([Yup.ref('password'), null], 'Passwords must match');
+      } else if (field.placeholder.toLowerCase().includes('email')) {
         schema[field.name] = Yup.string()
-          .email("Invalid email address")
+          .email('Invalid email address')
           .required(`${field.label} is required`);
       } else if (field.required) {
-        schema[field.name] = Yup.string().required(
-          `${field.label} is required`
-        );
+        schema[field.name] = Yup.string().required(`${field.label} is required`);
       }
       return schema;
     }, {})
   );
+<<<<<<< HEAD
 
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0];
@@ -96,11 +99,20 @@ const FormComponent = ({
           <h2 className="text-white font-heading text-center text-lg font-bold">
             {heading}
           </h2>
+=======
+  
+  return (
+    <div className="bg-light-gray p-6 max-w-xl w-full md:max-w-lg lg:max-w-lg lg:p-4 xl:max-w-md xl:p-4">
+      {heading && (
+        <div className="bg-dark-gray p-4 rounded-t-lg w-full mx-auto">
+          <h2 className="text-white font-heading text-center text-lg font-bold">{heading}</h2>
+>>>>>>> main
         </div>
       )}
 
       {profile && (
         <div className="flex justify-center mt-4">
+<<<<<<< HEAD
           <div className="w-24 h-26 rounded-full bg-medium-gray flex items-center justify-center relative">
             {previewImage ? (
               <img src={previewImage} alt="Profile Preview" className="w-24 h-28 rounded-full" />
@@ -113,6 +125,11 @@ const FormComponent = ({
               onChange={handleProfileImageChange}
               accept="image/*" // Restrict file input to image types
             />
+=======
+          <div className="w-24 h-24 rounded-full bg-medium-gray flex items-center justify-center relative">
+            <img src="/profileImage.svg" alt="Profile" className="w-24 h-24 rounded-full" />
+            <input type="file" className="opacity-0 absolute w-24 h-24" />
+>>>>>>> main
           </div>
         </div>
       )}
@@ -121,16 +138,9 @@ const FormComponent = ({
         initialValues={formData} // Set initial values from state
         validationSchema={validationSchema} // Apply Yup validation schema
         enableReinitialize={true} // Allow reinitialization of values
-        onSubmit={(values, actions) => handleSubmit(values, actions)}
+        onSubmit={handleSubmit} // Handle form submission
       >
-        {({
-          values,
-          errors,
-          touched,
-          isSubmitting,
-          handleChange,
-          handleBlur,
-        }) => (
+        {({ values, errors, touched, isSubmitting, handleChange, handleBlur }) => (
           <Form className="space-y-4 mt-4">
             {fieldConfigs.map((field) => (
               <InputFieldComponent
@@ -150,10 +160,7 @@ const FormComponent = ({
 
             {forgotPassword && (
               <div className="flex justify-end">
-                <Link
-                  to="/forgot-password"
-                  className="text-sm text-dark-gray hover:underline hover:text-black"
-                >
+                <Link to="/forgot-password" className="text-sm text-dark-gray hover:underline hover:text-black">
                   Forgot Password?
                 </Link>
               </div>

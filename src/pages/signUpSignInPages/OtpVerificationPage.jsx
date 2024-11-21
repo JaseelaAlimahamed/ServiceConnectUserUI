@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import OTPComponent from "../../components/user/sigInSignUpComponents/OTPComponent";
@@ -42,6 +43,18 @@ const OTPPage = () => {
     return (
         <div>
          
+=======
+import React from 'react'
+import OTPComponent from '../../components/reUsableComponents/signInSignUpReusableComponents/OtpComponent'
+
+function OtpVerificationPage() {
+  return (
+    <div>
+        <OTPComponent/>
+    </div>
+  )
+}
+>>>>>>> main
 
 
             <div className="min-h-screen bg-light-gray flex items-center justify-center">

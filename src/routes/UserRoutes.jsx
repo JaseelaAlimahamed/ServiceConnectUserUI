@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
@@ -54,6 +55,14 @@ import MainLayout from "../layouts/UserLayout";
 import Error404Page from "../pages/ErrorPages/Error404Page";
 import Error403Page from "../pages/ErrorPages/Error403Page";
 import AuthLayout from "../layouts/AuthLayout";
+=======
+import React from 'react'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import AddProfilePage from '../pages/signUpSignInPages/AddProfilePage'
+import UserSignInPage from '../pages/signUpSignInPages/UserSignInPage'
+import UserSignUpPage from '../pages/signUpSignInPages/UserSignUpPage'
+import OtpVerificationPage from '../pages/signUpSignInPages/OtpVerificationPage'
+>>>>>>> main
 
 
 
@@ -158,6 +167,7 @@ const UserRouter = createBrowserRouter([
         loader: protectRoute
       },
 
+<<<<<<< HEAD
       // Category and Provider Routes
       {
         path: "/categories",
@@ -251,5 +261,11 @@ const UserRouter = createBrowserRouter([
   { path: "/403", element: <Error403Page /> },
 ]);
 
+=======
+      </Routes>
+    </div>
+  )
+}
+>>>>>>> main
 
 export default UserRouter ;

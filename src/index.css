@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   margin: 0;
 }
@@ -41,6 +42,7 @@ button:focus-visible {
     background-color:#1D1F2A ;
   }
 }
+<<<<<<< HEAD
 
 /* Custom CSS to hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {
@@ -86,3 +88,5 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none; 
     margin: 0; 
 }
+=======
+>>>>>>> main
