@@ -76,15 +76,8 @@ const SignUpUser = () => {
               />
 
             </div>
-<<<<<<< HEAD
-            {/* <GoogleLoginButton /> */}
-      <GoogleLoginButton/>
-      <h4 className="font-input text-center mt-2 text-dark-gray text-sm lg:text-sm md:text-sm sm:text-lg my-1 text-left">
-            Already have an Account? <Link to='/sign-in' className="font-input font-bold text-dark-gray text-sm"> SignIn</Link>
-          </h4>
-=======
+
             <GoogleLoginButton />
->>>>>>> main
           </div>
         </div>
       </div>
