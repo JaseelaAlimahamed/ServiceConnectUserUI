@@ -1,23 +1,56 @@
-import React from 'react'
-import ServiceRequestForm from '../../components/user/requestServiceComponent/RequestFormComponent'
-import RequestService from '../../components/user/requestServiceComponent/RequestService'
-
+import React, { useState, useEffect } from "react";
+import RequestService from "../../components/user/requestServiceComponent/RequestService";
+import { useParams } from "react-router-dom";
+import {
+  serviceProvider,
+  serviceRequest,
+} from "../../services/userApiStore/UserApiStore";
 function RequestServicePage() {
-    // Dummy data for the service provider
-const serviceProvider = {
-    id: 101,
-    name: 'John Doe',
-    designation: 'Plumber',
-    image:'https://via.placeholder.com/60'
-  };
+  const  id  = useParams().id;
+  const [serviceProviderData, setServiceProviderData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchServiceProvider = async () => {
+      try {
+        const data = await serviceProvider(id);
+        setServiceProviderData(data);
+        setLoading(false);
+       
+        
+      } catch (error) {
+        console.error("Error fetching service provider:", error);
+        setLoading(false);
+      }
+    };
+    fetchServiceProvider();
+  }, [id]);
 
-  const handleFormSubmit = (formData) => {
-    console.log("Form data received from child:", formData, serviceProvider);
-    
+  const handleFormSubmit = async (formData) => {
+    try {
+      const response = await serviceRequest({
+        service: "31",
+        title: formData.title,
+        description: formData.description,
+        service_provider_id: id,
+        availability_from: `${formData.fromDate}T${formData.fromTime}:00Z`, // Ensure correct format
+        availability_to: `${formData.toDate}T${formData.toTime}:00Z`,
+        additional_notes: formData.description,
+        image: formData.images ? formData.images[0] : null, // Assuming a single image for simplicity
+      });
+
+      console.log("Service Request Successful:", response);
+    } catch (error) {
+      console.error("Error submitting service request:", error);
+    }
   };
   return (
-    <div className='flex  justify-center'><RequestService serviceProvider={serviceProvider} handleSubmit={handleFormSubmit}/></div>
-  )
+    <div className="flex  justify-center">
+      <RequestService
+        serviceProvider={serviceProvider}
+        handleSubmit={handleFormSubmit}
+      />
+    </div>
+  );
 }
 
-export default RequestServicePage
+export default RequestServicePage;
