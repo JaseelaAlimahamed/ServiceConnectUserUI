@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import BookingsCard from '../../reUsableComponents/BookingCard';
+
+import bookings from '../../../utils/designUtils/bookingsData';
 import ConfirmationModal from '../../reUsableComponents/ConfirmationModal';
-import { getButtonDetails, mapStatus } from '../../../utils/bookings/bookingStatusUtils';
+import { getButtonDetails, mapStatus } from '../../../utils/designUtils/bookingStatusUtils';
 import { useNavigate } from 'react-router-dom';
 import { viewRequestUser } from '../../../services/userApiStore/UserApiStore'; 
 

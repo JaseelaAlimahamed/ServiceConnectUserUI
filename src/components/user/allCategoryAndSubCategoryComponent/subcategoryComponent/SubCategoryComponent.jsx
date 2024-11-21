@@ -1,463 +1,52 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
-import React from "react";
-
-import { useParams,useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import CategoryCardComponent from "../../../reUsableComponents/UserHomeComponents/CategoryCardComponent";
-
-const subCategoriesData = [
-  {
-    id: 1,
-    categoryName: "BEAUTY SERVICES",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "BEAUTY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "BEAUTY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BEAUTY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "BEAUTY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BEAUTY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "BEAUTY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 2,
-    categoryName: "BUSINESS AND SERVICES",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "BUSINESS AND SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 3,
-    categoryName: "CLEANING SERVICE",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "CLEANING SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "CLEANING SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "CLEANING SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "CLEANING SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "CLEANING SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "CLEANING SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 4,
-    categoryName: "DELIVERY SERVICES",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "DELIVERY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "DELIVERY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "DELIVERY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "DELIVERY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "DELIVERY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "DELIVERY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 5,
-    categoryName: "ELECTRONICS REPAIR",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "ELECTRONICS REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "ELECTRONICS REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "ELECTRONICS REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "ELECTRONICS REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "ELECTRONICS REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "ELECTRONICS REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 6,
-    categoryName: "EVENTS AND PARTY",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "EVENTS AND PARTY 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "EVENTS AND PARTY 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "EVENTS AND PARTY 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "EVENTS AND PARTY 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "EVENTS AND PARTY 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "EVENTS AND PARTY 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 7,
-    categoryName: "HEALTH AND FITNESS",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "HEALTH AND FITNESS 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HEALTH AND FITNESS 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "HEALTH AND FITNESS 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HEALTH AND FITNESS 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "HEALTH AND FITNESS 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HEALTH AND FITNESS 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 8,
-    categoryName: "HOME APPLIANCE REPAIR",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "HOME APPLIANCE REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HOME APPLIANCE REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "HOME APPLIANCE REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HOME APPLIANCE REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "HOME APPLIANCE REPAIR 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "HOME APPLIANCE REPAIR 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 9,
-    categoryName: "LAUNDRY SERVICE",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "LAUNDRY SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "LAUNDRY SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "LAUNDRY SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "LAUNDRY SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "LAUNDRY SERVICE 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "LAUNDRY SERVICE 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-  {
-    id: 10,
-    categoryName: "TECHNOLOGY SERVICES",
-    subCategories: [
-      {
-        id: 1,
-        subCategoryName: "TECHNOLOGY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "TECHNOLOGY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "TECHNOLOGY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "TECHNOLOGY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 1,
-        subCategoryName: "TECHNOLOGY SERVICES 1",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-      {
-        id: 2,
-        subCategoryName: "TECHNOLOGY SERVICES 2",
-        subCategoryImage:
-          "https://www.istockphoto.com/resources/images/PhotoFTLP/JobsCareers-901568660.jpg",
-      },
-    ],
-  },
-];
+import { fetchSubCategories } from "../../../../services/apiServices/homeApi";
+import NoImage from "../../../../assets/NoImage.jpg";
 
 const SubCategoryComponent = () => {
-  const { categoryId } = useParams();
-  console.log("categoryId from useParams:", categoryId);
-
-  const category = subCategoriesData.find(
-    (cat) => cat.id === parseInt(categoryId)
-  );
-  console.log("Matching category:", category);
-
-  if (!category) {
-    return <div>No subcategories available for this category.</div>;
-  }
-
-  const subCategories = category?.subCategories;
-
-  console.log("Subcategories to render:", subCategories);
   const navigate = useNavigate();
-  // If you need the params
+  const [subCategories, setSubCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    const getSubCategories = async () => {
+      setIsLoading(true); // Start loading
+      try {
+        const data = await fetchSubCategories(categoryId);
+        setSubCategories(data);
+      } catch (error) {
+        console.error("Error fetching subcategories:", error);
+      } finally {
+        setIsLoading(false); // Stop loading
+      }
+    };
+
+    getSubCategories();
+  }, [categoryId]);
 
   const handleCardClick = (subCategoryId) => {
-    navigate(`/service-provider-list/${subCategoryId}`); // Adjust the route as needed
+    navigate(`/service-provider-list/${subCategoryId}`);
+  };
+
+  const handleBackToCategories = () => {
+    navigate("/categories"); // Update this path based on your categories route
   };
 
   return (
-    <div className="p-6 lg:ml-12 bg-light-gray min-h-screen">
-      <div
+    <div className="p-1 sm:p-6 md:p-8 lg:p-10 xl:p-12 bg-light-gray min-h-screen flex flex-col items-center">
+      {isLoading ? (
+        <div className="flex flex-col items-center justify-center h-full text-center">
+          <div className="loader mb-4"></div> {/* Optional: Add a spinner/loader */}
+          <p className="text-lg font-semibold text-gray-600">Loading...</p>
+        </div>
+      ) : subCategories.length > 0 ? (
+        <div
         className="grid 
         items-center 
         justify-center 
-        gap-3 
+        gap-5 
         sm:p-6 
         md:p-8 
         lg:p-10 
@@ -466,26 +55,39 @@ const SubCategoryComponent = () => {
         md:gap-8 
         lg:gap-12 
         xl:gap-16 
-        grid-cols-3 
-        sm:grid-cols-3 
-        md:grid-cols-4
-        lg:grid-cols-4
-        xl:grid-cols-6
+        grid-cols-2 
+        sm:grid-cols-1 
+        md:grid-cols-3
+        lg:grid-cols-3
+        xl:grid-cols-4
         2xl:grid-cols-6"
-      >
-        {subCategories.map((subCategory, index) => (
-          <div   onClick={() =>
-            handleCardClick(subCategory.id)
-          }>
-          <CategoryCardComponent
-            key={index}
-            categoryId={subCategory.id}
-            categoryImage={subCategory.subCategoryImage}
-            categoryName={subCategory.subCategoryName}
-          />
-          </div>
-        ))}
-      </div>
+        >
+          {subCategories.map((subCategory) => (
+            <div
+              key={subCategory.id}
+              onClick={() => handleCardClick(subCategory.id)}
+              className="cursor-pointer transition-transform transform hover:scale-105"
+            >
+              <CategoryCardComponent
+                categoryImage={subCategory.image || NoImage}
+                categoryName={subCategory.title}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center h-full text-center">
+          <p className="text-lg font-semibold text-gray-600 mb-4">
+            No subcategories available for this category.
+          </p>
+          <button
+            onClick={handleBackToCategories}
+            className="bg-secondary text-white rounded-full py-2 px-6 w-2/3 sm:w-1/3 lg:w-1/5 transition-colors hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary-dark"
+          >
+            OK
+          </button>
+        </div>
+      )}
     </div>
   );
 };

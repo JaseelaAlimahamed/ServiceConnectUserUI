@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { BiChevronDown } from 'react-icons/bi';
 import { BsExclamationOctagonFill } from 'react-icons/bs';
 import { FaRegCalendarAlt, FaRegClock } from 'react-icons/fa';
-import { getStatusColor } from '../../utils/bookings/bookingStatusUtils';
+import { getStatusColor } from '../../utils/designUtils/bookingStatusUtils';
 
 const BookingsCard = ({
   serviceTitle,

@@ -1,6 +1,6 @@
 import React from 'react'
 import TransactionCard from './TransactionCard'
-import bookings from '../../../utils/bookings/bookingsData';
+import bookings from '../../../utils/designUtils/bookingsData';
 
 const TransactionsPageUser = () => {
   const bookingsData = bookings
