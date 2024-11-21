@@ -22,7 +22,7 @@ const BookingsCard = ({
   onButtonClick,
   providerId
 }) => {
-  const mappedStatus = status; // Ensure the status is coming in correctly
+  const mappedStatus = status;
 
   return (
     <div className="relative bg-white rounded-3xl shadow-md w-full p-6 min-w-lg mx-auto">
@@ -65,7 +65,7 @@ const BookingsCard = ({
       </div>
 
       {/* Display amount and additional requirements */}
-      {(mappedStatus === 'Scheduled' || job === 'Active' || complaint === 'Pending' || complaint === 'Resolved') && (
+      {mappedStatus === 'Scheduled' || job === 'Active' || (complaint === 'Pending' || complaint === 'Resolved') ? (
         <div className="flex items-center text-gray-400 ml-4">
           <span>Amount: {amount} /-</span>
           {additional_requirements && (
@@ -78,21 +78,20 @@ const BookingsCard = ({
             </div>
           )}
         </div>
-      )}
+      ) : null}
+
 
       {/* Button Component */}
       <div className="mt-4 ml-4 text-center">
         <button
           className={`${getStatusColor(mappedStatus)} ${buttonDisabled ? 'cursor-not-allowed' : ''} text-white px-4 text-xs shadow-xl rounded-full focus:outline-none focus:ring-0 flex items-center justify-center relative`}
-          style={{ width: '100%', height: '25px' }}
+          style={{ width: '100%' ,height : '25px' }}
           disabled={buttonDisabled}
           onClick={onButtonClick}
         >
-          <span className="flex items-center mx-auto" style={{ width: '100%', height: '25px' }}>
+          <span className="flex items-center  mx-auto" style={{ width: '100%' ,height : '25px' }}>
             {buttonText}
-            {!buttonDisabled && job !== 'Active' && complaint !== 'Pending' ? (
-              <BiChevronDown className="w-6 h-18 absolute right-4" aria-hidden="true" />
-            ) : null}
+            {!buttonDisabled && job !== 'Active' && complaint !== 'Pending' ? (<BiChevronDown className="w-6 h-18 absolute right-4" aria-hidden="true" />) : null}
           </span>
           {!buttonDisabled && <img src="./buttonArrow.svg" className="w-6 h-18 absolute right-4" alt="arrow" />}
         </button>
