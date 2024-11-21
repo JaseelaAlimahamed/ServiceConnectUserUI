@@ -1,50 +1,68 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendarAlt } from 'react-icons/fa';
 
+const AvailabilitySection = ({ onInputChange }) => {
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+  const [fromTime, setFromTime] = useState('');
+  const [toTime, setToTime] = useState('');
 
-const AvailabilitySection = ({ onInputChange, availability_from, availability_to  }) => {
+  // Handle From Date change and notify parent
+  const handleFromDateChange = (date) => {
+    setFromDate(date);
+    onInputChange('fromDate', date); 
+  };
 
-  const fromDate = new Date(availability_from);
-  const toDate = new Date(availability_to);
+  // Handle To Date change and notify parent
+  const handleToDateChange = (date) => {
+    setToDate(date);
+    onInputChange('toDate', date); 
+  };
 
-  const formattedFromDate = fromDate.toLocaleDateString('en-US', { timeZone: 'UTC' });
-  const formattedFromTime = fromDate.toLocaleTimeString('en-US', { 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    timeZone: 'UTC', 
-    hour12: false // Set to true if you prefer 12-hour format
-  });
-  const formattedToDate = toDate.toLocaleDateString('en-US', { timeZone: 'UTC' });
-  const formattedToTime = toDate.toLocaleTimeString('en-US', { 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    timeZone: 'UTC', 
-    hour12: false // Set to true if you prefer 12-hour format
-  });
+  // Handle From Time change and notify parent
+  const handleFromTimeChange = (event) => {
+    const time = event.target.value;
+    setFromTime(time);
+    onInputChange('fromTime', time); 
+  };
+
+  // Handle To Time change and notify parent
+  const handleToTimeChange = (event) => {
+    const time = event.target.value;
+    setToTime(time);
+    onInputChange('toTime', time); 
+  };
 
   return (
     <div className="mb-4">
       <label className="block text-secondary font-semibold text-sm md:text-base">Availability</label>
 
-      <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* From Date and Time */}
         <div className="flex flex-col">
           <label className="block text-secondary text-sm mb-1">From</label>
           <div className="flex items-center space-x-4">
-            <div className=" flex flex-row items-center w-full bg-primary rounded-lg shadow p-3">
-              <span className=" top-1 left-3 text-xs text-medium-gray">Date</span>
-              <p
-                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-medium-gray"
-                
-              >{formattedFromDate}</p>
-              <FaCalendarAlt className="  text-medium-gray" />
+            <div className="relative flex items-center w-full bg-primary rounded-lg shadow p-3">
+              <span className="absolute top-1 left-3 text-xs text-medium-gray">Date</span>
+              <DatePicker
+                selected={fromDate}
+                onChange={handleFromDateChange}
+                dateFormat="MM/dd/yyyy"
+                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-light-gray"
+                placeholderText="Select Date"
+              />
+              <FaCalendarAlt className="absolute right-3 text-medium-gray" />
             </div>
-            <div className=" flex items-center w-full bg-primary rounded-lg shadow p-3">
-              <span className=" top-1 left-3 text-xs text-medium-gray">Time</span>
-              <p
-                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-medium-gray"
-              >{formattedFromTime}</p>
+            <div className="relative flex items-center w-full bg-primary rounded-lg shadow p-3">
+              <span className="absolute top-1 left-3 text-xs text-medium-gray">Time</span>
+              <input
+                type="time"
+                value={fromTime}
+                onChange={handleFromTimeChange} 
+                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-light-gray"
+              />
             </div>
           </div>
         </div>
@@ -53,18 +71,25 @@ const AvailabilitySection = ({ onInputChange, availability_from, availability_to
         <div className="flex flex-col">
           <label className="block text-secondary text-sm mb-1">To</label>
           <div className="flex items-center space-x-4">
-            <div className=" flex items-center w-full bg-primary rounded-lg shadow p-3">
-              <span className=" top-1 left-3 text-xs text-medium-gray">Date</span>
-              <p
-                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-medium-gray"
-              >{formattedToDate}</p>
-              <FaCalendarAlt className=" right-3 text-medium-gray" />
+            <div className="relative flex items-center w-full bg-primary rounded-lg shadow p-3">
+              <span className="absolute top-1 left-3 text-xs text-medium-gray">Date</span>
+              <DatePicker
+                selected={toDate}
+                onChange={handleToDateChange}
+                dateFormat="MM/dd/yyyy"
+                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-light-gray"
+                placeholderText="Select Date"
+              />
+              <FaCalendarAlt className="absolute right-3 text-medium-gray" />
             </div>
-            <div className=" flex items-center w-full bg-primary rounded-lg shadow p-3">
-              <span className=" top-1 left-3 text-xs text-medium-gray">Time</span>
-              <p
-                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-medium-gray"
-              >{formattedToTime}</p>
+            <div className="relative flex items-center w-full bg-primary rounded-lg shadow p-3">
+              <span className="absolute top-1 left-3 text-xs text-medium-gray">Time</span>
+              <input
+                type="time"
+                value={toTime}
+                onChange={handleToTimeChange} 
+                className="w-full pl-3 pr-10 bg-transparent outline-none text-sm text-light-gray"
+              />
             </div>
           </div>
         </div>
