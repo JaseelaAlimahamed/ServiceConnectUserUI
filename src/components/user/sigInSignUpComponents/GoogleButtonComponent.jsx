@@ -1,15 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-<<<<<<< HEAD:src/components/user/sigInSignUpComponents/GoogleButtonComponent.jsx
-import { useGoogleLogin } from '@react-oauth/google';
-
-import { onGoogleLoginSuccess, onGoogleLoginError } from '../../../services/userSignIn/googleAuth';
-
-
-=======
->>>>>>> main:src/components/reUsableComponents/signInSignUpReusableComponents/GoogleButtonComponent.jsx
-
 const GoogleLoginButton = () => {
 
     const handleGoogleLogin = async () => {

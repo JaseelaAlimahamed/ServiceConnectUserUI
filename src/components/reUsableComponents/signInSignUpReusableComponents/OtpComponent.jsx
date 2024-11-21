@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import ButtonComponent from "../ButtonComponent"; // Adjust the import path as needed
-import ResendOtpComponent from "./ResendOtpComponent";
+// import ResendOtpComponent from "./ResendOtpComponent";
 
 const OTPComponent = () => {
     const [otp, setOtp] = useState(["", "", "", ""]);
@@ -79,7 +79,7 @@ const OTPComponent = () => {
                     ))}
                 </div>
                 
-                <ResendOtpComponent/>
+                {/* <ResendOtpComponent/> */}
 
                 <div className="flex justify-center  mb-4">
 
