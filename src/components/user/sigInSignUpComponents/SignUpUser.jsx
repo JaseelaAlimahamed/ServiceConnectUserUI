@@ -1,6 +1,9 @@
 import React from 'react';
 import FormComponent from '../../reUsableComponents/FormComponent';
-import GoogleLoginButton from '../../reUsableComponents/signInSignUpReusableComponents/GoogleButtonComponent';
+import GoogleLoginButton from './GoogleButtonComponent';
+import { Link } from 'react-router-dom';
+
+
 
 const SignUpUser = () => {
 
@@ -29,8 +32,9 @@ const SignUpUser = () => {
   const buttonConfig = {
     label: 'Register',
     type: 'submit',
-    btnWidth: '99%',
-    btnHeight: '46px',
+    btnWidth: 'w-full',
+    btnHeight: '32px',
+    hasIcon : true
   };
 
   const inputConfig = {
@@ -41,6 +45,7 @@ const SignUpUser = () => {
 
   const apiEndpoint = async (values) => {
     console.log('Form submitted with values:', values);
+    
 
   }
     return (
@@ -71,7 +76,11 @@ const SignUpUser = () => {
               />
 
             </div>
-            <GoogleLoginButton />
+            {/* <GoogleLoginButton /> */}
+      <GoogleLoginButton/>
+      <h4 className="font-input text-center mt-2 text-dark-gray text-sm lg:text-sm md:text-sm sm:text-lg my-1 text-left">
+            Already have an Account? <Link to='/sign-in' className="font-input font-bold text-dark-gray text-sm"> SignIn</Link>
+          </h4>
           </div>
         </div>
       </div>

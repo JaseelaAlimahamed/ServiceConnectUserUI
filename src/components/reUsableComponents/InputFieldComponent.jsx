@@ -35,14 +35,14 @@ const InputFieldComponent = ({
           />
         )}
         <input
-          className={`px-4 py-2 mt-1 rounded-md border border-light-gray bg-medium-gray font-input text-dark-gray focus:outline-none focus:ring-2 focus:ring-secondary ${icon ? 'pl-10' : ''}`}
+          className={`px-4 py-2 mt-1 rounded-md border border-light-gray bg-medium-gray font-input text-light-gray focus:outline-none focus:ring-2 focus:ring-secondary ${icon ? 'pl-10' : ''}`}
           style={{
             width: inputWidth,
             height: inputHeight,
             fontSize: '14px',
             '::placeholder': {
               fontSize: '12px',
-              color: '#A0A0A0',
+              color: 'light-gray',
             },
           }}
           type={isPasswordField && showPassword ? 'text' : type} // Toggle between 'text' and 'password'

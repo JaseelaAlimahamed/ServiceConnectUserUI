@@ -130,3 +130,4 @@ const OTPComponent = () => {
 };
 
 export default OTPComponent;
+

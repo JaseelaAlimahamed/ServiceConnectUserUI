@@ -5,9 +5,20 @@ import { Link } from 'react-router-dom'; // Import Link for navigation
 import InputFieldComponent from './InputFieldComponent';
 import ButtonComponent from './ButtonComponent';
 
-const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, heading, profile, forgotPassword }) => {
+const FormComponent = ({
+  fieldConfigs,
+  buttonConfig,
+  inputConfig,
+  apiEndpoint,
+  heading,
+  profile,
+  handleButtonClick,
+  onSubmit,
+  forgotPassword,
+}) => {
   const [formData, setFormData] = useState({});
-
+  const [profileImage, setProfileImage] = useState(null); // State to hold selected profile image
+  const [previewImage, setPreviewImage] = useState(null); // State for image preview
   // Set initial form values based on fieldConfigs
   useEffect(() => {
     const initialFormData = fieldConfigs.reduce((acc, field) => {
@@ -17,15 +28,23 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
     setFormData(initialFormData); 
   }, [fieldConfigs]);
 
-  // Function to handle submission
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      await apiEndpoint(values); // Call API endpoint with form values
-      resetForm(); // Reset the form upon successful submission
+
+
+      const finalValues = {
+        ...values, 
+        profileImage: profileImage ? profileImage : '', 
+      };
+
+      await apiEndpoint(finalValues);
+
+      resetForm(); 
+
     } catch (error) {
       console.error('Error submitting the form:', error);
     } finally {
-      setSubmitting(false); // Stop the form submission state
+      setSubmitting(false); // Stop submitting state
     }
   };
 
@@ -53,20 +72,40 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
       return schema;
     }, {})
   );
-  
+
+  const handleProfileImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+   
+      setProfileImage(file.name); // Update profileImage state with selected file
+      setPreviewImage(URL.createObjectURL(file)); // Generate preview URL for the image
+    }
+  };
+
   return (
     <div className="bg-light-gray p-6 max-w-xl w-full md:max-w-lg lg:max-w-lg lg:p-4 xl:max-w-md xl:p-4">
       {heading && (
-        <div className="bg-dark-gray p-4 rounded-t-lg w-full mx-auto">
-          <h2 className="text-white font-heading text-center text-lg font-bold">{heading}</h2>
+        <div className="bg-dark-gray p-4  w-full mx-auto">
+          <h2 className="text-white font-heading text-center text-lg font-bold">
+            {heading}
+          </h2>
         </div>
       )}
 
       {profile && (
         <div className="flex justify-center mt-4">
-          <div className="w-24 h-24 rounded-full bg-medium-gray flex items-center justify-center relative">
-            <img src="/profileImage.svg" alt="Profile" className="w-24 h-24 rounded-full" />
-            <input type="file" className="opacity-0 absolute w-24 h-24" />
+          <div className="w-24 h-26 rounded-full bg-medium-gray flex items-center justify-center relative">
+            {previewImage ? (
+              <img src={previewImage} alt="Profile Preview" className="w-24 h-28 rounded-full" />
+            ) : (
+              <img src="/profileImage.svg" alt="Profile" className="w-24 h-24" />
+            )}
+            <input
+              type="file"
+              className="opacity-0 absolute w-24 h-24 cursor-pointer"
+              onChange={handleProfileImageChange}
+              accept="image/*" // Restrict file input to image types
+            />
           </div>
         </div>
       )}
@@ -103,13 +142,14 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
               </div>
             )}
 
-            <div className="mt-4">
+            <div className="mt-2">
               <ButtonComponent
                 label={buttonConfig.label}
                 type={buttonConfig.type}
                 disabled={isSubmitting}
                 btnWidth={buttonConfig.btnWidth}
                 btnHeight={buttonConfig.btnHeight}
+                hasIcon={buttonConfig.hasIcon}
               />
             </div>
           </Form>
@@ -119,4 +159,4 @@ const FormComponent = ({ fieldConfigs, buttonConfig, inputConfig, apiEndpoint, h
   );
 };
 
-export default FormComponent;
+export default FormComponent 
